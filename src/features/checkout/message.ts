@@ -16,13 +16,18 @@ export function buildMessage(
 ) {
   const total = items.reduce((sum, item) => sum + (item.subtotalCents ?? 0), 0);
   const quote = items.some((item) => item.unitPriceCents === null);
+  const divider = "────────────────────";
   return [
-    "Olá! Gostaria de fazer um pedido pela distribuidora Nevada.",
+    "*NEVADA PROTECTION FILMS*",
+    "Solicitação de pedido",
+    divider,
     "",
-    "PRODUTOS",
+    "Olá! Gostaria de solicitar os produtos abaixo.",
     "",
-    ...items.flatMap((item) => [
-      `Produto: ${item.productName}`,
+    "*Produtos selecionados*",
+    "",
+    ...items.flatMap((item, index) => [
+      `${String(index + 1).padStart(2, "0")} · *${item.productName}*`,
       `Variação: ${item.variantName}`,
       `SKU: ${item.sku}`,
       ...Object.entries(item.attributes).map(
@@ -30,21 +35,28 @@ export function buildMessage(
       ),
       `Quantidade: ${item.quantity}`,
       `Valor unitário: ${money(item.unitPriceCents)}`,
-      `Subtotal: ${money(item.subtotalCents)}`,
+      `Subtotal: *${money(item.subtotalCents)}*`,
       "",
     ]),
-    "RESUMO",
+    divider,
+    "*Resumo do pedido*",
+    "",
     `Total de itens: ${items.reduce((sum, i) => sum + i.quantity, 0)}`,
-    `${quote ? "Subtotal dos itens com preço" : "Subtotal do pedido"}: ${money(total)}`,
+    `${quote ? "Subtotal dos itens com preço" : "Subtotal do pedido"}: *${money(total)}*`,
     ...(quote ? ["Há itens sob consulta. Total final a confirmar."] : []),
     "",
-    "DADOS DO CLIENTE",
+    divider,
+    "*Dados para atendimento*",
+    "",
     `Nome: ${customer.name}`,
     `Telefone: ${customer.phone}`,
-    `Cidade/UF: ${customer.city}/${customer.state}`,
+    `Cidade/UF: ${customer.city} / ${customer.state}`,
     ...(customer.postalCode ? [`CEP: ${customer.postalCode}`] : []),
-    ...(customer.notes ? [`Observações: ${customer.notes}`] : []),
+    ...(customer.notes ? ["", "*Observações*", customer.notes] : []),
     "",
-    "Gostaria de confirmar a disponibilidade, o frete e as formas de pagamento.",
+    divider,
+    "_Disponibilidade, frete e formas de pagamento a confirmar no atendimento._",
+    "",
+    "Aguardo seu retorno para concluir o pedido.",
   ].join("\n");
 }
