@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nevada Protection Films
 
-## Getting Started
+Site de catálogo e seleção de produtos com finalização pelo WhatsApp **+55 81 8602-0710**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
 
-First, run the development server:
+O catálogo, as categorias e as configurações ficam em [`src/data/store.ts`](src/data/store.ts). O carrinho permanece no navegador com Zustand/localStorage. Ao finalizar, o site prepara uma mensagem com produtos, variantes, atributos, SKU, quantidades, valores e dados informados pelo cliente, e abre a conversa no número configurado. O cliente confirma o envio no WhatsApp.
 
-```bash
+## Publicar na Vercel
+
+Importe [diegocoodes/nevada](https://github.com/diegocoodes/nevada), selecione **Next.js** e mantenha a raiz do repositório. O `vercel.json` configura `npm ci` e `npm run build`; o projeto utiliza Node.js 24.x. Nenhuma variável de banco ou segredo é necessária.
+
+`SITE_URL` é opcional, para definir um domínio customizado em Production. Sem essa variável, o site usa o endereço fornecido pela Vercel. Veja o [guia de publicação](docs/vercel.md).
+
+## Desenvolvimento
+
+Requer Node.js 24.x e npm:
+
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra `http://localhost:3000`. Não é necessário criar `.env`. Para compilar e executar em produção:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Atualizar o catálogo
 
-## Learn More
+Edite os objetos `settings`, `categories` e `products` em [`src/data/store.ts`](src/data/store.ts), faça commit e publique novamente. O site não possui painel administrativo.
 
-To learn more about Next.js, take a look at the following resources:
+- O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `558186020710`.
+- Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.
+- Cada variante tem identificador, SKU, atributos e disponibilidade. Preserve os identificadores ao editar produtos existentes para manter os carrinhos dos visitantes.
+- Use imagens locais em `public/images` com caminhos como `/images/lines/ppf-application.webp`.
+- Novos domínios de imagens externas precisam ser permitidos em `next.config.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os valores e dados de catálogo preservados do desenvolvimento são ilustrativos. Atualize-os com suas condições comerciais antes de divulgar ofertas. `demoMode` mantém o catálogo de demonstração fora dos mecanismos de busca; desative em `settings` quando os dados estiverem prontos.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Finalização
 
-## Deploy on Vercel
+A mensagem é montada no navegador usando o catálogo do projeto. O checkout valida os dados do cliente, os itens, as quantidades, a disponibilidade e eventuais preços antigos do carrinho. Frete, disponibilidade final e pagamento são confirmados no atendimento.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Não existe registro de pedidos em servidor nem pagamento online. Abrir a conversa não envia automaticamente a mensagem. O carrinho é mantido até o visitante remover seus itens ou limpar o navegador. Dados do formulário não são persistidos pelo site.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Verificação
+
+```sh
+npm run lint
+npm run typecheck
+npm run test:unit
+npx playwright install chromium
+npm test
+```
+
+Playwright compila a aplicação e abre um servidor de produção na porta 3100. Os testes cobrem catálogo, carrinho, persistência, checkout, destino e conteúdo do WhatsApp, navegação mobile, imagens, animações, movimento reduzido e acessibilidade com axe. A conversa externa é interceptada nos testes; nenhuma mensagem real é enviada. Não há dependência de PostgreSQL.
+
+O workflow [Validate](.github/workflows/ci.yml) executa essas verificações no GitHub.
+
+## Interface e arquivos
+
+O hero preserva o carro recortado e a tipografia animada. A seção Seleção Nevada usa Mesh drift em WebGL, com fallback em CSS. As animações respeitam movimento reduzido e param quando a seção ou a aba deixa de estar visível. A lista de linhas usa fotografias reais, informações à esquerda e imagem à direita, com recortes e contornos próprios. A faixa turquesa mantém o texto em movimento.
+
+```text
+src/app           páginas, metadata e rotas Next.js
+src/data          catálogo e configurações editáveis no projeto
+src/components    hero, seções, navegação, carrinho e componentes visuais
+src/features      filtros do catálogo, detalhe e checkout WhatsApp
+src/stores        carrinho persistente no navegador
+src/lib           validação, helpers e shader
+src/styles        estilos da interface
+public/images     imagens locais e créditos
+public/fonts      fontes locais
+tests             testes unitários, navegação e acessibilidade
+```
+
+As fontes das imagens estão documentadas em [`public/images/CREDITS.md`](public/images/CREDITS.md). A inclusão dos créditos não substitui as autorizações de uso dos respectivos titulares.
