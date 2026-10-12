@@ -1,0 +1,137 @@
+.site-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #020707;
+  pointer-events: none;
+  animation: intro-failsafe 0.4s ease 3s forwards;
+}
+.site-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 48%, #183a354d, transparent 55%),
+    linear-gradient(90deg, transparent 49.9%, #71b9b009 50%, transparent 50.1%);
+  pointer-events: none;
+}
+.site-intro[data-phase="leaving"] {
+  animation: intro-failsafe 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.brand-loader {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(380px, 72vw);
+  color: #adc2c0;
+}
+.brand-loader-glow {
+  position: absolute;
+  inset: -90px -65px -80px;
+  border: 1px solid #71b9b010;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #71b9b00c, transparent 65%);
+  pointer-events: none;
+}
+.brand-loader-logo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: intro-logo 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.brand-loader-track {
+  width: 60%;
+  height: 2px;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #71b9b021;
+}
+.brand-loader-track span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #8dd8ca, transparent);
+  animation: intro-track 1.25s ease-in-out infinite;
+}
+.brand-loader p {
+  margin: 18px 0 0;
+  color: #adc2c0;
+  font-family: "Outfit", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-align: center;
+  animation: intro-caption 0.7s ease 0.15s both;
+}
+.site-intro-signature {
+  position: absolute;
+  bottom: max(32px, env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  color: #71b9b0;
+  font-family: "Outfit", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+.route-brand-loading {
+  display: grid;
+  place-items: center;
+  min-height: 65svh;
+  padding: 64px 24px;
+  background: #020707;
+}
+@keyframes intro-logo {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes intro-caption {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes intro-track {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(335%);
+  }
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (max-width: 600px) {
+  .brand-loader-track {
+    margin-top: 30px;
+  }
+  .brand-loader p {
+    font-size: 8px;
+    letter-spacing: 0.14em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-intro {
+    display: none;
+  }
+}

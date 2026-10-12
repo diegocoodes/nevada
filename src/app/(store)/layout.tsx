@@ -2,6 +2,7 @@ import { getSettings, getCategories } from "@/lib/store-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
+import { SiteIntro } from "@/components/site-intro";
 export async function generateMetadata() {
   const settings = await getSettings();
   return settings.demoMode ? { robots: { index: false, follow: false } } : {};
@@ -17,6 +18,7 @@ export default async function StoreLayout({
   ]);
   return (
     <div className="storefront">
+      <SiteIntro logo={settings.logo} />
       <a href="#main" className="skip-link">
         Pular para o conteúdo
       </a>
