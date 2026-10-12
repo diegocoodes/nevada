@@ -1,5 +1,32 @@
 import { test, expect } from "@playwright/test";
 
+test("seção de contato da home prepara a conversa com nome e e-mail", async ({
+  page,
+}) => {
+  let message = "";
+  await page.route("https://wa.me/**", async (route) => {
+    const url = new URL(route.request().url());
+    expect(url.pathname).toBe("/558186020710");
+    message = url.searchParams.get("text") || "";
+    await route.fulfill({
+      contentType: "text/html",
+      body: "<h1>Conversa preparada</h1>",
+    });
+  });
+  await page.goto("/");
+  const contact = page.getByRole("region", {
+    name: "Entre em contato",
+    exact: true,
+  });
+  await contact.getByLabel("Seu nome").fill("Diego Silva");
+  await contact.getByLabel("Seu e-mail").fill("diego@example.com");
+  await expect(contact.locator("textarea")).toHaveCount(0);
+  await contact.getByRole("button", { name: "Vamos conversar" }).click();
+  await expect(page).toHaveURL(/wa\.me\/558186020710/);
+  expect(message).toContain("Nome: Diego Silva");
+  expect(message).toContain("E-mail: diego@example.com");
+});
+
 test("contato prepara a conversa com os dados do projeto no WhatsApp da loja", async ({
   page,
 }) => {

@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { getSettings, getCategories, getProducts } from "@/lib/store-data";
 import { contactUrl } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { CategoryExplorer } from "@/components/category-explorer";
 import { ProductCard } from "@/components/product-card";
@@ -236,28 +236,47 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="final-cta" aria-labelledby="cta-title">
-          <div className="container cta-panel">
-            <div>
-              <p className="eyebrow">ENTRE EM CONTATO</p>
-              <h2 id="cta-title">
-                A sua próxima
-                <br />
-                escolha começa <span>aqui.</span>
-              </h2>
-              <p>
-                Encontre seus produtos e fale com quem pode ajudar no seu
-                pedido.
-              </p>
+        <section
+          className="contact-page contact-home"
+          aria-labelledby="home-contact-title"
+        >
+          <div className="container contact-composition">
+            <h2
+              id="home-contact-title"
+              className="contact-title"
+              aria-label="Entre em contato"
+            >
+              CONTATO
+            </h2>
+            <div className="contact-intro-panel">
+              <div className="contact-form-column">
+                <h3>Vamos conversar.</h3>
+                {/^\d{10,15}$/.test(settings.whatsapp) ? (
+                  <ContactForm
+                    whatsapp={settings.whatsapp}
+                    includeProject={false}
+                  />
+                ) : (
+                  <p>O contato comercial será disponibilizado em breve.</p>
+                )}
+              </div>
+              <div className="contact-art" aria-hidden="true">
+                <span className="contact-art-label">
+                  PROTEÇÃO EM
+                  <br />
+                  SUA MELHOR FORMA.
+                </span>
+                <div className="contact-car-halftone" />
+                <span className="contact-art-signature">
+                  NEVADA / PROTECTION FILMS
+                </span>
+              </div>
             </div>
-            <div className="cta-actions">
-              <Button asChild>
-                <a href={contactUrl(settings.whatsapp)}>
-                  Falar com a loja <ArrowUpRight size={22} />
-                </a>
-              </Button>
-              <Link className="link-arrow" href="/produtos">
-                Prefiro explorar o catálogo <ArrowUpRight size={18} />
+            <div className="contact-meta">
+              <span>A conversa continua pelo WhatsApp.</span>
+              <Link href="/produtos">
+                Explorar o catálogo{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
             </div>
           </div>

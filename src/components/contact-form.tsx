@@ -4,7 +4,13 @@ import type { FormEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { contactUrl } from "@/lib/utils";
 
-export function ContactForm({ whatsapp }: { whatsapp: string }) {
+export function ContactForm({
+  whatsapp,
+  includeProject = true,
+}: {
+  whatsapp: string;
+  includeProject?: boolean;
+}) {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -57,16 +63,21 @@ export function ContactForm({ whatsapp }: { whatsapp: string }) {
         required
         maxLength={254}
       />
-      <label htmlFor="contact-project">
-        Sobre seu projeto <span className="contact-optional">(opcional)</span>
-      </label>
-      <textarea
-        id="contact-project"
-        name="project"
-        placeholder="O que você quer proteger ou transformar?"
-        rows={2}
-        maxLength={1500}
-      />
+      {includeProject && (
+        <>
+          <label htmlFor="contact-project">
+            Sobre seu projeto{" "}
+            <span className="contact-optional">(opcional)</span>
+          </label>
+          <textarea
+            id="contact-project"
+            name="project"
+            placeholder="O que você quer proteger ou transformar?"
+            rows={2}
+            maxLength={1500}
+          />
+        </>
+      )}
       <button type="submit">
         Vamos conversar <ArrowUpRight size={19} aria-hidden="true" />
       </button>
