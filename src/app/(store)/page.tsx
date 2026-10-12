@@ -109,7 +109,11 @@ export default async function Home() {
                 .filter((product) => product.featured)
                 .slice(0, 4)
                 .map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    imageSizes="(max-width: 600px) 180vw, (max-width: 800px) 90vw, (max-width: 1240px) 45vw, 560px"
+                  />
                 ))}
             </div>
           </div>

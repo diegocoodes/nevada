@@ -5,7 +5,13 @@ import { ArrowUpRight, Plus } from "lucide-react";
 import type { Product } from "@/types/store";
 import { money } from "@/lib/utils";
 import { useCart } from "@/stores/cart";
-export function ProductCard({ product: p }: { product: Product }) {
+export function ProductCard({
+  product: p,
+  imageSizes = "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 25vw",
+}: {
+  product: Product;
+  imageSizes?: string;
+}) {
   const add = useCart((s) => s.add);
   const available = p.variants.filter(
     (v) => v.inventory?.available && v.inventory.quantity !== 0,
@@ -22,7 +28,7 @@ export function ProductCard({ product: p }: { product: Product }) {
           src={image}
           alt={p.images[0]?.alt || p.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 25vw"
+          sizes={imageSizes}
         />
         <span className="product-badge">
           {available.length ? p.category.name : "Indisponível"}
