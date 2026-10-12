@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "Anton";
+  src: url("/fonts/anton/Anton-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+.storefront .contact-page {
+  background: #141414;
+  padding-block: 78px 96px;
+}
+.contact-composition {
+  max-width: 1280px;
+}
+.storefront .contact-page h1.contact-title {
+  margin: 0;
+  color: #f8ffdd;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(90px, 25.7vw, 360px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  text-align: center;
+}
+.contact-intro-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  width: 86%;
+  margin: -28px 0 0 auto;
+  background: #ff801c;
+  color: #161616;
+}
+.contact-form-column {
+  padding: 40px 0 42px 40px;
+}
+.contact-kicker {
+  margin-bottom: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.storefront .contact-intro-panel h2 {
+  max-width: 480px;
+  margin-bottom: 16px;
+  font-size: clamp(32px, 3.4vw, 48px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.contact-description {
+  max-width: 360px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  color: #161616;
+  font-size: 14px;
+  font-weight: 500;
+}
+.contact-optional {
+  font-size: 11px;
+}
+.storefront .contact-form input,
+.storefront .contact-form textarea {
+  width: 100%;
+  min-height: 44px;
+  margin-bottom: 22px;
+  padding: 6px 0 10px;
+  border: 0;
+  border-bottom: 1px solid #16161655;
+  border-radius: 0;
+  background: transparent;
+  color: #161616;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: none;
+}
+.storefront .contact-form textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+.storefront .contact-form input::placeholder,
+.storefront .contact-form textarea::placeholder {
+  color: #563018;
+  opacity: 1;
+  font-size: 12px;
+}
+.contact-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 52px;
+  padding: 14px 24px;
+  border: 1px solid #161616;
+  border-radius: 999px;
+  background: #161616;
+  color: #f8ffdd;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.contact-form button:hover {
+  background: #2b2b22;
+}
+.contact-form :focus-visible {
+  outline: 2px solid #161616;
+  outline-offset: 4px;
+}
+.contact-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  padding: 44px 32px;
+  overflow: hidden;
+}
+.contact-art-label {
+  align-self: flex-end;
+  color: #161616;
+  font-size: 11px;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: right;
+}
+.contact-car-halftone {
+  position: absolute;
+  inset: 60px -30px 40px -30px;
+  background: radial-gradient(circle, #f8ffdd 1.3px, transparent 1.5px);
+  background-size: 4px 4px;
+  mask-image: url("/images/hero-car-cutout.png");
+  mask-mode: luminance;
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  transform: rotate(-24deg);
+}
+.contact-art-signature {
+  position: relative;
+  align-self: flex-end;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+.contact-meta,
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  width: 86%;
+  margin: 24px 0 0 auto;
+  color: #bec3b8;
+  font-size: 12px;
+}
+.contact-meta a,
+.contact-details a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #f8ffdd;
+}
+.contact-details p {
+  margin: 0;
+}
+@media (max-width: 800px) {
+  .storefront .contact-page {
+    padding-block: 56px 64px;
+  }
+  .contact-intro-panel,
+  .contact-meta,
+  .contact-details {
+    width: 94%;
+  }
+  .contact-form-column {
+    padding: 32px 0 32px 28px;
+  }
+  .contact-art {
+    padding: 32px 20px;
+  }
+}
+@media (max-width: 600px) {
+  .storefront .contact-page {
+    padding-block: 44px 56px;
+  }
+  .storefront .contact-page h1.contact-title {
+    font-size: 25.7vw;
+  }
+  .contact-intro-panel {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top: -8px;
+  }
+  .contact-form-column {
+    padding: 28px 24px;
+  }
+  .contact-art {
+    min-height: 160px;
+    padding: 0 24px 24px;
+  }
+  .contact-art-label {
+    align-self: flex-start;
+    text-align: left;
+  }
+  .contact-car-halftone {
+    inset: -50px -30px -70px 60px;
+    transform: rotate(-16deg);
+  }
+  .contact-art-signature {
+    align-self: flex-start;
+  }
+  .contact-meta,
+  .contact-details {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-form button {
+    transition: none;
+  }
+}
