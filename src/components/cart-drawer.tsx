@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ShoppingBag, Trash2, ArrowUpRight } from "lucide-react";
+import { ShoppingBag, Trash2, ArrowUpRight, MessageCircle } from "lucide-react";
 import { useCart } from "@/stores/cart";
 import { useHydrated } from "@/hooks/use-hydrated";
 import { money } from "@/lib/utils";
@@ -26,25 +26,43 @@ export function CartDrawer() {
     (sum, i) => sum + (i.priceCents ?? 0) * i.quantity,
     0,
   );
+  const count = cart.items.reduce((sum, item) => sum + item.quantity, 0);
   return (
     <Dialog open={cart.open} onOpenChange={cart.setOpen}>
       <DialogContent className="store-dialog cart-drawer">
-        <div>
-          <span className="eyebrow">SUA SELEÇÃO</span>
+        <div className="cart-header">
+          <div className="cart-heading-icon">
+            <ShoppingBag size={24} aria-hidden="true" />
+          </div>
+          <span className="eyebrow">SEU PRÓXIMO PROJETO</span>
           <DialogTitle className="h3">
             Carrinho{" "}
-            <span className="muted">
-              ({cart.items.reduce((s, i) => s + i.quantity, 0)})
+            <span className="cart-item-count">
+              {count} {count === 1 ? "item" : "itens"}
             </span>
           </DialogTitle>
           <DialogDescription className="muted">
             Confira seus produtos antes de solicitar o pedido.
           </DialogDescription>
+          <div className="cart-progress" aria-label="Etapas do pedido">
+            <span className="cart-progress-current">
+              01 <span>Sua seleção</span>
+            </span>
+            <ArrowUpRight size={14} aria-hidden="true" />
+            <span>
+              02 <span>Seu pedido</span>
+            </span>
+          </div>
         </div>
-        <div className="cart-items" aria-live="polite">
+        <p className="sr-only" role="status">
+          {count} {count === 1 ? "item no carrinho" : "itens no carrinho"}
+        </p>
+        <div className="cart-items">
           {cart.items.length === 0 ? (
             <div className="empty">
-              <ShoppingBag size={40} />
+              <span className="cart-empty-icon">
+                <ShoppingBag size={40} aria-hidden="true" />
+              </span>
               <h3>Seu próximo projeto começa aqui.</h3>
               <p>Explore o catálogo e adicione os produtos que precisa.</p>
               <Button onClick={() => cart.setOpen(false)} asChild>
@@ -52,36 +70,44 @@ export function CartDrawer() {
               </Button>
             </div>
           ) : (
-            cart.items.map((item) => (
-              <article key={item.variantId} className="cart-item">
+            cart.items.map((item, index) => (
+              <article
+                key={item.variantId}
+                className="cart-item"
+                style={{ animationDelay: `${Math.min(index, 5) * 45}ms` }}
+              >
                 <Image
                   src={item.image}
                   alt={item.productName}
                   width={90}
                   height={110}
                 />
-                <div>
+                <div className="cart-item-content">
                   <h3>{item.productName}</h3>
                   <p className="muted small">{item.variantName}</p>
-                  <p>
+                  <p className="cart-unit-price">
                     {money(item.priceCents)}{" "}
                     <span className="muted small">/ unidade</span>
                   </p>
+                </div>
+                <div className="cart-item-footer">
                   <QuantitySelector
                     value={item.quantity}
                     onChange={(n) => cart.quantity(item.variantId, n)}
                   />
-                  <span className="small">
-                    Subtotal:{" "}
-                    {money(
-                      item.priceCents === null
-                        ? null
-                        : item.priceCents * item.quantity,
-                    )}
-                  </span>
+                  <div className="cart-line-total">
+                    <span>Subtotal</span>
+                    <strong>
+                      {money(
+                        item.priceCents === null
+                          ? null
+                          : item.priceCents * item.quantity,
+                      )}
+                    </strong>
+                  </div>
                 </div>
                 <button
-                  className="icon-button"
+                  className="icon-button cart-remove"
                   aria-label={`Remover ${item.productName}`}
                   onClick={() => cart.remove(item.variantId)}
                 >
@@ -93,16 +119,24 @@ export function CartDrawer() {
         </div>
         {cart.items.length > 0 && (
           <div className="cart-summary">
-            <button className="text-button muted" onClick={cart.clear}>
-              Esvaziar carrinho
-            </button>
+            <div className="cart-summary-heading">
+              <span>Resumo da seleção</span>
+              <button className="text-button muted" onClick={cart.clear}>
+                Esvaziar carrinho
+              </button>
+            </div>
             <div className="between">
               <span>{quote ? "Subtotal com preço" : "Subtotal"}</span>
               <strong className="h3">{money(total)}</strong>
             </div>
-            <p className="muted small">
-              {quote ? "Itens sob consulta serão cotados no atendimento. " : ""}
-              Frete e pagamento a confirmar.
+            <p className="cart-order-note">
+              <MessageCircle size={17} aria-hidden="true" />
+              <span>
+                {quote
+                  ? "Itens sob consulta serão cotados no atendimento. "
+                  : ""}
+                Frete e pagamento a confirmar.
+              </span>
             </p>
             <Button asChild onClick={() => cart.setOpen(false)}>
               <Link href="/checkout">

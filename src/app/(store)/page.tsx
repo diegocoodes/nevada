@@ -114,7 +114,8 @@ export default async function Home() {
               Deslize para ver os produtos{" "}
               <ArrowUpRight size={16} aria-hidden="true" />
             </p>
-            <div
+            <Reveal
+              stagger
               className="product-grid"
               role="region"
               aria-label="Produtos em destaque"
@@ -132,7 +133,7 @@ export default async function Home() {
                     imageSizes="(max-width: 600px) 180vw, (max-width: 800px) 90vw, (max-width: 1240px) 45vw, 560px"
                   />
                 ))}
-            </div>
+            </Reveal>
           </div>
         </section>
 
@@ -140,7 +141,7 @@ export default async function Home() {
           className="section container application-section"
           aria-labelledby="application-title"
         >
-          <div className="application-panel">
+          <Reveal className="application-panel">
             <div className="application-copy">
               <div className="application-kicker">
                 <span className="tile-icon">
@@ -182,7 +183,7 @@ export default async function Home() {
               <span>Conhecer Nevada Layer</span>
               <ArrowUpRight size={20} aria-hidden="true" />
             </Link>
-          </div>
+          </Reveal>
         </section>
 
         <section
@@ -201,7 +202,8 @@ export default async function Home() {
             Deslize para conhecer os passos{" "}
             <ArrowUpRight size={16} aria-hidden="true" />
           </p>
-          <div
+          <Reveal
+            stagger
             className="purchase-grid"
             role="region"
             aria-label="Passos para fazer seu pedido"
@@ -233,7 +235,7 @@ export default async function Home() {
                 </article>
               ),
             )}
-          </div>
+          </Reveal>
         </section>
 
         <section
@@ -248,7 +250,7 @@ export default async function Home() {
             >
               CONTATO
             </h2>
-            <div className="contact-intro-panel">
+            <Reveal className="contact-intro-panel">
               <div className="contact-form-column">
                 <h3>Vamos conversar.</h3>
                 {/^\d{10,15}$/.test(settings.whatsapp) ? (
@@ -271,7 +273,7 @@ export default async function Home() {
                   NEVADA / PROTECTION FILMS
                 </span>
               </div>
-            </div>
+            </Reveal>
             <div className="contact-meta">
               <span>A conversa continua pelo WhatsApp.</span>
               <Link href="/produtos">

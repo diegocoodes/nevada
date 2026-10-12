@@ -1,0 +1,107 @@
+@keyframes cart-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes cart-depart {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+@keyframes cart-item-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes quantity-pop {
+  50% {
+    transform: scale(1.18);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .store-dialog.cart-drawer[data-state="open"] {
+    animation: cart-arrive 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .store-dialog.cart-drawer[data-state="closed"] {
+    animation: cart-depart 0.2s ease-in;
+  }
+  .cart-item {
+    animation: cart-item-arrive 0.4s ease-out both;
+  }
+  .cart-count,
+  .quantity output {
+    animation: quantity-pop 0.3s ease-out;
+  }
+  .storefront .button,
+  .store-dialog .button {
+    transition:
+      background 0.2s,
+      color 0.2s,
+      box-shadow 0.2s;
+  }
+  .storefront .button:hover,
+  .store-dialog .button:hover {
+    box-shadow: 0 6px 22px #71b9b02b;
+  }
+  .storefront .button > svg,
+  .store-dialog .button > svg,
+  .link-arrow > svg,
+  .application-link > svg,
+  .purchase-card-link > svg,
+  .contact-form button > svg,
+  .featured-section .add-button > svg {
+    transition: transform 0.25s ease;
+  }
+  .storefront .button:hover > svg,
+  .store-dialog .button:hover > svg,
+  .link-arrow:hover > svg,
+  .application-link:hover > svg,
+  .purchase-card-link:hover > svg,
+  .contact-form button:hover > svg,
+  .featured-section .add-button:hover > svg {
+    transform: translate(2px, -2px);
+  }
+  .desktop-nav a {
+    position: relative;
+  }
+  .desktop-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+  }
+  .desktop-nav a:hover::after,
+  .desktop-nav a:focus-visible::after {
+    transform: scaleX(1);
+  }
+  .quantity button,
+  .cart-remove {
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+  .quantity button:hover:not(:disabled) {
+    background: #71b9b021;
+  }
+}

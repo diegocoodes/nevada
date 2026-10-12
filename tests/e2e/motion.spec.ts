@@ -2,6 +2,44 @@ import { test, expect } from "@playwright/test";
 
 test.use({ launchOptions: { args: ["--enable-unsafe-swiftshader"] } });
 
+test("cards aparecem ao rolar e mudar para movimento reduzido remove as transformações", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+  for (const selector of [
+    ".featured-section .product-grid",
+    ".purchase-grid",
+  ]) {
+    const grid = page.locator(selector);
+    await grid.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() =>
+        grid
+          .locator("article")
+          .evaluateAll((elements) =>
+            elements.every(
+              (element) => getComputedStyle(element).opacity === "1",
+            ),
+          ),
+      )
+      .toBe(true);
+  }
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect
+    .poll(() =>
+      page
+        .locator(".purchase-card")
+        .evaluateAll((elements) =>
+          elements.every(
+            (element) =>
+              element.style.opacity === "" && element.style.transform === "",
+          ),
+        ),
+    )
+    .toBe(true);
+});
+
 const shaderTime = async (canvas: import("@playwright/test").Locator) =>
   canvas.evaluate((element: HTMLCanvasElement) => {
     const gl = element.getContext("webgl")!;

@@ -43,6 +43,7 @@ test("desktop mantém as grades e os números dos passos alternam entre topo e b
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
+  await page.locator(".purchase-grid").scrollIntoViewIfNeeded();
   for (const selector of [
     ".featured-section .product-grid",
     ".purchase-grid",

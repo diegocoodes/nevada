@@ -88,7 +88,9 @@ export function Header({ logo, name }: { logo: string; name: string }) {
             >
               <ShoppingBag size={20} />
               <span className="cart-label">Carrinho</span>
-              <span className="cart-count">{count}</span>
+              <span className="cart-count" key={count}>
+                {count}
+              </span>
             </button>
             <button
               className="icon-button mobile-toggle"

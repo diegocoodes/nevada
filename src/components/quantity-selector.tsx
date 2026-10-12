@@ -19,7 +19,9 @@ export function QuantitySelector({
       >
         <Minus size={16} />
       </button>
-      <output aria-label="Quantidade">{value}</output>
+      <output key={value} aria-label="Quantidade">
+        {value}
+      </output>
       <button
         type="button"
         aria-label="Aumentar quantidade"
