@@ -110,7 +110,16 @@ export default async function Home() {
                 Ver todos os produtos <ArrowUpRight size={20} />
               </Link>
             </div>
-            <div className="product-grid">
+            <p className="mobile-carousel-hint">
+              Deslize para ver os produtos{" "}
+              <ArrowUpRight size={16} aria-hidden="true" />
+            </p>
+            <div
+              className="product-grid"
+              role="region"
+              aria-label="Produtos em destaque"
+              tabIndex={0}
+            >
               {products
                 .filter((product) => product.featured)
                 .slice(0, 4)
@@ -186,20 +195,30 @@ export default async function Home() {
               <span>A gente continua a conversa.</span>
             </h2>
           </Reveal>
-          <div className="purchase-grid">
+          <p className="mobile-carousel-hint">
+            Deslize para conhecer os passos{" "}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </p>
+          <div
+            className="purchase-grid"
+            role="region"
+            aria-label="Passos para fazer seu pedido"
+            tabIndex={0}
+          >
             {steps.map(
               ({ number, icon: Icon, title, description, action, href }) => (
                 <article className="purchase-card" key={number}>
-                  <p className="purchase-description">{description}</p>
-                  <div className="purchase-service">
-                    <span className="tile-icon">
-                      <Icon size={22} aria-hidden="true" />
+                  <div className="purchase-number">
+                    <span className="step-number">
+                      <span className="step-label">PASSO</span>
+                      {number}
                     </span>
-                    <div>
-                      <span className="step-number">PASSO {number}</span>
-                      <h3>{title}</h3>
-                    </div>
+                    <Icon size={26} aria-hidden="true" />
                   </div>
+                  <div className="purchase-service">
+                    <h3>{title}</h3>
+                  </div>
+                  <p className="purchase-description">{description}</p>
                   <Link
                     className="purchase-card-link"
                     href={
