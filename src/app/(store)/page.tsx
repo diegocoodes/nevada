@@ -239,7 +239,7 @@ export default async function Home() {
         <section className="final-cta" aria-labelledby="cta-title">
           <div className="container cta-panel">
             <div>
-              <p className="eyebrow">VAMOS AO PRÓXIMO PROJETO?</p>
+              <p className="eyebrow">ENTRE EM CONTATO</p>
               <h2 id="cta-title">
                 A sua próxima
                 <br />
