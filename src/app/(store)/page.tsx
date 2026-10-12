@@ -121,7 +121,9 @@ export default async function Home() {
               tabIndex={0}
             >
               {products
-                .filter((product) => product.featured)
+                .filter(
+                  (product) => product.category.slug === "produtos-aplicacao",
+                )
                 .slice(0, 4)
                 .map((product) => (
                   <ProductCard

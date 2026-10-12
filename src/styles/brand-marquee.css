@@ -20,16 +20,12 @@
 .brand-marquee-item {
   display: flex;
   align-items: center;
-  gap: 48px;
   padding-inline: 24px;
   white-space: nowrap;
   font-size: clamp(28px, 3.4vw, 52px);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.2;
-}
-.brand-marquee-item svg {
-  flex-shrink: 0;
 }
 @keyframes brand-marquee-drift {
   to {
@@ -41,7 +37,6 @@
     padding-block: 20px;
   }
   .brand-marquee-item {
-    gap: 28px;
     padding-inline: 14px;
   }
 }
@@ -55,8 +50,7 @@
     width: 100%;
   }
   .brand-marquee-group + .brand-marquee-group,
-  .brand-marquee-item + .brand-marquee-item,
-  .brand-marquee-item svg {
+  .brand-marquee-item + .brand-marquee-item {
     display: none;
   }
   .brand-marquee-item {

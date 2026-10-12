@@ -1,5 +1,3 @@
-import { Sparkle } from "lucide-react";
-
 const text = "NEVADA PROTECTION FILMS";
 
 export function BrandMarquee() {
@@ -12,7 +10,6 @@ export function BrandMarquee() {
             {[0, 1, 2].map((copy) => (
               <span className="brand-marquee-item" key={copy}>
                 {text}
-                <Sparkle size={28} strokeWidth={1.5} />
               </span>
             ))}
           </div>
