@@ -77,6 +77,7 @@ export function ProductCard({
                 })
               }
             >
+              <span className="product-action-label">Adicionar ao pedido</span>
               <Plus size={20} />
             </button>
           ) : (
@@ -85,6 +86,7 @@ export function ProductCard({
               aria-label={`Selecionar variação de ${p.name}`}
               href={`/produtos/${p.slug}`}
             >
+              <span className="product-action-label">Escolher variação</span>
               <ArrowUpRight size={20} />
             </Link>
           )}

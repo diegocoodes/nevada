@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
-  MoveRight,
+  Droplets,
   ShoppingBag,
   SlidersHorizontal,
   MessageCircle,
@@ -26,6 +26,8 @@ const steps = [
     number: "01",
     icon: SlidersHorizontal,
     title: "Encontre sua linha.",
+    action: "Explorar o catálogo",
+    href: "/produtos",
     description:
       "Explore o catálogo e escolha a solução para a superfície que você quer proteger.",
   },
@@ -33,6 +35,8 @@ const steps = [
     number: "02",
     icon: ShoppingBag,
     title: "Monte seu pedido.",
+    action: "Revisar meu pedido",
+    href: "/checkout",
     description:
       "Selecione a variação, defina a quantidade e reúna seus produtos no carrinho.",
   },
@@ -40,6 +44,8 @@ const steps = [
     number: "03",
     icon: MessageCircle,
     title: "Continue a conversa.",
+    action: "Falar com a loja",
+    href: "whatsapp",
     description:
       "Envie sua seleção pelo WhatsApp e confirme disponibilidade, frete e pagamento com a loja.",
   },
@@ -125,7 +131,12 @@ export default async function Home() {
         >
           <div className="application-panel">
             <div className="application-copy">
-              <p className="eyebrow">DO PRODUTO AO ACABAMENTO</p>
+              <div className="application-kicker">
+                <span className="tile-icon">
+                  <Droplets size={22} aria-hidden="true" />
+                </span>
+                <p className="eyebrow">DO PRODUTO AO ACABAMENTO</p>
+              </div>
               <h2 id="application-title">
                 Uma boa aplicação
                 <br />
@@ -135,11 +146,14 @@ export default async function Home() {
                 Conheça Nevada Layer: produtos para preparar a superfície e
                 acompanhar as etapas da aplicação.
               </p>
-              <Button asChild>
-                <Link href="/produtos?categoria=produtos-aplicacao">
-                  Conhecer Nevada Layer <ArrowUpRight size={20} />
-                </Link>
-              </Button>
+              <ul
+                className="application-stages"
+                aria-label="Etapas da aplicação"
+              >
+                <li>Preparação</li>
+                <li>Aplicação</li>
+                <li>Acabamento</li>
+              </ul>
             </div>
             <div className="application-image">
               <Image
@@ -148,7 +162,15 @@ export default async function Home() {
                 fill
                 sizes="(max-width: 800px) 100vw, 50vw"
               />
+              <span className="application-image-caption">NEVADA LAYER</span>
             </div>
+            <Link
+              className="application-link"
+              href="/produtos?categoria=produtos-aplicacao"
+            >
+              <span>Conhecer Nevada Layer</span>
+              <ArrowUpRight size={20} aria-hidden="true" />
+            </Link>
           </div>
         </section>
 
@@ -165,21 +187,31 @@ export default async function Home() {
             </h2>
           </Reveal>
           <div className="purchase-grid">
-            {steps.map(({ number, icon: Icon, title, description }) => (
-              <article className="purchase-card" key={number}>
-                <div className="between">
-                  <span className="tile-icon">
-                    <Icon size={22} />
-                  </span>
-                  <span className="step-number">{number}</span>
-                </div>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </div>
-                <MoveRight size={24} aria-hidden="true" />
-              </article>
-            ))}
+            {steps.map(
+              ({ number, icon: Icon, title, description, action, href }) => (
+                <article className="purchase-card" key={number}>
+                  <p className="purchase-description">{description}</p>
+                  <div className="purchase-service">
+                    <span className="tile-icon">
+                      <Icon size={22} aria-hidden="true" />
+                    </span>
+                    <div>
+                      <span className="step-number">PASSO {number}</span>
+                      <h3>{title}</h3>
+                    </div>
+                  </div>
+                  <Link
+                    className="purchase-card-link"
+                    href={
+                      href === "whatsapp" ? contactUrl(settings.whatsapp) : href
+                    }
+                  >
+                    <span>{action}</span>
+                    <ArrowUpRight size={17} aria-hidden="true" />
+                  </Link>
+                </article>
+              ),
+            )}
           </div>
         </section>
 
