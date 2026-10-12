@@ -118,7 +118,7 @@
   background: linear-gradient(125deg, #0e1e1b, #030b09);
   border: 0;
 }
-.storefront .featured-section {
+.storefront .project-background {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -126,7 +126,7 @@
   margin-inline: 0;
   background: linear-gradient(135deg, #020707, #183a35 55%, #71b9b0);
 }
-.storefront .featured-section::before {
+.storefront .project-background::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -139,6 +139,11 @@
     #0207076b 75%,
     #020707af
   );
+}
+.storefront .project-background .featured-section {
+  background: transparent;
+  border-radius: 0;
+  margin-inline: 0;
 }
 .storefront .featured-section .section-heading h2 span {
   color: #bfe9e5;

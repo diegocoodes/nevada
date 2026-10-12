@@ -1,6 +1,6 @@
 import { Sparkle } from "lucide-react";
 
-const text = "NEVADA PROTECTION NFILMS";
+const text = "NEVADA PROTECTION FILMS";
 
 export function BrandMarquee() {
   return (

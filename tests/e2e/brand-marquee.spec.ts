@@ -12,7 +12,7 @@ test("faixa entre linhas e seleção mantém movimento contínuo sem controles",
     await band.evaluate(
       (element) =>
         element.previousElementSibling?.id === "linhas" &&
-        element.nextElementSibling?.classList.contains("featured-section"),
+        element.nextElementSibling?.classList.contains("project-background"),
     ),
   ).toBe(true);
 

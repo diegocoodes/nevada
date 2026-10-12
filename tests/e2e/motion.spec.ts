@@ -43,7 +43,9 @@ test("título desenha e animações param automaticamente fora da tela", async (
   expect(
     await canvas.evaluate((element: HTMLCanvasElement) => {
       const canvasBounds = element.getBoundingClientRect();
-      const sectionBounds = element.closest("section")!.getBoundingClientRect();
+      const sectionBounds = element
+        .closest(".project-background")!
+        .getBoundingClientRect();
       return (
         Math.abs(canvasBounds.width - sectionBounds.width) < 1 &&
         Math.abs(canvasBounds.height - sectionBounds.height) < 1 &&
@@ -114,8 +116,9 @@ test("sem WebGL a vitrine continua disponível com o degradê de fallback", asyn
   });
   await page.goto("/");
   const section = page.locator(".featured-section");
+  const background = page.locator(".project-background");
   await section.scrollIntoViewIfNeeded();
-  await expect(section.locator("canvas")).toHaveAttribute(
+  await expect(background.locator("canvas")).toHaveAttribute(
     "data-renderer",
     "fallback",
   );
@@ -123,7 +126,7 @@ test("sem WebGL a vitrine continua disponível com o degradê de fallback", asyn
     section.getByRole("link", { name: "Ver todos os produtos" }),
   ).toBeVisible();
   expect(
-    await section.evaluate(
+    await background.evaluate(
       (element) => getComputedStyle(element).backgroundImage,
     ),
   ).toContain("linear-gradient");
