@@ -1,6 +1,8 @@
-# Nevada Protection Films
+# Retém Estética Premium & Loja Distribuidora
 
-Site de catálogo e seleção de produtos com finalização pelo WhatsApp **+55 81 8602-0710**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
+Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 81 8602-0710**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
+
+A página `/` apresenta a estética com hero com fundo preto com luz vermelha difusa, tipografia vermelha ampliada e carro vermelho de perfil. A landing `/distribuidora` usa a composição escura com iluminação vermelha das referências, símbolo RE em fundo claro, benefícios, etapas, marcas, produtos e perguntas frequentes. As demais seções, o catálogo e o checkout compartilham a atmosfera de carvão e vermelho, com amarelo nos destaques do catálogo. As rotas de produtos e o carrinho existentes foram preservados. A Origin possui filtro próprio e atendimento para consulta; seus produtos e fichas técnicas ainda precisam ser cadastrados. Os SVGs Retém e RE em `public/images` são reconstruções vetoriais baseadas nas referências do briefing; substitua pelos arquivos oficiais quando disponíveis.
 
 O catálogo, as categorias e as configurações ficam em [`src/data/store.ts`](src/data/store.ts). O carrinho permanece no navegador com Zustand/localStorage. Ao finalizar, o site prepara uma mensagem com produtos, variantes, atributos, SKU, quantidades, valores e dados informados pelo cliente, e abre a conversa no número configurado. O cliente confirma o envio no WhatsApp.
 
@@ -60,7 +62,7 @@ O workflow [Validate](.github/workflows/ci.yml) executa essas verificações no 
 
 ## Interface e arquivos
 
-O hero preserva o carro recortado e a tipografia animada. A seção Seleção Nevada usa Mesh drift em WebGL, com fallback em CSS. As animações respeitam movimento reduzido e param quando a seção ou a aba deixa de estar visível. A lista de linhas usa fotografias reais, informações à esquerda e imagem à direita, com recortes e contornos próprios. A faixa turquesa mantém o texto em movimento.
+O hero usa a imagem ilustrativa de um carro vermelho em perfil sobre fundo preto com luz vermelha difusa, sem grade nem rótulos decorativos, preservando a tipografia animada. As seções seguintes compartilham um único Mesh drift em WebGL por página, com fallback em CSS. A abertura usa o componente de partículas enviado pelo usuário, adaptado em `src/components/ui/vapour-text-effect.tsx`, com limite de partículas e cleanup. Os títulos usam Manrope; os textos e controles usam Inter, ambas locais. As animações respeitam movimento reduzido e param quando a seção ou a aba deixa de estar visível. O seletor de serviços e linhas reaproveita fotografias, informações à esquerda e imagem à direita, com recortes e contornos próprios. A faixa vermelha mantém o texto em movimento. A identidade base está em `src/styles/retem.css`; a direção das referências está em `src/styles/art-direction.css`. Os prompts das imagens estão em [`docs/retem-art-direction.md`](docs/retem-art-direction.md).
 
 ```text
 src/app           páginas, metadata e rotas Next.js

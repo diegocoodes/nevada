@@ -1,9 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BrandLoader } from "@/components/brand-loader";
+import Image from "next/image";
+import VaporizeTextCycle from "@/components/ui/vapour-text-effect";
+import { usePathname } from "next/navigation";
+import { isDistributorPath } from "@/lib/brand";
 
 export function SiteIntro({ logo }: { logo: string }) {
+  const distributor = isDistributorPath(usePathname());
   const [phase, setPhase] = useState<"entering" | "leaving" | "hidden">(
     "entering",
   );
@@ -28,7 +32,7 @@ export function SiteIntro({ logo }: { logo: string }) {
       clearTimeout(exitTimer);
       exitTimer = setTimeout(
         finish,
-        Math.max(0, 1100 - (performance.now() - started)),
+        Math.max(0, 3100 - (performance.now() - started)),
       );
     };
     const changePreference = () => {
@@ -39,7 +43,7 @@ export function SiteIntro({ logo }: { logo: string }) {
       }
     };
     // Keep the entrance brief even when a nonessential resource is slow.
-    const safetyTimer = setTimeout(finish, 2800);
+    const safetyTimer = setTimeout(finish, 4000);
     if (preference.matches) {
       exitTimer = setTimeout(finish, 0);
     } else if (document.readyState === "complete") {
@@ -60,8 +64,40 @@ export function SiteIntro({ logo }: { logo: string }) {
   if (phase === "hidden") return null;
   return (
     <div className="site-intro" data-phase={phase} aria-hidden="true">
-      <BrandLoader logo={logo} />
-      <span className="site-intro-signature">NEVADA PROTECTION FILMS</span>
+      <div className="intro-vapor-composition">
+        <Image
+          className="intro-vapor-logo"
+          src={distributor ? "/images/retem-re.svg" : logo}
+          alt={
+            distributor ? "Retém Loja Distribuidora" : "Retém Estética Premium"
+          }
+          width={distributor ? 820 : 1000}
+          height={distributor ? 360 : 260}
+          loading="eager"
+        />
+        <VaporizeTextCycle
+          texts={[
+            "RETÉM",
+            distributor ? "SEU PRÓXIMO PROJETO." : "CUIDADO EM CADA DETALHE.",
+          ]}
+          font={{
+            fontFamily: "Manrope, sans-serif",
+            fontSize: "96px",
+            fontWeight: 600,
+          }}
+          animation={{
+            waitDuration: 0.65,
+            vaporizeDuration: 0.8,
+            fadeInDuration: 0.4,
+          }}
+          spread={5}
+          density={5}
+        />
+        <span className="intro-vapor-progress" />
+      </div>
+      <span className="site-intro-signature">
+        {distributor ? "RETÉM LOJA DISTRIBUIDORA" : "RETÉM ESTÉTICA PREMIUM"}
+      </span>
     </div>
   );
 }

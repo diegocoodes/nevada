@@ -17,6 +17,7 @@ export type Variant = {
   inventory: { available: boolean; quantity: number | null } | null;
 };
 export type Product = {
+  brand?: "nevada" | "origin";
   id: string;
   slug: string;
   name: string;

@@ -1,243 +1,128 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Droplets,
-  ShoppingBag,
-  SlidersHorizontal,
-  MessageCircle,
-} from "lucide-react";
-import { getSettings, getCategories, getProducts } from "@/lib/store-data";
-import { contactUrl } from "@/lib/utils";
+import { ArrowUpRight, ShieldCheck, Sun, Sparkles } from "lucide-react";
+import { getSettings } from "@/lib/store-data";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { CategoryExplorer } from "@/components/category-explorer";
-import { ProductCard } from "@/components/product-card";
 import { HeroSection } from "@/components/hero-section";
-import { CredentialsSection } from "@/components/credentials-section";
 import { BrandStorySection } from "@/components/brand-story-section";
 import { BrandMarquee } from "@/components/brand-marquee";
-import { MeshDriftBackground } from "@/components/mesh-drift-background";
+import { Atmosphere } from "@/components/atmosphere";
+import type { Category } from "@/types/store";
 
 export const metadata = { alternates: { canonical: "/" } };
 
-const steps = [
+const services: Category[] = [
   {
-    number: "01",
-    icon: SlidersHorizontal,
-    title: "Encontre sua linha.",
-    action: "Explorar o catálogo",
-    href: "/produtos",
+    id: "service-ppf",
+    name: "PPF",
+    slug: "ppf",
     description:
-      "Explore o catálogo e escolha a solução para a superfície que você quer proteger.",
+      "Proteção de pintura. Uma película transparente para preservar o acabamento do seu carro no dia a dia. Converse com a equipe sobre as áreas de aplicação.",
+    image: "/images/lines/ppf-application.webp",
+    position: 0,
+    active: true,
   },
   {
-    number: "02",
-    icon: ShoppingBag,
-    title: "Monte seu pedido.",
-    action: "Revisar meu pedido",
-    href: "/checkout",
+    id: "service-solar",
+    name: "Películas solares",
+    slug: "peliculas-solares",
     description:
-      "Selecione a variação, defina a quantidade e reúna seus produtos no carrinho.",
-  },
-  {
-    number: "03",
-    icon: MessageCircle,
-    title: "Continue a conversa.",
-    action: "Falar com a loja",
-    href: "whatsapp",
-    description:
-      "Envie sua seleção pelo WhatsApp e confirme disponibilidade, frete e pagamento com a loja.",
+      "Conforto para dirigir. Encontre a película para os vidros do seu carro, considerando privacidade, luminosidade e a sua rotina ao volante.",
+    image: "/images/lines/solar-film.webp",
+    position: 1,
+    active: true,
   },
 ];
 
 export default async function Home() {
-  const [settings, categories, products] = await Promise.all([
-    getSettings(),
-    getCategories(),
-    getProducts(),
-  ]);
+  const settings = await getSettings();
   return (
     <>
       <HeroSection settings={settings} />
-      <CredentialsSection />
-
-      <BrandStorySection />
-
-      <section
-        id="linhas"
-        className="section lines-section"
-        aria-labelledby="lines-title"
-      >
-        <div className="container">
-          <Reveal className="section-intro">
-            <h2 id="lines-title">
-              Uma superfície.
-              <br />
-              <span>Novas possibilidades.</span>
-            </h2>
-            <p>Encontre a linha que acompanha a sua aplicação.</p>
-          </Reveal>
-          <CategoryExplorer categories={categories} />
-          {categories.length === 0 && (
-            <p className="empty">
-              O catálogo está sendo preparado. Fale com a loja para consultar os
-              produtos.
-            </p>
-          )}
-        </div>
-      </section>
-
-      <BrandMarquee />
-
-      <div className="project-background">
-        <MeshDriftBackground />
+      <Atmosphere>
         <section
-          className="section featured-section"
-          aria-labelledby="featured-title"
+          className="retem-service-band"
+          aria-label="Especialidades da Retém"
         >
           <div className="container">
-            <div className="section-heading">
-              <div>
-                <p className="eyebrow">SELEÇÃO NEVADA</p>
-                <h2 id="featured-title">
-                  O próximo detalhe.
-                  <br />
-                  <span>O seu próximo projeto.</span>
-                </h2>
-              </div>
-              <Link className="link-arrow" href="/produtos">
-                Ver todos os produtos <ArrowUpRight size={20} />
+            <span>
+              <ShieldCheck size={22} /> Proteção de pintura / PPF
+            </span>
+            <span>
+              <Sun size={22} /> Películas automotivas
+            </span>
+            <span>
+              <Sparkles size={22} /> Cuidado em cada detalhe
+            </span>
+          </div>
+        </section>
+        <BrandStorySection />
+        <section
+          id="servicos"
+          className="section lines-section"
+          aria-labelledby="services-title"
+        >
+          <div className="container">
+            <Reveal className="section-intro retem-section-intro">
+              <p className="eyebrow">O CUIDADO QUE ACOMPANHA VOCÊ</p>
+              <h2 id="services-title">
+                Preserve a pintura.
+                <br />
+                <span>Transforme a experiência.</span>
+              </h2>
+              <p>
+                Conheça nossas especialidades e encontre a proteção para o seu
+                carro.
+              </p>
+            </Reveal>
+            <CategoryExplorer categories={services} services />
+          </div>
+        </section>
+        <BrandMarquee />
+        <section
+          className="section retem-distributor-teaser"
+          aria-labelledby="distributor-title"
+        >
+          <div className="container retem-distributor-grid">
+            <Reveal className="retem-distributor-copy">
+              <p className="eyebrow">PARA QUEM TAMBÉM VIVE DE CUIDAR</p>
+              <h2 id="distributor-title">
+                A proteção continua.
+                <br />
+                <span>Agora, no seu projeto.</span>
+              </h2>
+              <p>
+                Conheça a Retém Loja Distribuidora. Nevada Films e Origin
+                Películas reunidas em uma área dedicada a produtos para a sua
+                aplicação.
+              </p>
+              <Link href="/distribuidora" className="button button-primary">
+                Acessar a distribuidora <ArrowUpRight size={20} />
               </Link>
-            </div>
-            <p className="mobile-carousel-hint">
-              Deslize para ver os produtos{" "}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </p>
-            <Reveal
-              stagger
-              className="product-grid"
-              role="region"
-              aria-label="Produtos em destaque"
-              tabIndex={0}
-            >
-              {products
-                .filter(
-                  (product) => product.category.slug === "produtos-aplicacao",
-                )
-                .slice(0, 4)
-                .map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    imageSizes="(max-width: 600px) 180vw, (max-width: 800px) 90vw, (max-width: 1240px) 45vw, 560px"
-                  />
-                ))}
+            </Reveal>
+            <Reveal className="retem-distributor-card">
+              <Image
+                src="/images/retem-re.svg"
+                alt="RE — Retém Loja Distribuidora"
+                width={820}
+                height={360}
+              />
+              <p>LOJA DISTRIBUIDORA</p>
+              <div>
+                <span>NEVADA FILMS</span>
+                <span>ORIGIN PELÍCULAS</span>
+              </div>
+              <Link
+                href="/distribuidora"
+                aria-label="Conhecer a Retém Loja Distribuidora"
+              >
+                <ArrowUpRight size={24} />
+              </Link>
             </Reveal>
           </div>
         </section>
-
-        <section
-          className="section container application-section"
-          aria-labelledby="application-title"
-        >
-          <Reveal className="application-panel">
-            <div className="application-copy">
-              <div className="application-kicker">
-                <span className="tile-icon">
-                  <Droplets size={22} aria-hidden="true" />
-                </span>
-                <p className="eyebrow">DO PRODUTO AO ACABAMENTO</p>
-              </div>
-              <h2 id="application-title">
-                Uma boa aplicação
-                <br />
-                começa <span>aqui.</span>
-              </h2>
-              <p>
-                Conheça Nevada Layer: produtos para preparar a superfície e
-                acompanhar as etapas da aplicação.
-              </p>
-              <ul
-                className="application-stages"
-                aria-label="Etapas da aplicação"
-              >
-                <li>Preparação</li>
-                <li>Aplicação</li>
-                <li>Acabamento</li>
-              </ul>
-            </div>
-            <div className="application-image">
-              <Image
-                src="/images/layer.jpg"
-                alt="Linha de produtos de aplicação Nevada Layer"
-                fill
-                sizes="(max-width: 800px) 100vw, 50vw"
-              />
-              <span className="application-image-caption">NEVADA LAYER</span>
-            </div>
-            <Link
-              className="application-link"
-              href="/produtos?categoria=produtos-aplicacao"
-            >
-              <span>Conhecer Nevada Layer</span>
-              <ArrowUpRight size={20} aria-hidden="true" />
-            </Link>
-          </Reveal>
-        </section>
-
-        <section
-          className="section container purchase-section"
-          aria-labelledby="purchase-title"
-        >
-          <Reveal className="section-intro">
-            <p className="eyebrow">SIMPLES, DO INÍCIO AO FIM</p>
-            <h2 id="purchase-title">
-              Você escolhe online.
-              <br />
-              <span>A gente continua a conversa.</span>
-            </h2>
-          </Reveal>
-          <p className="mobile-carousel-hint">
-            Deslize para conhecer os passos{" "}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </p>
-          <Reveal
-            stagger
-            className="purchase-grid"
-            role="region"
-            aria-label="Passos para fazer seu pedido"
-            tabIndex={0}
-          >
-            {steps.map(
-              ({ number, icon: Icon, title, description, action, href }) => (
-                <article className="purchase-card" key={number}>
-                  <div className="purchase-number">
-                    <span className="step-number">
-                      <span className="step-label">PASSO</span>
-                      {number}
-                    </span>
-                    <Icon size={26} aria-hidden="true" />
-                  </div>
-                  <div className="purchase-service">
-                    <h3>{title}</h3>
-                  </div>
-                  <p className="purchase-description">{description}</p>
-                  <Link
-                    className="purchase-card-link"
-                    href={
-                      href === "whatsapp" ? contactUrl(settings.whatsapp) : href
-                    }
-                  >
-                    <span>{action}</span>
-                    <ArrowUpRight size={17} aria-hidden="true" />
-                  </Link>
-                </article>
-              ),
-            )}
-          </Reveal>
-        </section>
-
         <section
           className="contact-page contact-home"
           aria-labelledby="home-contact-title"
@@ -252,38 +137,36 @@ export default async function Home() {
             </h2>
             <Reveal className="contact-intro-panel">
               <div className="contact-form-column">
-                <h3>Vamos conversar.</h3>
-                {/^\d{10,15}$/.test(settings.whatsapp) ? (
-                  <ContactForm
-                    whatsapp={settings.whatsapp}
-                    includeProject={false}
-                  />
-                ) : (
-                  <p>O contato comercial será disponibilizado em breve.</p>
-                )}
+                <p className="contact-kicker">
+                  SEU PRÓXIMO CUIDADO COMEÇA AQUI
+                </p>
+                <h3>Vamos falar do seu carro.</h3>
+                <ContactForm
+                  whatsapp={settings.whatsapp}
+                  includeProject={false}
+                />
               </div>
               <div className="contact-art" aria-hidden="true">
                 <span className="contact-art-label">
-                  PROTEÇÃO EM
+                  CUIDADO EM
                   <br />
-                  SUA MELHOR FORMA.
+                  CADA DETALHE.
                 </span>
                 <div className="contact-car-halftone" />
                 <span className="contact-art-signature">
-                  NEVADA / PROTECTION FILMS
+                  RETÉM / ESTÉTICA PREMIUM
                 </span>
               </div>
             </Reveal>
             <div className="contact-meta">
               <span>A conversa continua pelo WhatsApp.</span>
-              <Link href="/produtos">
-                Explorar o catálogo{" "}
-                <ArrowUpRight size={16} aria-hidden="true" />
+              <Link href="/contato">
+                Fale com a Retém <ArrowUpRight size={16} />
               </Link>
             </div>
           </div>
         </section>
-      </div>
+      </Atmosphere>
     </>
   );
 }

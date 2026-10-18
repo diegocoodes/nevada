@@ -3,6 +3,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
 import { SiteIntro } from "@/components/site-intro";
+import { BrandShell } from "@/components/brand-shell";
+import { PageAtmosphere } from "@/components/page-atmosphere";
 export async function generateMetadata() {
   const settings = await getSettings();
   return settings.demoMode ? { robots: { index: false, follow: false } } : {};
@@ -17,15 +19,17 @@ export default async function StoreLayout({
     getCategories(),
   ]);
   return (
-    <div className="storefront">
+    <BrandShell>
       <SiteIntro logo={settings.logo} />
       <a href="#main" className="skip-link">
         Pular para o conteúdo
       </a>
       <Header logo={settings.logo} name={settings.name} />
-      <main id="main">{children}</main>
+      <main id="main">
+        <PageAtmosphere>{children}</PageAtmosphere>
+      </main>
       <Footer settings={settings} categories={categories} />
       <CartDrawer />
-    </div>
+    </BrandShell>
   );
 }

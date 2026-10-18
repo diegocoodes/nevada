@@ -6,7 +6,7 @@ test("produtos e passos rolam horizontalmente no mobile sem overflow da página"
   await page.emulateMedia({ reducedMotion: "reduce" });
   for (const width of [320, 390, 768]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
+    await page.goto("/distribuidora");
     for (const selector of [
       ".featured-section .product-grid",
       ".purchase-grid",
@@ -42,7 +42,7 @@ test("desktop mantém as grades e os números dos passos alternam entre topo e b
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto("/");
+  await page.goto("/distribuidora");
   await page.locator(".purchase-grid").scrollIntoViewIfNeeded();
   for (const selector of [
     ".featured-section .product-grid",

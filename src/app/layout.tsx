@@ -11,15 +11,16 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Nevada | Proteção para cada projeto",
-    template: "%s | Nevada Distribuidora",
+    default: "Retém Estética Premium | PPF e Películas Automotivas",
+    template: "%s | Retém",
   },
   description:
-    "Selecione PPF, películas e produtos de aplicação Nevada. Monte seu pedido e confirme as condições pelo WhatsApp.",
+    "Conheça a Retém Estética Premium: cuidado automotivo com foco em PPF e películas. Acesse também a Retém Loja Distribuidora, com Nevada Films e Origin Películas.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    title: "Nevada | Proteção para cada projeto",
+    title: "Retém Estética Premium | PPF e Películas Automotivas",
+    siteName: "Retém",
     images: [{ url: "/images/hero.jpg", width: 1600, height: 1000 }],
   },
   twitter: { card: "summary_large_image" },

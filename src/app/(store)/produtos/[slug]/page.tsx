@@ -43,13 +43,16 @@ export default async function DetailPage({
     name: p.name,
     description: p.description,
     image: p.images.map((i) => new URL(i.url, getSiteUrl()).href),
-    brand: { "@type": "Brand", name: "Nevada Protection Films" },
+    brand: {
+      "@type": "Brand",
+      name: p.brand === "origin" ? "Origin Películas" : "Nevada Films",
+    },
     category: p.category.name,
   };
   return (
     <div className="container">
       <nav className="breadcrumbs" aria-label="Caminho da página">
-        <Link href="/">Início</Link>
+        <Link href="/distribuidora">Distribuidora</Link>
         <span>/</span>
         <Link href="/produtos">Produtos</Link>
         <span>/</span>

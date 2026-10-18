@@ -18,7 +18,7 @@ export function buildMessage(
   const quote = items.some((item) => item.unitPriceCents === null);
   const divider = "────────────────────";
   return [
-    "*NEVADA PROTECTION FILMS*",
+    "*RETÉM LOJA DISTRIBUIDORA*",
     "Solicitação de pedido",
     divider,
     "",

@@ -38,15 +38,15 @@ export function SlantedImageOutline({ id }: { id: string }) {
           y2="1"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#79CEC3" stopOpacity="0.9" />
-          <stop offset="0.45" stopColor="#79CEC3" stopOpacity="0.22" />
-          <stop offset="1" stopColor="#79CEC3" stopOpacity="0.65" />
+          <stop offset="0" stopColor="currentColor" stopOpacity="0.6" />
+          <stop offset="0.45" stopColor="currentColor" stopOpacity="0.1" />
+          <stop offset="1" stopColor="currentColor" stopOpacity="0.4" />
         </linearGradient>
       </defs>
       <path
         d={imageShape}
         fill="none"
-        stroke="#79CEC3"
+        stroke="currentColor"
         strokeOpacity="0.08"
         strokeWidth="7"
         vectorEffect="non-scaling-stroke"

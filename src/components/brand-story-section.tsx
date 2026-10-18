@@ -11,7 +11,7 @@ export function BrandStorySection() {
   return (
     <section className="section brand-story" aria-labelledby="story-title">
       <div className="container story-editorial-grid">
-        <Reveal className="story-editorial-media">
+        <Reveal className="story-editorial-media" direction="left">
           <figure className="story-editorial-figure">
             <SlantedImageClip id="nevada-story-photo-shape" />
             <div className="story-editorial-image">
@@ -23,25 +23,28 @@ export function BrandStorySection() {
               />
               <SlantedImageOutline id="nevada-story-photo-shape" />
             </div>
-            <figcaption>O cuidado começa na escolha.</figcaption>
+            <figcaption>
+              Proteção na superfície. Cuidado em cada detalhe.
+            </figcaption>
           </figure>
         </Reveal>
-        <Reveal className="story-editorial-copy">
+        <Reveal className="story-editorial-copy" direction="right">
           <h2 id="story-title">
-            NEVADA <span>PROTECTION FILMS</span>
+            RETÉM <span>ESTÉTICA PREMIUM</span>
           </h2>
           <div className="story-editorial-text">
-            <h3>Seu projeto. Nossa proteção.</h3>
+            <h3>O seu carro merece esse cuidado.</h3>
             <p>
-              Da pintura aos vidros, encontre PPF, películas e produtos de
-              aplicação para preservar e valorizar cada acabamento.
+              Da pintura aos vidros, cada escolha faz parte da experiência de
+              dirigir. A Retém reúne cuidado estético, PPF e películas para
+              preservar o que torna o seu carro único.
             </p>
           </div>
           <div className="story-editorial-text story-editorial-detail">
-            <h3>Uma linha para cada necessidade.</h3>
+            <h3>Vamos entender o que você precisa.</h3>
             <p>
-              Conheça as possibilidades da Nevada e escolha a solução para a
-              superfície que você quer proteger.
+              Conte sobre o seu carro e a sua rotina. Nossa equipe ajuda a
+              escolher a proteção e o acabamento para o seu projeto.
             </p>
           </div>
           <Link href="/contato" className="story-editorial-link">

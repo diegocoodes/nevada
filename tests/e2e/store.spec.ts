@@ -91,8 +91,9 @@ test("mobile sem overflow, menu e drawer com teclado", async ({ page }) => {
   await page.getByRole("button", { name: "Abrir menu" }).click();
   await page
     .getByRole("dialog")
-    .getByRole("link", { name: "Produtos", exact: true })
+    .getByRole("link", { name: "Loja Distribuidora", exact: true })
     .click();
+  await page.getByRole("link", { name: "Explorar os produtos", exact: true }).click();
   await page.getByRole("button", { name: "Filtros", exact: true }).click();
   await page.getByLabel("PPF", { exact: true }).check();
   await expect(page.getByText("3 produtos encontrados")).toBeVisible();

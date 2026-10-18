@@ -24,7 +24,13 @@ const descriptions: Record<string, string> = {
     "Da preparação ao acabamento, encontre produtos para acompanhar cada etapa da aplicação.",
 };
 
-export function CategoryExplorer({ categories }: { categories: Category[] }) {
+export function CategoryExplorer({
+  categories,
+  services = false,
+}: {
+  categories: Category[];
+  services?: boolean;
+}) {
   const id = useId();
   const [selectedId, setSelectedId] = useState(
     () =>
@@ -41,7 +47,10 @@ export function CategoryExplorer({ categories }: { categories: Category[] }) {
 
   return (
     <div className="lines-explorer">
-      <ul className="lines-list" aria-label="Linhas Nevada">
+      <ul
+        className="lines-list"
+        aria-label={services ? "Serviços Retém" : "Linhas da distribuidora"}
+      >
         {categories.map((category) => {
           const active = selected.id === category.id;
           const buttonId = `${id}-button-${category.id}`;
@@ -74,17 +83,35 @@ export function CategoryExplorer({ categories }: { categories: Category[] }) {
                 aria-labelledby={buttonId}
                 hidden={!active}
               >
-                <p className="lines-option-caption">{category.description}</p>
+                <p className="lines-option-caption">
+                  {services
+                    ? category.slug === "ppf"
+                      ? "Proteção de pintura"
+                      : "Conforto para dirigir"
+                    : category.description}
+                </p>
                 <p className="lines-option-description">
-                  {descriptions[category.slug] ??
+                  {(services
+                    ? category.description
+                    : descriptions[category.slug]) ??
                     "Explore os produtos desta linha e encontre a solução para a sua aplicação."}
                 </p>
                 <Link
-                  href={`/produtos?categoria=${encodeURIComponent(category.slug)}`}
+                  href={
+                    services
+                      ? `/contato?servico=${encodeURIComponent(category.name)}`
+                      : `/produtos?categoria=${encodeURIComponent(category.slug)}`
+                  }
                   className="lines-option-link"
-                  aria-label={`Explorar a linha ${category.name}`}
+                  aria-label={
+                    services
+                      ? `Consultar ${category.name}`
+                      : `Explorar a linha ${category.name}`
+                  }
                 >
-                  Explorar esta linha
+                  {services
+                    ? "Quero cuidar do meu carro"
+                    : "Explorar esta linha"}
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </Link>
               </div>

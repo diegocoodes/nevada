@@ -55,20 +55,20 @@ function createResources(gl: WebGLRenderingContext) {
   gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
   gl.uniform3fv(
     gl.getUniformLocation(program, "u_colors[0]"),
-    // #020707, #051011, #183A35 and #71B9B0; remaining slots are unused.
+    // Retém charcoal, warm black and muted red; remaining slots are unused.
     new Float32Array([
-      2 / 255,
-      7 / 255,
-      7 / 255,
-      5 / 255,
-      16 / 255,
-      17 / 255,
+      25 / 255,
       24 / 255,
-      58 / 255,
-      53 / 255,
-      113 / 255,
-      185 / 255,
-      176 / 255,
+      24 / 255,
+      31 / 255,
+      28 / 255,
+      27 / 255,
+      50 / 255,
+      35 / 255,
+      32 / 255,
+      90 / 255,
+      38 / 255,
+      35 / 255,
       0,
       0,
       0,
@@ -161,8 +161,8 @@ export function MeshDriftBackground() {
       if (previousTime)
         elapsedRef.current += Math.min((now - previousTime) / 1000, 0.1);
       previousTime = now;
-      // Keep the supplied time/speed; limit GPU work to about 30 frames per second.
-      if (now - lastDraw >= 32) {
+      // A subtle backdrop stays smooth at 24fps without competing with UI motion.
+      if (now - lastDraw >= 40) {
         draw();
         lastDraw = now;
       }
@@ -191,7 +191,7 @@ export function MeshDriftBackground() {
       const dpr = Math.min(
         window.devicePixelRatio || 1,
         2,
-        Math.sqrt(1_600_000 / (width * height)),
+        Math.sqrt(1_000_000 / (width * height)),
       );
       canvas.width = Math.max(1, Math.round(width * dpr));
       canvas.height = Math.max(1, Math.round(height * dpr));

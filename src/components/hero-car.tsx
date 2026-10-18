@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-export function HeroCar({ image }: { image: string }) {
+export function HeroCar({
+  image,
+  alt = "Carro esportivo prateado em perfil",
+}: {
+  image: string;
+  alt?: string;
+}) {
   const sceneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,7 +41,7 @@ export function HeroCar({ image }: { image: string }) {
     <div className="hero-car-scene" ref={sceneRef} data-active="false">
       <Image
         src={image}
-        alt="Carro esportivo prateado em perfil"
+        alt={alt}
         fill
         preload
         sizes="100vw"

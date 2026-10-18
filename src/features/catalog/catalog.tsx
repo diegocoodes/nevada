@@ -4,19 +4,26 @@ import { Search, SlidersHorizontal } from "lucide-react";
 import type { Product, Category } from "@/types/store";
 import { ProductCard } from "@/components/product-card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Reveal } from "@/components/reveal";
 export function Catalog({
   products,
   categories,
   initialQuery,
   initialCategory,
+  initialBrand = "",
+  contactHref,
 }: {
   products: Product[];
   categories: Category[];
   initialQuery: string;
   initialCategory: string;
+  initialBrand?: string;
+  contactHref: string;
 }) {
   const [q, setQ] = useState(initialQuery);
   const [category, setCategory] = useState(initialCategory);
+  const [brand, setBrand] = useState(initialBrand);
   const [sort, setSort] = useState("recent");
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
@@ -45,6 +52,7 @@ export function Catalog({
           .toLocaleLowerCase("pt-BR")
           .includes(q.toLocaleLowerCase("pt-BR")) &&
         (!category || p.category.slug === category) &&
+        (!brand || (p.brand ?? "nevada") === brand) &&
         p.variants.some(
           (v) =>
             ((!min && !max) ||
@@ -64,7 +72,7 @@ export function Catalog({
         : sort === "high"
           ? rows.sort((a, b) => price(b) - price(a))
           : rows;
-  }, [products, q, category, sort, min, max, attribute]);
+  }, [products, q, category, brand, sort, min, max, attribute]);
   const change = (fn: () => void) => {
     fn();
     setPage(1);
@@ -73,6 +81,7 @@ export function Catalog({
     change(() => {
       setQ("");
       setCategory("");
+      setBrand("");
       setMin("");
       setMax("");
       setAttribute("");
@@ -93,6 +102,24 @@ export function Catalog({
             />
           </div>
         </label>
+        <fieldset>
+          <legend>Marcas distribuídas</legend>
+          {[
+            { value: "", label: "Todas as marcas" },
+            { value: "nevada", label: "Nevada Films" },
+            { value: "origin", label: "Origin Películas" },
+          ].map((item) => (
+            <label className="radio-label" key={item.value}>
+              <input
+                type="radio"
+                name="brand"
+                checked={brand === item.value}
+                onChange={() => change(() => setBrand(item.value))}
+              />
+              {item.label}
+            </label>
+          ))}
+        </fieldset>
         <fieldset>
           <legend>Linhas de produtos</legend>
           <label className="radio-label">
@@ -183,16 +210,33 @@ export function Catalog({
             </select>
           </label>
         </div>
-        <div className="product-grid catalog-grid">
+        <Reveal
+          stagger
+          className="product-grid catalog-grid"
+          key={`${page}:${q}:${brand}:${category}:${sort}:${min}:${max}:${attribute}`}
+        >
           {filtered.slice((page - 1) * 9, page * 9).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
-        </div>
+        </Reveal>
         {!filtered.length && (
           <div className="empty">
             <Search size={36} />
-            <h2>Nenhum produto encontrado.</h2>
-            <p className="muted">Tente outro nome ou ajuste os filtros.</p>
+            <h2>
+              {brand === "origin"
+                ? "Conheça a linha Origin Películas."
+                : "Nenhum produto encontrado."}
+            </h2>
+            <p className="muted">
+              {brand === "origin"
+                ? "Fale com a Retém para conhecer as opções, medidas e disponibilidade da Origin Películas."
+                : "Tente outro nome ou ajuste os filtros."}
+            </p>
+            {brand === "origin" && (
+              <Button asChild>
+                <Link href={contactHref}>Consultar Origin Películas</Link>
+              </Button>
+            )}
             <Button variant="outline" onClick={reset}>
               Limpar filtros
             </Button>

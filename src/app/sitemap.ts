@@ -6,9 +6,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if ((await getSettings()).demoMode) return [];
   const url = getSiteUrl();
   return [
-    ...["", "/produtos", "/sobre", "/contato"].map((path) => ({
-      url: `${url}${path}`,
-    })),
+    ...["", "/distribuidora", "/produtos", "/sobre", "/contato"].map(
+      (path) => ({
+        url: `${url}${path}`,
+      }),
+    ),
     ...(await getProducts()).map((product) => ({
       url: `${url}/produtos/${product.slug}`,
     })),

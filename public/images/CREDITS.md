@@ -15,6 +15,14 @@ As imagens atuais da lista de linhas estão em `public/images/lines/`. Foram enc
 
 As fotografias de oficinas, testes e produtos de terceiros são referências visuais da aplicação. Não documentam instalações realizadas pela Nevada, nem apresentam embalagens Nevada Layer. Os originais foram apenas reduzidos e convertidos para WebP; o enquadramento é aplicado com CSS, preservando a fotografia de origem.
 
+## Hero Retém em perfil
+
+`retem-hero-profile.webp`: composição ilustrativa de um esportivo vermelho em perfil, criada com a ferramenta integrada imagegen e fundo transparente. Não representa um atendimento real. O prompt está em [`docs/retem-profile-hero.md`](../../docs/retem-profile-hero.md). A tipografia e a textura do fundo são construídas no site.
+
+## Direção de arte Retém
+
+`retem-hero-aerial.webp` e `retem-films-studio.webp`: imagens ilustrativas criadas com a ferramenta integrada imagegen a partir da direção visual fornecida pelo usuário. A primeira representa um esportivo vermelho visto de cima; a segunda representa películas sem marca em iluminação de estúdio. Não são fotografias de atendimentos reais nem de produtos específicos das marcas distribuídas. Prompts completos e destinos estão em [`docs/retem-art-direction.md`](../../docs/retem-art-direction.md).
+
 ## Outros arquivos e referências anteriores
 
 Hero atual: `hero-car-cutout.png`, recorte com transparência produzido com a ferramenta integrada imagegen a partir de `hero-luxury.png`. O chão e o reflexo foram removidos, preservando o enquadramento e as dimensões de 1659 × 948 pixels. A composição original, gerada com IA para esta interface e inspirada na referência fornecida pelo usuário, foi preservada. É uma composição ilustrativa, sem identificação de veículo ou aplicação real de produto. O prompt da edição está em `docs/hero-car-cutout.md`.

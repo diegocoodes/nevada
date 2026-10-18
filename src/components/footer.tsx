@@ -16,21 +16,25 @@ export function Footer({
         <div>
           <Brand name={s.name} logo={s.logo} />
           <p className="muted">
-            Produtos para proteger.
+            Cuidado em cada detalhe.
             <br />
-            Escolhas para transformar.
+            Proteção para o que é seu.
           </p>
           <p className="small muted">{s.name}</p>
         </div>
         <div>
           <h3>Explore</h3>
+          <Link href="/#servicos">Nossos serviços</Link>
+          <Link href="/distribuidora">Retém Loja Distribuidora</Link>
           <Link href="/produtos">Todos os produtos</Link>
           <Link href="/sobre">Sobre nós</Link>
           <Link href="/contato">Contato</Link>
           <Link href="/privacidade">Privacidade</Link>
         </div>
         <div>
-          <h3>Nossas linhas</h3>
+          <h3>Na distribuidora</h3>
+          <Link href="/produtos?marca=nevada">Nevada Films</Link>
+          <Link href="/produtos?marca=origin">Origin Películas</Link>
           {categories.map((c) => (
             <Link key={c.id} href={`/produtos?categoria=${c.slug}`}>
               {c.name}
@@ -56,7 +60,7 @@ export function Footer({
         <span>
           © {new Date().getFullYear()} {s.name}. Todos os direitos reservados.
         </span>
-        <span>Seleção online. Atendimento pelo WhatsApp.</span>
+        <span>Estética Premium & Loja Distribuidora.</span>
       </div>
     </footer>
   );

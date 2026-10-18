@@ -7,9 +7,11 @@ import { contactUrl } from "@/lib/utils";
 export function ContactForm({
   whatsapp,
   includeProject = true,
+  initialProject = "",
 }: {
   whatsapp: string;
   includeProject?: boolean;
+  initialProject?: string;
 }) {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ export function ContactForm({
     const email = String(data.get("email") || "").trim();
     const project = String(data.get("project") || "").trim();
     const message = [
-      "Olá, Nevada! Gostaria de conversar sobre meu projeto.",
+      "Olá, Retém! Gostaria de conversar sobre meu projeto.",
       "",
       `Nome: ${name}`,
       `E-mail: ${email}`,
@@ -72,6 +74,7 @@ export function ContactForm({
           <textarea
             id="contact-project"
             name="project"
+            defaultValue={initialProject}
             placeholder="O que você quer proteger ou transformar?"
             rows={2}
             maxLength={1500}

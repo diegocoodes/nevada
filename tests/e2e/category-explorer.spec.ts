@@ -3,10 +3,10 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.beforeEach(async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/distribuidora");
 });
 
-test("selecionar uma linha troca a informação e a imagem sem sair da home", async ({
+test("selecionar uma linha troca a informação e a imagem na distribuidora", async ({
   page,
 }) => {
   const section = page.locator("#linhas");
@@ -27,7 +27,7 @@ test("selecionar uma linha troca a informação e a imagem sem sair da home", as
   await expect(
     preview.getByRole("img", { name: "Películas solares", exact: true }),
   ).toHaveAttribute("src", /solar-film\.webp/);
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/distribuidora$/);
 
   await section
     .getByRole("button", { name: "Produtos de aplicação", exact: true })

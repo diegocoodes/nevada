@@ -7,8 +7,15 @@ export const metadata: Metadata = {
   title: "Contato",
   alternates: { canonical: "/contato" },
 };
-export default async function Contact() {
-  const s = await getSettings();
+export default async function Contact({
+  searchParams,
+}: {
+  searchParams: Promise<{ servico?: string }>;
+}) {
+  const [s, params] = await Promise.all([getSettings(), searchParams]);
+  const service = ["PPF", "Películas solares"].includes(params.servico ?? "")
+    ? params.servico
+    : undefined;
   return (
     <div className="contact-page">
       <div className="container contact-composition">
@@ -18,13 +25,21 @@ export default async function Contact() {
           aria-labelledby="contact-intro-title"
         >
           <div className="contact-form-column">
-            <p className="contact-kicker">NEVADA PROTECTION FILMS</p>
+            <p className="contact-kicker">RETÉM ESTÉTICA PREMIUM</p>
             <h2 id="contact-intro-title">Vamos falar do seu projeto.</h2>
             <p className="contact-description">
               Conte o que você precisa. A conversa continua pelo WhatsApp.
             </p>
             {/^\d{10,15}$/.test(s.whatsapp) ? (
-              <ContactForm whatsapp={s.whatsapp} />
+              <ContactForm
+                key={service || "contact"}
+                whatsapp={s.whatsapp}
+                initialProject={
+                  service
+                    ? `Gostaria de saber mais sobre ${service} para o meu carro.`
+                    : ""
+                }
+              />
             ) : (
               <p>O contato comercial será disponibilizado em breve.</p>
             )}
@@ -37,12 +52,12 @@ export default async function Contact() {
             </span>
             <div className="contact-car-halftone" />
             <span className="contact-art-signature">
-              NEVADA / PROTECTION FILMS
+              RETÉM / ESTÉTICA PREMIUM
             </span>
           </div>
         </section>
         <div className="contact-meta">
-          <span>Produtos, disponibilidade e condições para o seu pedido.</span>
+          <span>Serviços, proteção e produtos para o seu próximo projeto.</span>
           {/^\d{10,15}$/.test(s.whatsapp) && (
             <a href={contactUrl(s.whatsapp)}>
               Falar direto pelo WhatsApp{" "}

@@ -13,34 +13,67 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { isDistributorPath } from "@/lib/brand";
 const links = [
   { href: "/", label: "Início" },
-  { href: "/produtos", label: "Produtos" },
+  { href: "/#servicos", label: "Serviços" },
   { href: "/sobre", label: "Sobre nós" },
   { href: "/contato", label: "Contato" },
+  { href: "/distribuidora", label: "Loja Distribuidora" },
 ];
 export function Brand({
-  logo = "/images/nevada-logo-2026.png",
-  name = "Nevada",
+  logo = "/images/retem-logo.svg",
+  name = "Retém Estética Premium",
+  adaptive = true,
+  dark = false,
 }: {
   logo?: string;
   name?: string;
+  adaptive?: boolean;
+  dark?: boolean;
 }) {
+  const pathname = usePathname();
+  const distributor = adaptive && isDistributorPath(pathname);
   return (
-    <Link href="/" className="brand" aria-label={`${name}, início`}>
+    <Link
+      href={distributor ? "/distribuidora" : "/"}
+      className={`brand ${distributor ? "brand-distributor" : ""}`}
+      aria-label={
+        distributor ? "Retém Loja Distribuidora, início" : `${name}, início`
+      }
+    >
       <Image
         className="brand-logo"
-        src={logo || "/images/nevada-logo-2026.png"}
-        alt={name}
-        width={982}
-        height={182}
+        src={
+          distributor
+            ? "/images/retem-re.svg"
+            : dark
+              ? "/images/retem-logo-dark.svg"
+              : logo || "/images/retem-logo.svg"
+        }
+        alt={distributor ? "RE — Retém Loja Distribuidora" : name}
+        width={distributor ? 820 : 1000}
+        height={distributor ? 360 : 260}
         sizes="(max-width: 600px) 150px, 190px"
       />
+      <span className="brand-descriptor">
+        {distributor ? "LOJA DISTRIBUIDORA" : "ESTÉTICA PREMIUM"}
+      </span>
     </Link>
   );
 }
 export function Header({ logo, name }: { logo: string; name: string }) {
-  const home = usePathname() === "/";
+  const pathname = usePathname();
+  const home = pathname === "/";
+  const distributor = isDistributorPath(pathname);
+  const navigation = distributor
+    ? [
+        { href: "/", label: "Estética Premium" },
+        { href: "/distribuidora", label: "Distribuidora" },
+        { href: "/produtos", label: "Produtos" },
+        { href: "/contato", label: "Contato" },
+      ]
+    : links;
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 40);
@@ -56,9 +89,12 @@ export function Header({ logo, name }: { logo: string; name: string }) {
   return (
     <>
       <div className={`announcement ${home ? "announcement-home" : ""}`}>
-        A proteção certa começa com a escolha certa.{" "}
-        <Link href="/produtos">
-          Conheça a linha Nevada <ArrowUpRight size={12} />
+        {distributor
+          ? "RETÉM LOJA DISTRIBUIDORA · NEVADA FILMS E ORIGIN PELÍCULAS"
+          : "RETÉM · PPF, PELÍCULAS E CUIDADO AUTOMOTIVO"}{" "}
+        <Link href={distributor ? "/" : "/distribuidora"}>
+          {distributor ? "Conheça a estética" : "Conheça a distribuidora"}{" "}
+          <ArrowUpRight size={12} />
         </Link>
       </div>
       <header
@@ -67,31 +103,46 @@ export function Header({ logo, name }: { logo: string; name: string }) {
         <div className="container header-inner">
           <Brand logo={logo} name={name} />
           <nav className="desktop-nav" aria-label="Navegação principal">
-            {links.map((l) => (
-              <Link key={l.href} href={l.href}>
+            {navigation.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={pathname === l.href ? "page" : undefined}
+                className={
+                  l.href === "/distribuidora" ? "nav-distributor" : undefined
+                }
+              >
                 {l.label}
               </Link>
             ))}
           </nav>
           <div className="header-actions">
-            <button
-              className="icon-button"
-              aria-label="Pesquisar produtos"
-              onClick={() => setSearch(true)}
-            >
-              <Search size={21} />
-            </button>
-            <button
-              className="cart-trigger"
-              aria-label={`Abrir carrinho, ${count} itens`}
-              onClick={() => cart.setOpen(true)}
-            >
-              <ShoppingBag size={20} />
-              <span className="cart-label">Carrinho</span>
-              <span className="cart-count" key={count}>
-                {count}
-              </span>
-            </button>
+            {distributor ? (
+              <>
+                <button
+                  className="icon-button"
+                  aria-label="Pesquisar produtos"
+                  onClick={() => setSearch(true)}
+                >
+                  <Search size={21} />
+                </button>
+                <button
+                  className="cart-trigger"
+                  aria-label={`Abrir carrinho, ${count} itens`}
+                  onClick={() => cart.setOpen(true)}
+                >
+                  <ShoppingBag size={20} />
+                  <span className="cart-label">Carrinho</span>
+                  <span className="cart-count" key={count}>
+                    {count}
+                  </span>
+                </button>
+              </>
+            ) : (
+              <Link href="/contato" className="header-appointment">
+                Fale com a Retém <ArrowUpRight size={17} />
+              </Link>
+            )}
             <button
               className="icon-button mobile-toggle"
               aria-label="Abrir menu"
@@ -104,12 +155,12 @@ export function Header({ logo, name }: { logo: string; name: string }) {
       </header>
       <Dialog open={mobile} onOpenChange={setMobile}>
         <DialogContent className="store-dialog mobile-menu">
-          <DialogTitle className="h3">Explore Nevada</DialogTitle>
+          <DialogTitle className="h3">Explore a Retém</DialogTitle>
           <DialogDescription className="sr-only">
             Navegação principal
           </DialogDescription>
           <nav>
-            {links.map((l) => (
+            {navigation.map((l) => (
               <Link onClick={() => setMobile(false)} key={l.href} href={l.href}>
                 {l.label}
                 <ArrowUpRight size={20} />

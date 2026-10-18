@@ -6,7 +6,7 @@ test("cards aparecem ao rolar e mudar para movimento reduzido remove as transfor
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/");
+  await page.goto("/distribuidora");
   for (const selector of [
     ".featured-section .product-grid",
     ".purchase-grid",
@@ -60,7 +60,7 @@ test("título desenha e animações param automaticamente fora da tela", async (
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Proteção em sua melhor forma.",
+      name: "RETÉM",
     }),
   ).toBeVisible();
   await expect(page.locator(".draw-line-text")).toHaveAttribute(
@@ -153,7 +153,7 @@ test("sem WebGL a vitrine continua disponível com o degradê de fallback", asyn
     } as typeof original;
   });
   await page.goto("/");
-  const section = page.locator(".featured-section");
+  const section = page.locator(".retem-distributor-teaser");
   const background = page.locator(".project-background");
   await section.scrollIntoViewIfNeeded();
   await expect(background.locator("canvas")).toHaveAttribute(
@@ -161,7 +161,7 @@ test("sem WebGL a vitrine continua disponível com o degradê de fallback", asyn
     "fallback",
   );
   await expect(
-    section.getByRole("link", { name: "Ver todos os produtos" }),
+    section.getByRole("link", { name: "Acessar a distribuidora" }),
   ).toBeVisible();
   expect(
     await background.evaluate(

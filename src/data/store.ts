@@ -1,18 +1,18 @@
 import type { Category, Product, Settings } from "@/types/store";
 
 export const settings: Settings = {
-  name: "Nevada | Distribuidora",
-  logo: "/images/nevada-logo-2026.png",
+  name: "Retém Estética Premium",
+  logo: "/images/retem-logo.svg",
   whatsapp: "558186020710",
   email: "",
   instagram: "",
   address: "",
   hours: "",
-  heroTitle: "Proteção em sua melhor forma.",
+  heroTitle: "Seu carro. Sua essência. Nosso cuidado.",
   heroDescription: "",
   heroImage: "/images/hero-car-cutout.png",
   aboutText:
-    "Monte sua seleção de produtos e encaminhe uma solicitação. Disponibilidade, frete e pagamento são confirmados durante o atendimento.",
+    "A Retém Estética Premium cuida de cada detalhe do seu carro, com foco em PPF e películas automotivas. Da proteção da pintura ao cuidado com os vidros, ajudamos você a escolher a solução para sua rotina. Na Retém Loja Distribuidora, você também encontra Nevada Films e Origin Películas para o seu próximo projeto.",
   postalCodeRequired: false,
   demoMode: true,
 };

@@ -9,7 +9,16 @@ test("entrada mostra a logo e desaparece sem repetir na navegação interna", as
   await expect(intro).toBeVisible();
   await expect(intro.locator("img")).toHaveAttribute(
     "alt",
-    "Nevada Protection Films",
+    "Retém Estética Premium",
+  );
+  await expect(intro.locator(".vapor-text")).toHaveAttribute(
+    "data-ready",
+    "true",
+  );
+  await expect(intro.locator("canvas")).toBeVisible();
+  await expect(intro.locator(".vapor-text")).toHaveAttribute(
+    "data-state",
+    "vaporizing",
   );
   await expect(intro).toHaveCount(0, { timeout: 5000 });
   await page
@@ -45,7 +54,9 @@ test("entrada libera a tela mesmo com JavaScript desativado", async ({
   await page.goto("/");
   await expect(page.locator(".site-intro")).toBeHidden({ timeout: 6000 });
   await expect(
-    page.locator(".desktop-nav").getByRole("link", { name: "Produtos" }),
+    page
+      .locator(".desktop-nav")
+      .getByRole("link", { name: "Loja Distribuidora" }),
   ).toBeVisible();
   await context.close();
 });

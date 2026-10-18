@@ -6,9 +6,11 @@ export function Reveal({
   children,
   className = "",
   stagger = false,
+  direction = "up",
   ...props
 }: {
   stagger?: boolean;
+  direction?: "up" | "left" | "right";
 } & React.ComponentPropsWithoutRef<"div">) {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -20,7 +22,8 @@ export function Reveal({
           ? Array.from(root.current?.children || [])
           : root.current;
         gsap.from(targets, {
-          y: stagger ? 32 : 24,
+          y: direction === "up" ? (stagger ? 32 : 28) : 0,
+          x: direction === "left" ? -28 : direction === "right" ? 28 : 0,
           opacity: 0,
           duration: 0.75,
           stagger: stagger ? 0.1 : 0,
@@ -36,7 +39,7 @@ export function Reveal({
       return () => ctx.revert();
     });
     return () => mm.revert();
-  }, [stagger]);
+  }, [stagger, direction]);
   return (
     <div ref={root} className={className} {...props}>
       {children}

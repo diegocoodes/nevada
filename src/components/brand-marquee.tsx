@@ -1,4 +1,4 @@
-const text = "NEVADA PROTECTION FILMS";
+const text = "RETÉM · CUIDADO EM CADA DETALHE";
 
 export function BrandMarquee() {
   return (
