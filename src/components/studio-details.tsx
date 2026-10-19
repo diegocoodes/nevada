@@ -1,3 +1,4 @@
+import { AnimatedText } from "@/components/animated-text";
 import { ArrowUpRight, MapPin, Phone, Plus } from "lucide-react";
 import Image from "next/image";
 import { serviceQuestions } from "@/data/services";
@@ -50,9 +51,11 @@ export function StudioDetails({ settings }: { settings: Settings }) {
           <div>
             <p className="eyebrow">UM OLHAR PARA OS DETALHES</p>
             <h2 id="social-title">
-              O acabamento fala.
+              <AnimatedText text="O acabamento fala." />
               <br />
-              <span>O cuidado permanece.</span>
+              <span>
+                <AnimatedText text="O cuidado permanece." />
+              </span>
             </h2>
           </div>
           <div className="studio-information-copy">
@@ -112,9 +115,11 @@ export function StudioDetails({ settings }: { settings: Settings }) {
           <div>
             <p className="eyebrow">PODE PERGUNTAR</p>
             <h2 id="faq-title">
-              Uma boa escolha
+              <AnimatedText text="Uma boa escolha" />
               <br />
-              <span>começa por aqui.</span>
+              <span>
+                <AnimatedText text="começa por aqui." />
+              </span>
             </h2>
           </div>
           <div className="studio-questions">
@@ -139,9 +144,11 @@ export function StudioDetails({ settings }: { settings: Settings }) {
           <div>
             <p className="eyebrow">VILA VELHA · GRANDE VITÓRIA · ES</p>
             <h2 id="location-title">
-              Seu próximo cuidado
+              <AnimatedText text="Seu próximo cuidado" />
               <br />
-              <span>tem endereço.</span>
+              <span>
+                <AnimatedText text="tem endereço." />
+              </span>
             </h2>
           </div>
           <div className="studio-information-copy">

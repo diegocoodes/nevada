@@ -29,7 +29,7 @@ export function useLandingMotion(
   pathname: string,
 ) {
   useEffect(() => {
-    const element = root.current;
+    const element = root.current?.closest<HTMLDivElement>(".storefront");
     if (!element || !["/", "/distribuidora"].includes(pathname)) return;
 
     gsap.registerPlugin(ScrollTrigger);
@@ -40,18 +40,53 @@ export function useLandingMotion(
       const targets: HTMLElement[] = [];
       const seen = new WeakSet<Element>();
       const animateContent = () => {
+        const entranceDelay = element.querySelector(".site-entrance")
+          ? 0.75
+          : 0;
         const heroCopy = element.querySelector(".campaign-hero-copy");
         if (heroCopy && !seen.has(heroCopy)) {
           seen.add(heroCopy);
-          gsap.from(heroCopy.children, {
+          gsap.from(
+            Array.from(heroCopy.children).filter(
+              (child) => child.tagName !== "H1",
+            ),
+            {
+              opacity: 0,
+              y: 22,
+              duration: 0.8,
+              stagger: 0.1,
+              delay: entranceDelay,
+              ease: "power3.out",
+              clearProps: "transform,opacity",
+            },
+          );
+        }
+
+        element.querySelectorAll<HTMLElement>("h1,h2").forEach((heading) => {
+          const words = heading.querySelectorAll(".motion-word");
+          if (!words.length || seen.has(heading)) return;
+          seen.add(heading);
+          const inHero = Boolean(heading.closest(".campaign-hero"));
+          gsap.from(words, {
+            yPercent: 112,
             opacity: 0,
-            y: 22,
+            rotationX: 22,
             duration: 0.8,
-            stagger: 0.1,
+            stagger: 0.055,
+            delay: inHero ? entranceDelay + 0.1 : 0,
             ease: "power3.out",
             clearProps: "transform,opacity",
+            ...(inHero
+              ? {}
+              : {
+                  scrollTrigger: {
+                    trigger: heading,
+                    start: "top 93%",
+                    once: true,
+                  },
+                }),
           });
-        }
+        });
 
         const hero = element.querySelector(".campaign-hero");
         const photo = hero?.querySelector(".hero-photo");
@@ -93,7 +128,7 @@ export function useLandingMotion(
           });
         });
       };
-      const context = gsap.context(animateContent, root);
+      const context = gsap.context(animateContent, element);
       let frame = 0;
       const observer = new MutationObserver(() => {
         if (frame) return;

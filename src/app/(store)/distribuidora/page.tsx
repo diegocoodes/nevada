@@ -1,3 +1,5 @@
+import { AnimatedText } from "@/components/animated-text";
+import { LandingPage } from "@/components/landing-page";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,7 +93,7 @@ export default async function Distributor() {
     getProducts(),
   ]);
   return (
-    <div className="distributor-landing">
+    <LandingPage className="distributor-landing">
       <section
         className="campaign-hero distributor-campaign-hero"
         aria-labelledby="distributor-hero-title"
@@ -110,9 +112,11 @@ export default async function Distributor() {
           <div className="campaign-hero-copy">
             <p className="campaign-kicker">RETÉM LOJA DISTRIBUIDORA</p>
             <h1 id="distributor-hero-title">
-              Seu melhor acabamento.
+              <AnimatedText text="Seu melhor acabamento." />
               <br />
-              <span>Começa na escolha.</span>
+              <span>
+                <AnimatedText text="Começa na escolha." />
+              </span>
             </h1>
             <p>
               Nevada Films e Origin Películas. Da primeira camada ao último
@@ -155,9 +159,11 @@ export default async function Distributor() {
             <Reveal className="dl-benefit-copy" direction="right">
               <p className="eyebrow">PARA QUEM VIVE DE CUIDAR</p>
               <h2 id="benefits-title">
-                O seu melhor acabamento
+                <AnimatedText text="O seu melhor acabamento" />
                 <br />
-                <span>começa na escolha.</span>
+                <span>
+                  <AnimatedText text="começa na escolha." />
+                </span>
               </h2>
               <ul>
                 {benefits.map(({ title, text }) => (
@@ -206,9 +212,11 @@ export default async function Distributor() {
           <Reveal className="section-intro">
             <p className="eyebrow">DO CATÁLOGO À SUA BANCADA</p>
             <h2 id="purchase-title">
-              Seu próximo pedido.
+              <AnimatedText text="Seu próximo pedido." />
               <br />
-              <span>Sem complicar.</span>
+              <span>
+                <AnimatedText text="Sem complicar." />
+              </span>
             </h2>
             <p>Você escolhe online. A Retém continua a conversa.</p>
           </Reveal>
@@ -258,9 +266,11 @@ export default async function Distributor() {
             <Reveal className="section-intro">
               <p className="eyebrow">AS MARCAS QUE ACOMPANHAM SEU TRABALHO</p>
               <h2 id="brands-title">
-                Duas marcas.
+                <AnimatedText text="Duas marcas." />
                 <br />
-                <span>Um novo nível de cuidado.</span>
+                <span>
+                  <AnimatedText text="Um novo nível de cuidado." />
+                </span>
               </h2>
               <p>
                 Explore o catálogo Nevada e conheça as possibilidades da Origin
@@ -346,9 +356,11 @@ export default async function Distributor() {
                 ESCOLHA A SUPERFÍCIE. EXPLORE A SOLUÇÃO.
               </p>
               <h2 id="lines-title">
-                Cada projeto tem sua linha.
+                <AnimatedText text="Cada projeto tem sua linha." />
                 <br />
-                <span>Encontre a sua.</span>
+                <span>
+                  <AnimatedText text="Encontre a sua." />
+                </span>
               </h2>
               <p>
                 Da pintura aos vidros, conheça as possibilidades para a sua
@@ -370,9 +382,11 @@ export default async function Distributor() {
                   DO PREPARO AO ÚLTIMO DETALHE / NEVADA LAYER
                 </p>
                 <h2 id="featured-title">
-                  Na sua bancada.
+                  <AnimatedText text="Na sua bancada." />
                   <br />
-                  <span>No seu próximo projeto.</span>
+                  <span>
+                    <AnimatedText text="No seu próximo projeto." />
+                  </span>
                 </h2>
               </div>
               <Link className="link-arrow" href="/produtos">
@@ -406,9 +420,11 @@ export default async function Distributor() {
             <div>
               <p className="eyebrow">ANTES DO PRÓXIMO PASSO</p>
               <h2 id="faq-title">
-                Tudo começa
+                <AnimatedText text="Tudo começa" />
                 <br />
-                <span>sem dúvidas.</span>
+                <span>
+                  <AnimatedText text="sem dúvidas." />
+                </span>
               </h2>
               <p>
                 Precisa de mais alguma orientação?
@@ -445,9 +461,11 @@ export default async function Distributor() {
             </div>
             <p className="eyebrow">SEU PRÓXIMO ACABAMENTO COMEÇA AQUI</p>
             <h2>
-              Quem cuida de cada detalhe
+              <AnimatedText text="Quem cuida de cada detalhe" />
               <br />
-              <span>merece uma boa escolha.</span>
+              <span>
+                <AnimatedText text="merece uma boa escolha." />
+              </span>
             </h2>
             <a
               className="button button-primary"
@@ -462,6 +480,6 @@ export default async function Distributor() {
           </div>
         </section>
       </div>
-    </div>
+    </LandingPage>
   );
 }

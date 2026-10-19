@@ -1,0 +1,305 @@
+/* The words remain regular, selectable text when JavaScript is unavailable. */
+.storefront[data-brand] .motion-text,
+.storefront[data-brand] .motion-text span {
+  /* Preserve each heading's existing white/yellow emphasis through its masks. */
+  color: inherit !important;
+}
+.motion-word-mask {
+  display: inline-block;
+  overflow: clip;
+  padding: 0.08em 0.015em 0.13em;
+  margin: -0.08em -0.015em -0.13em;
+  vertical-align: top;
+}
+.motion-word {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+
+.storefront {
+  position: relative;
+  isolation: isolate;
+}
+.storefront > main,
+.storefront > footer {
+  position: relative;
+  z-index: 1;
+}
+.storefront .campaign-home,
+.storefront[data-brand="distributor"] .distributor-landing,
+.storefront[data-brand="distributor"] .distributor-campaign-body {
+  background: transparent;
+}
+.ambient-lights {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: none;
+}
+.ambient-light {
+  position: absolute;
+  width: min(65vw, 860px);
+  min-width: 360px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    #d71e2542 0%,
+    #b7191e20 30%,
+    #d71e2500 69%
+  );
+}
+.ambient-light-left {
+  left: -28%;
+  top: 18%;
+}
+.ambient-light-right {
+  right: -30%;
+  top: -25%;
+  opacity: 0.85;
+}
+.ambient-light-bottom {
+  right: 5%;
+  bottom: -70%;
+  opacity: 0.65;
+}
+.storefront .campaign-hero {
+  overflow: clip;
+}
+
+.site-entrance {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #090909;
+  pointer-events: none;
+  animation: retem-entrance-exit 0.55s cubic-bezier(0.65, 0, 0.25, 1) 0.8s
+    forwards;
+}
+.site-entrance-light {
+  position: absolute;
+  width: min(100vw, 850px);
+  aspect-ratio: 1;
+  background: radial-gradient(ellipse, #d71e2536, transparent 65%);
+}
+.site-entrance-brand {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 23px;
+  animation: retem-entrance-brand 0.7s cubic-bezier(0.2, 0.7, 0.25, 1) both;
+}
+.site-entrance-brand img {
+  width: 230px;
+  height: auto;
+}
+.site-entrance-brand > span {
+  color: #b8b5ad;
+  font:
+    500 11px / 1.4 "Retem Barlow",
+    sans-serif;
+  letter-spacing: 0.2em;
+}
+.site-entrance-brand > i {
+  width: 44px;
+  height: 2px;
+  background: #fbba13;
+  transform-origin: left;
+  animation: retem-entrance-line 0.85s ease both;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  z-index: 60;
+  right: 28px;
+  bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+  color: #fff;
+  background: #168549;
+  box-shadow: 0 5px 22px #0005;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.floating-whatsapp::before,
+.floating-whatsapp::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1px;
+  border: 1px solid #38c575;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+.floating-whatsapp:hover {
+  background: #11763f;
+}
+.floating-whatsapp:focus-visible {
+  outline: 3px solid #fbba13;
+  outline-offset: 5px;
+}
+.floating-whatsapp-label {
+  position: absolute;
+  right: calc(100% + 17px);
+  padding: 10px 14px;
+  border: 1px solid #ffffff22;
+  border-radius: 5px;
+  color: #f7f5ef;
+  background: #171717;
+  font:
+    500 14px / 1.3 "Retem Barlow",
+    sans-serif;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+}
+.floating-whatsapp:is(:hover, :focus-visible) .floating-whatsapp-label {
+  opacity: 1;
+  visibility: visible;
+}
+body:has([role="dialog"][data-state="open"]) .floating-whatsapp {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@keyframes retem-entrance-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-25px);
+  }
+}
+@keyframes retem-entrance-brand {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes retem-entrance-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes retem-light-left {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(25vw, -12vh, 0) scale(1.15);
+  }
+}
+@keyframes retem-light-right {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-20vw, 28vh, 0);
+  }
+}
+@keyframes retem-light-bottom {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(-20vw, -45vh, 0) scale(0.85);
+  }
+}
+@keyframes retem-hero-glow {
+  from {
+    opacity: 0.45;
+    transform: translateX(-3%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(5%);
+  }
+}
+@keyframes retem-whatsapp-pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-light-left {
+    animation: retem-light-left 18s ease-in-out infinite alternate;
+  }
+  .ambient-light-right {
+    animation: retem-light-right 24s ease-in-out infinite alternate;
+  }
+  .ambient-light-bottom {
+    animation: retem-light-bottom 28s ease-in-out infinite alternate;
+  }
+  .storefront .campaign-hero::after {
+    animation: retem-hero-glow 8s ease-in-out infinite alternate;
+  }
+  .floating-whatsapp::before,
+  .floating-whatsapp::after {
+    animation: retem-whatsapp-pulse 2.8s ease-out infinite;
+  }
+  .floating-whatsapp::after {
+    animation-delay: 1.4s;
+  }
+  .floating-whatsapp,
+  .floating-whatsapp-label {
+    transition:
+      background 0.2s,
+      opacity 0.2s;
+  }
+  .storefront[data-motion-paused="true"] .campaign-hero::after,
+  .storefront[data-motion-paused="true"] .ambient-light,
+  .storefront[data-motion-paused="true"] .floating-whatsapp::before,
+  .storefront[data-motion-paused="true"] .floating-whatsapp::after,
+  .floating-whatsapp:is(:hover, :focus-visible)::before,
+  .floating-whatsapp:is(:hover, :focus-visible)::after {
+    animation-play-state: paused;
+  }
+}
+@media (max-width: 600px) {
+  .floating-whatsapp {
+    right: 22px;
+    bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+    width: 56px;
+    height: 56px;
+  }
+  .floating-whatsapp-label {
+    display: none;
+  }
+  .ambient-light-left {
+    left: -65%;
+  }
+  .ambient-light-right {
+    right: -65%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-entrance {
+    display: none;
+  }
+  .site-entrance,
+  .site-entrance * {
+    animation: none;
+  }
+}

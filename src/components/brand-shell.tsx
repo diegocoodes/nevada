@@ -2,14 +2,21 @@
 
 import { usePathname } from "next/navigation";
 import { isDistributorPath } from "@/lib/brand";
-import { useRef } from "react";
-import { useLandingMotion } from "@/hooks/use-landing-motion";
+import { useEffect, useRef } from "react";
 
 export function BrandShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const distributor = isDistributorPath(pathname);
   const root = useRef<HTMLDivElement>(null);
-  useLandingMotion(root, pathname);
+  useEffect(() => {
+    const update = () => {
+      if (root.current)
+        root.current.dataset.motionPaused = String(document.hidden);
+    };
+    update();
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
   return (
     <div
       ref={root}

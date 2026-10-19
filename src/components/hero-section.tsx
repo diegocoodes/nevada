@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import type { Settings } from "@/types/store";
 import { contactUrl } from "@/lib/utils";
+import { AnimatedText } from "@/components/animated-text";
 
 export function HeroSection({ settings }: { settings: Settings }) {
   return (
@@ -21,9 +22,11 @@ export function HeroSection({ settings }: { settings: Settings }) {
         <div className="campaign-hero-copy">
           <p className="campaign-kicker">PELÍCULAS · PPF · ESTÉTICA PREMIUM</p>
           <h1 id="hero-title">
-            Seu carro merece
+            <AnimatedText text="Seu carro merece" />
             <br />
-            <span>proteção de verdade.</span>
+            <span>
+              <AnimatedText text="proteção de verdade." />
+            </span>
           </h1>
           <p>
             Preserve a pintura. Sinta o conforto.

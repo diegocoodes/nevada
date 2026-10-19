@@ -1,3 +1,5 @@
+import { AnimatedText } from "@/components/animated-text";
+import { LandingPage } from "@/components/landing-page";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -21,7 +23,7 @@ export const metadata = { alternates: { canonical: "/" } };
 export default async function Home() {
   const settings = await getSettings();
   return (
-    <div className="campaign-home">
+    <LandingPage className="campaign-home">
       <HeroSection settings={settings} />
       <a href="#servicos" className="campaign-ribbon">
         O seu próximo cuidado começa aqui.
@@ -36,9 +38,11 @@ export default async function Home() {
       >
         <div className="container campaign-intro-grid">
           <h2 id="intro-title">
-            Para quem exige mais.
+            <AnimatedText text="Para quem exige mais." />
             <br />
-            <span>Em cada detalhe.</span>
+            <span>
+              <AnimatedText text="Em cada detalhe." />
+            </span>
           </h2>
           <div>
             <p>
@@ -61,9 +65,11 @@ export default async function Home() {
           <div className="campaign-heading">
             <p className="campaign-kicker">O QUE MOVE NOSSO CUIDADO</p>
             <h2 id="process-title">
-              Proteção, conforto e estética.
+              <AnimatedText text="Proteção, conforto e estética." />
               <br />
-              <span>Seu carro em boas mãos.</span>
+              <span>
+                <AnimatedText text="Seu carro em boas mãos." />
+              </span>
             </h2>
           </div>
           <div className="atelier-process-grid">
@@ -112,9 +118,11 @@ export default async function Home() {
           <div className="campaign-heading">
             <p className="campaign-kicker">ENCONTRE O SEU CUIDADO</p>
             <h2 id="services-title">
-              Cada superfície pede
+              <AnimatedText text="Cada superfície pede" />
               <br />
-              <span>uma atenção especial.</span>
+              <span>
+                <AnimatedText text="uma atenção especial." />
+              </span>
             </h2>
           </div>
           <StudioServices />
@@ -128,9 +136,11 @@ export default async function Home() {
         <div className="container">
           <div className="campaign-heading">
             <h2 id="home-contact-title" aria-label="Entre em contato">
-              Seu próximo projeto.
+              <AnimatedText text="Seu próximo projeto." />
               <br />
-              <span>Nosso melhor cuidado.</span>
+              <span>
+                <AnimatedText text="Nosso melhor cuidado." />
+              </span>
             </h2>
             <p>Uma conversa para entender o que você precisa.</p>
           </div>
@@ -181,9 +191,11 @@ export default async function Home() {
           <div>
             <p className="campaign-kicker">TAMBÉM PARA QUEM APLICA</p>
             <h2 id="distributor-title">
-              Leve esse cuidado
+              <AnimatedText text="Leve esse cuidado" />
               <br />
-              <span>para o seu projeto.</span>
+              <span>
+                <AnimatedText text="para o seu projeto." />
+              </span>
             </h2>
             <p>Nevada Films e Origin Películas na Retém Loja Distribuidora.</p>
           </div>
@@ -196,6 +208,6 @@ export default async function Home() {
           </Link>
         </div>
       </section>
-    </div>
+    </LandingPage>
   );
 }

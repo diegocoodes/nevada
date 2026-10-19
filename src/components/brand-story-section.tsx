@@ -1,3 +1,4 @@
+import { AnimatedText } from "@/components/animated-text";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -18,9 +19,11 @@ export function BrandStorySection() {
         <div className="campaign-story-copy">
           <p className="campaign-kicker">A ESSÊNCIA RETÉM</p>
           <h2 id="story-title">
-            Técnica na aplicação.
+            <AnimatedText text="Técnica na aplicação." />
             <br />
-            <span>Cuidado em cada escolha.</span>
+            <span>
+              <AnimatedText text="Cuidado em cada escolha." />
+            </span>
           </h2>
           <p>
             Em Praia de Itaparica, Vila Velha, reunimos proteção e estética para
