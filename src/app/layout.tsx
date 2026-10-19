@@ -11,17 +11,25 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Retém Estética Premium | PPF e Películas Automotivas",
+    default:
+      "Retém Estética Premium | Películas, PPF e Coat Cerâmica em Vila Velha",
     template: "%s | Retém",
   },
   description:
-    "Conheça a Retém Estética Premium: cuidado automotivo com foco em PPF e películas. Acesse também a Retém Loja Distribuidora, com Nevada Films e Origin Películas.",
+    "Películas solares para carro, casa e empresa, PPF, coat cerâmica Gyeon e estética premium. RETÉM em Praia de Itaparica, Vila Velha, ES. Solicite um orçamento.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    title: "Retém Estética Premium | PPF e Películas Automotivas",
+    title: "RETÉM | Películas, PPF e Estética Premium em Vila Velha",
+    description:
+      "Proteção para seu carro, casa e empresa. Origin Películas e Gyeon em Praia de Itaparica, Vila Velha, ES.",
     siteName: "Retém",
-    images: [{ url: "/images/hero.jpg", width: 1600, height: 1000 }],
+    images: [
+      {
+        url: "/images/retem-hero-real.webp",
+        alt: "RETÉM · Estética Premium",
+      },
+    ],
   },
   twitter: { card: "summary_large_image" },
 };

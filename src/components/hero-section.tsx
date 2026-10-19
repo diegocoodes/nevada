@@ -1,33 +1,45 @@
-import { ArrowUpRight } from "lucide-react";
-import { HeroCar } from "@/components/hero-car";
-import { DrawLineText } from "@/components/ui/draw-line-text";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import type { Settings } from "@/types/store";
 import { contactUrl } from "@/lib/utils";
 
 export function HeroSection({ settings }: { settings: Settings }) {
   return (
-    <section
-      className="hero hero-luxury hero-reference"
-      aria-labelledby="hero-title"
-    >
-      <HeroCar
-        image="/images/retem-hero-profile.webp"
-        alt="Composição de um esportivo clássico vermelho visto de perfil"
-      />
-      <div className="container reference-hero-copy">
-        <h1 id="hero-title" className="reference-hero-title">
-          <DrawLineText
-            text="RETÉM"
-            color="#F03B42"
-            oneByOne={false}
-            strokeWidth={1.1}
-          />
-        </h1>
+    <section className="campaign-hero" aria-labelledby="hero-title">
+      <div className="campaign-hero-visual">
+        <Image
+          className="hero-photo"
+          src="/images/retem-hero-real.webp"
+          alt="Detalhes do capô e do farol de um esportivo vermelho"
+          fill
+          sizes="(max-width: 760px) 100vw, 75vw"
+          preload
+        />
       </div>
-      <div className="container reference-hero-footer">
-        <a href={contactUrl(settings.whatsapp)} className="reference-hero-cta">
-          Solicitar orçamento <ArrowUpRight size={18} />
-        </a>
+      <div className="container campaign-hero-inner">
+        <div className="campaign-hero-copy">
+          <p className="campaign-kicker">PELÍCULAS · PPF · ESTÉTICA PREMIUM</p>
+          <h1 id="hero-title">
+            Seu carro merece
+            <br />
+            <span>proteção de verdade.</span>
+          </h1>
+          <p>
+            Preserve a pintura. Sinta o conforto.
+            <br />
+            Descubra o cuidado da RETÉM em cada detalhe.
+          </p>
+          <a href={contactUrl(settings.whatsapp)} className="campaign-button">
+            Solicitar orçamento <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
+          <Link href="#servicos" className="campaign-hero-explore">
+            Explore os serviços <ArrowDown size={15} aria-hidden="true" />
+          </Link>
+          <span className="campaign-hero-location">
+            PRAIA DE ITAPARICA · VILA VELHA, ES
+          </span>
+        </div>
       </div>
     </section>
   );

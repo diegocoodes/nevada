@@ -1,172 +1,201 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, Sun, Sparkles } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  ChevronDown,
+  ShieldCheck,
+  Sun,
+  Sparkles,
+} from "lucide-react";
 import { getSettings } from "@/lib/store-data";
+import { contactUrl } from "@/lib/utils";
 import { ContactForm } from "@/components/contact-form";
-import { Reveal } from "@/components/reveal";
-import { CategoryExplorer } from "@/components/category-explorer";
 import { HeroSection } from "@/components/hero-section";
 import { BrandStorySection } from "@/components/brand-story-section";
-import { BrandMarquee } from "@/components/brand-marquee";
-import { Atmosphere } from "@/components/atmosphere";
-import type { Category } from "@/types/store";
+import { StudioDetails } from "@/components/studio-details";
+import { StudioServices } from "@/components/studio-services";
 
 export const metadata = { alternates: { canonical: "/" } };
-
-const services: Category[] = [
-  {
-    id: "service-ppf",
-    name: "PPF",
-    slug: "ppf",
-    description:
-      "Proteção de pintura. Uma película transparente para preservar o acabamento do seu carro no dia a dia. Converse com a equipe sobre as áreas de aplicação.",
-    image: "/images/lines/ppf-application.webp",
-    position: 0,
-    active: true,
-  },
-  {
-    id: "service-solar",
-    name: "Películas solares",
-    slug: "peliculas-solares",
-    description:
-      "Conforto para dirigir. Encontre a película para os vidros do seu carro, considerando privacidade, luminosidade e a sua rotina ao volante.",
-    image: "/images/lines/solar-film.webp",
-    position: 1,
-    active: true,
-  },
-];
 
 export default async function Home() {
   const settings = await getSettings();
   return (
-    <>
+    <div className="campaign-home">
       <HeroSection settings={settings} />
-      <Atmosphere>
-        <section
-          className="retem-service-band"
-          aria-label="Especialidades da Retém"
-        >
-          <div className="container">
-            <span>
-              <ShieldCheck size={22} /> Proteção de pintura / PPF
-            </span>
-            <span>
-              <Sun size={22} /> Películas automotivas
-            </span>
-            <span>
-              <Sparkles size={22} /> Cuidado em cada detalhe
-            </span>
+      <a href="#servicos" className="campaign-ribbon">
+        O seu próximo cuidado começa aqui.
+        <span>
+          <ChevronDown size={18} aria-hidden="true" />
+        </span>
+      </a>
+      <section
+        id="empresa"
+        className="campaign-intro"
+        aria-labelledby="intro-title"
+      >
+        <div className="container campaign-intro-grid">
+          <h2 id="intro-title">
+            Para quem exige mais.
+            <br />
+            <span>Em cada detalhe.</span>
+          </h2>
+          <div>
+            <p>
+              Seu carro faz parte da sua história. A nossa parte é ajudar você a
+              preservar o que ele tem de melhor.
+            </p>
+            <p>
+              Películas solares, proteção de pintura e estética premium.
+              Atendimento atento para encontrar o cuidado que faz sentido para
+              você, sua casa ou sua empresa.
+            </p>
           </div>
-        </section>
-        <BrandStorySection />
-        <section
-          id="servicos"
-          className="section lines-section"
-          aria-labelledby="services-title"
-        >
-          <div className="container">
-            <Reveal className="section-intro retem-section-intro">
-              <p className="eyebrow">O CUIDADO QUE ACOMPANHA VOCÊ</p>
-              <h2 id="services-title">
-                Preserve a pintura.
-                <br />
-                <span>Transforme a experiência.</span>
-              </h2>
-              <p>
-                Conheça nossas especialidades e encontre a proteção para o seu
-                carro.
-              </p>
-            </Reveal>
-            <CategoryExplorer categories={services} services />
-          </div>
-        </section>
-        <BrandMarquee />
-        <section
-          className="section retem-distributor-teaser"
-          aria-labelledby="distributor-title"
-        >
-          <div className="container retem-distributor-grid">
-            <Reveal className="retem-distributor-copy">
-              <p className="eyebrow">PARA QUEM TAMBÉM VIVE DE CUIDAR</p>
-              <h2 id="distributor-title">
-                A proteção continua.
-                <br />
-                <span>Agora, no seu projeto.</span>
-              </h2>
-              <p>
-                Conheça a Retém Loja Distribuidora. Nevada Films e Origin
-                Películas reunidas em uma área dedicada a produtos para a sua
-                aplicação.
-              </p>
-              <Link href="/distribuidora" className="button button-primary">
-                Acessar a distribuidora <ArrowUpRight size={20} />
-              </Link>
-            </Reveal>
-            <Reveal className="retem-distributor-card">
-              <Image
-                src="/images/retem-re.svg"
-                alt="RE — Retém Loja Distribuidora"
-                width={820}
-                height={360}
-              />
-              <p>LOJA DISTRIBUIDORA</p>
-              <div>
-                <span>NEVADA FILMS</span>
-                <span>ORIGIN PELÍCULAS</span>
-              </div>
-              <Link
-                href="/distribuidora"
-                aria-label="Conhecer a Retém Loja Distribuidora"
-              >
-                <ArrowUpRight size={24} />
-              </Link>
-            </Reveal>
-          </div>
-        </section>
-        <section
-          className="contact-page contact-home"
-          aria-labelledby="home-contact-title"
-        >
-          <div className="container contact-composition">
-            <h2
-              id="home-contact-title"
-              className="contact-title"
-              aria-label="Entre em contato"
-            >
-              CONTATO
+        </div>
+      </section>
+      <section
+        className="atelier-process campaign-pillars"
+        aria-labelledby="process-title"
+      >
+        <div className="container">
+          <div className="campaign-heading">
+            <p className="campaign-kicker">O QUE MOVE NOSSO CUIDADO</p>
+            <h2 id="process-title">
+              Proteção, conforto e estética.
+              <br />
+              <span>Seu carro em boas mãos.</span>
             </h2>
-            <Reveal className="contact-intro-panel">
-              <div className="contact-form-column">
-                <p className="contact-kicker">
-                  SEU PRÓXIMO CUIDADO COMEÇA AQUI
-                </p>
-                <h3>Vamos falar do seu carro.</h3>
-                <ContactForm
-                  whatsapp={settings.whatsapp}
-                  includeProject={false}
-                />
-              </div>
-              <div className="contact-art" aria-hidden="true">
-                <span className="contact-art-label">
-                  CUIDADO EM
-                  <br />
-                  CADA DETALHE.
-                </span>
-                <div className="contact-car-halftone" />
-                <span className="contact-art-signature">
-                  RETÉM / ESTÉTICA PREMIUM
-                </span>
-              </div>
-            </Reveal>
-            <div className="contact-meta">
-              <span>A conversa continua pelo WhatsApp.</span>
-              <Link href="/contato">
-                Fale com a Retém <ArrowUpRight size={16} />
-              </Link>
-            </div>
           </div>
-        </section>
-      </Atmosphere>
-    </>
+          <div className="atelier-process-grid">
+            {[
+              {
+                Icon: ShieldCheck,
+                title: "Proteção de pintura",
+                text: "PPF para preservar o acabamento original e acompanhar sua rotina com mais tranquilidade.",
+                detail: "Cuidado que preserva.",
+              },
+              {
+                Icon: Sun,
+                title: "Conforto para sentir",
+                text: "Películas solares para controlar a luminosidade e encontrar o conforto que você procura.",
+                detail: "Proteção para viver melhor.",
+              },
+              {
+                Icon: Sparkles,
+                title: "Estética em evidência",
+                text: "Coat cerâmica, polimento e vitrificação. Atenção ao brilho, ao toque e ao acabamento.",
+                detail: "O detalhe faz a diferença.",
+              },
+            ].map(({ Icon, title, text, detail }) => (
+              <article key={title}>
+                <Icon size={36} strokeWidth={1.25} aria-hidden="true" />
+                <h3>{title}</h3>
+                <p>{text}</p>
+                <span>{detail}</span>
+              </article>
+            ))}
+          </div>
+          <div className="campaign-centered-action">
+            <a href={contactUrl(settings.whatsapp)} className="campaign-button">
+              Quero cuidar do meu carro{" "}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+        id="servicos"
+        className="campaign-services"
+        aria-labelledby="services-title"
+      >
+        <div className="container">
+          <div className="campaign-heading">
+            <p className="campaign-kicker">ENCONTRE O SEU CUIDADO</p>
+            <h2 id="services-title">
+              Cada superfície pede
+              <br />
+              <span>uma atenção especial.</span>
+            </h2>
+          </div>
+          <StudioServices />
+        </div>
+      </section>
+      <section
+        id="orcamento"
+        className="campaign-offer contact-home"
+        aria-labelledby="home-contact-title"
+      >
+        <div className="container">
+          <div className="campaign-heading">
+            <h2 id="home-contact-title" aria-label="Entre em contato">
+              Seu próximo projeto.
+              <br />
+              <span>Nosso melhor cuidado.</span>
+            </h2>
+            <p>Uma conversa para entender o que você precisa.</p>
+          </div>
+          <div className="campaign-offer-card">
+            <Image
+              src={settings.logo}
+              alt="RETÉM Estética Premium"
+              width={1000}
+              height={260}
+              className="campaign-offer-logo"
+            />
+            <ul>
+              {[
+                "Orientação sobre materiais e acabamentos",
+                "Avaliação do seu veículo ou ambiente",
+                "Condições e prazo apresentados no orçamento",
+              ].map((item) => (
+                <li key={item}>
+                  <Check size={15} aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <h3>
+              Proteção
+              <br />
+              <span>sob medida.</span>
+            </h3>
+            <p className="campaign-offer-subtitle">
+              Conte para a gente o que você tem em mente.
+            </p>
+            <ContactForm whatsapp={settings.whatsapp} includeProject={false} />
+            <p className="campaign-offer-note">
+              Atendimento pelo WhatsApp.
+              <br />
+              Personalizado e sem compromisso.
+            </p>
+          </div>
+        </div>
+      </section>
+      <BrandStorySection />
+      <StudioDetails settings={settings} />
+      <section
+        className="campaign-distributor retem-distributor-teaser"
+        aria-labelledby="distributor-title"
+      >
+        <div className="container">
+          <div>
+            <p className="campaign-kicker">TAMBÉM PARA QUEM APLICA</p>
+            <h2 id="distributor-title">
+              Leve esse cuidado
+              <br />
+              <span>para o seu projeto.</span>
+            </h2>
+            <p>Nevada Films e Origin Películas na Retém Loja Distribuidora.</p>
+          </div>
+          <Link
+            href="/distribuidora"
+            className="campaign-button campaign-button-outline"
+          >
+            Acessar a distribuidora{" "}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useId, useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Category } from "@/types/store";
+import { serviceCaptions } from "@/data/services";
 import {
   SlantedImageClip,
   SlantedImageOutline,
@@ -85,9 +86,7 @@ export function CategoryExplorer({
               >
                 <p className="lines-option-caption">
                   {services
-                    ? category.slug === "ppf"
-                      ? "Proteção de pintura"
-                      : "Conforto para dirigir"
+                    ? serviceCaptions[category.slug]
                     : category.description}
                 </p>
                 <p className="lines-option-description">
@@ -110,7 +109,7 @@ export function CategoryExplorer({
                   }
                 >
                   {services
-                    ? "Quero cuidar do meu carro"
+                    ? "Solicitar orçamento"
                     : "Explorar esta linha"}
                   <ArrowUpRight size={17} aria-hidden="true" />
                 </Link>

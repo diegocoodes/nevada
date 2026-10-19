@@ -3,6 +3,60 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.use({ reducedMotion: "reduce" });
 
+test("serviços, dúvidas e localização usam os dados da RETÉM", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const services = page.locator("#servicos");
+  await services
+    .getByRole("button", {
+      name: "Películas residenciais e comerciais",
+      exact: true,
+    })
+    .click();
+  await expect(
+    services.getByRole("region", {
+      name: "Películas residenciais e comerciais",
+      exact: true,
+    }),
+  ).toContainText("sua casa ou empresa");
+  await services
+    .getByRole("link", {
+      name: "Consultar Películas residenciais e comerciais",
+      exact: true,
+    })
+    .click();
+  await expect(page.getByLabel("Sobre seu projeto")).toHaveValue(
+    "Gostaria de um orçamento para Películas residenciais e comerciais.",
+  );
+
+  await page.goto("/#faq");
+  await page
+    .getByText("Vocês aplicam películas em casas e empresas?", { exact: true })
+    .click();
+  await expect(page.locator("#faq details[open]")).toContainText(
+    "medidas aproximadas dos vidros",
+  );
+  await expect(page.locator("#localizacao address")).toContainText("1528");
+  await expect(page.locator("#localizacao address")).toContainText("29102-020");
+  await expect(page.locator("#galeria a")).toHaveAttribute(
+    "href",
+    "https://www.instagram.com/retem.es/",
+  );
+  await expect(
+    page
+      .locator("#localizacao")
+      .getByRole("link", { name: "Solicitar orçamento pelo WhatsApp" }),
+  ).toHaveAttribute("href", "https://wa.me/5527992315115");
+  const directions = new URL(
+    (await page
+      .locator("#localizacao")
+      .getByRole("link", { name: "Como chegar" })
+      .getAttribute("href"))!,
+  );
+  expect(directions.searchParams.get("query")).toContain("1528");
+});
+
 test("estética e distribuidora trocam marca e tema durante a navegação", async ({
   page,
 }) => {
@@ -42,7 +96,7 @@ test("estética e distribuidora trocam marca e tema durante a navegação", asyn
   );
   await expect(page.locator("header .brand-logo")).toHaveAttribute(
     "src",
-    "/images/retem-re.svg",
+    "/images/retem-re-light.svg",
   );
   await expect(
     page.getByRole("button", { name: /Abrir carrinho/ }),

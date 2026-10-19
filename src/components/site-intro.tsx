@@ -61,7 +61,7 @@ export function SiteIntro({ logo }: { logo: string }) {
     };
   }, []);
 
-  if (phase === "hidden") return null;
+  if (!distributor || phase === "hidden") return null;
   return (
     <div className="site-intro" data-phase={phase} aria-hidden="true">
       <div className="intro-vapor-composition">

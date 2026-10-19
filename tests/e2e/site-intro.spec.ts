@@ -1,26 +1,15 @@
 import { test, expect } from "@playwright/test";
 
-test("entrada mostra a logo e desaparece sem repetir na navegação interna", async ({
+test("site principal abre direto no conteúdo e mantém a navegação interna", async ({
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/", { waitUntil: "domcontentloaded" });
   const intro = page.locator(".site-intro");
-  await expect(intro).toBeVisible();
-  await expect(intro.locator("img")).toHaveAttribute(
-    "alt",
-    "Retém Estética Premium",
+  await expect(intro).toHaveCount(0);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    /Seu carro merece\s*proteção de verdade\./i,
   );
-  await expect(intro.locator(".vapor-text")).toHaveAttribute(
-    "data-ready",
-    "true",
-  );
-  await expect(intro.locator("canvas")).toBeVisible();
-  await expect(intro.locator(".vapor-text")).toHaveAttribute(
-    "data-state",
-    "vaporizing",
-  );
-  await expect(intro).toHaveCount(0, { timeout: 5000 });
   await page
     .locator(".desktop-nav")
     .getByRole("link", { name: "Contato" })

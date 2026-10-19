@@ -1,57 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Reveal } from "@/components/reveal";
-import {
-  SlantedImageClip,
-  SlantedImageOutline,
-} from "@/components/ui/slanted-image-clip";
 
 export function BrandStorySection() {
   return (
-    <section className="section brand-story" aria-labelledby="story-title">
-      <div className="container story-editorial-grid">
-        <Reveal className="story-editorial-media" direction="left">
-          <figure className="story-editorial-figure">
-            <SlantedImageClip id="nevada-story-photo-shape" />
-            <div className="story-editorial-image">
-              <Image
-                src="/images/nevada-application.png"
-                alt="Aplicador posicionando uma película de proteção transparente sobre a pintura de um carro"
-                fill
-                sizes="(max-width: 800px) 100vw, (max-width: 1200px) 55vw, 640px"
-              />
-              <SlantedImageOutline id="nevada-story-photo-shape" />
-            </div>
-            <figcaption>
-              Proteção na superfície. Cuidado em cada detalhe.
-            </figcaption>
-          </figure>
-        </Reveal>
-        <Reveal className="story-editorial-copy" direction="right">
+    <section className="campaign-story" aria-labelledby="story-title">
+      <div className="container campaign-story-grid">
+        <div className="campaign-story-photo">
+          <Image
+            src="/images/retem-ppf-real.webp"
+            alt="Profissionais posicionando uma película de proteção sobre a pintura de um esportivo"
+            fill
+            sizes="(max-width: 700px) 100vw, 45vw"
+          />
+          <span>Imagem ilustrativa · WAVYVISUALS / Pexels</span>
+        </div>
+        <div className="campaign-story-copy">
+          <p className="campaign-kicker">A ESSÊNCIA RETÉM</p>
           <h2 id="story-title">
-            RETÉM <span>ESTÉTICA PREMIUM</span>
+            Técnica na aplicação.
+            <br />
+            <span>Cuidado em cada escolha.</span>
           </h2>
-          <div className="story-editorial-text">
-            <h3>O seu carro merece esse cuidado.</h3>
-            <p>
-              Da pintura aos vidros, cada escolha faz parte da experiência de
-              dirigir. A Retém reúne cuidado estético, PPF e películas para
-              preservar o que torna o seu carro único.
-            </p>
-          </div>
-          <div className="story-editorial-text story-editorial-detail">
-            <h3>Vamos entender o que você precisa.</h3>
-            <p>
-              Conte sobre o seu carro e a sua rotina. Nossa equipe ajuda a
-              escolher a proteção e o acabamento para o seu projeto.
-            </p>
-          </div>
-          <Link href="/contato" className="story-editorial-link">
-            Converse com nossa equipe
-            <ArrowUpRight size={17} aria-hidden="true" />
+          <p>
+            Em Praia de Itaparica, Vila Velha, reunimos proteção e estética para
+            cuidar do que acompanha você.
+          </p>
+          <p>
+            Trabalhamos com Origin Películas e produtos Gyeon. Da primeira
+            conversa ao acabamento, a atenção está no seu projeto e no resultado
+            que você procura.
+          </p>
+          <Link href="/contato" className="campaign-button">
+            Converse com a RETÉM <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

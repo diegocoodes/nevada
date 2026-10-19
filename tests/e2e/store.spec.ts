@@ -35,7 +35,7 @@ test("seleção persiste e finaliza sem API no WhatsApp correto com todos os ite
   });
   await page.route("https://wa.me/**", async (route) => {
     const url = new URL(route.request().url());
-    expect(url.pathname).toBe("/558186020710");
+    expect(url.pathname).toBe("/5527992315115");
     message = url.searchParams.get("text") || "";
     await route.fulfill({
       contentType: "text/html",
@@ -43,7 +43,7 @@ test("seleção persiste e finaliza sem API no WhatsApp correto com todos os ite
     });
   });
   await page.getByRole("button", { name: "Finalizar pelo WhatsApp" }).click();
-  await expect(page).toHaveURL(/wa\.me\/558186020710/);
+  await expect(page).toHaveURL(/wa\.me\/5527992315115/);
   expect(message).toContain("PPF Nevada Gloss");
   expect(message).toContain("PPF Nevada Satin");
   expect(message).toContain("Acabamento: Brilhante");

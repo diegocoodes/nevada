@@ -1,10 +1,12 @@
 # Retém Estética Premium & Loja Distribuidora
 
-Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 81 8602-0710**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
+Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 27 99231-5115**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
 
-A página `/` apresenta a estética com hero com fundo preto com luz vermelha difusa, tipografia vermelha ampliada e carro vermelho de perfil. A landing `/distribuidora` usa a composição escura com iluminação vermelha das referências, símbolo RE em fundo claro, benefícios, etapas, marcas, produtos e perguntas frequentes. As demais seções, o catálogo e o checkout compartilham a atmosfera de carvão e vermelho, com amarelo nos destaques do catálogo. As rotas de produtos e o carrinho existentes foram preservados. A Origin possui filtro próprio e atendimento para consulta; seus produtos e fichas técnicas ainda precisam ser cadastrados. Os SVGs Retém e RE em `public/images` são reconstruções vetoriais baseadas nas referências do briefing; substitua pelos arquivos oficiais quando disponíveis.
+As páginas `/` e `/distribuidora` usam a composição da referência de campanha, adaptada ao preto, vermelho e amarelo da RETÉM. Os heroes combinam fotografias reais com títulos em Barlow Condensed. A home apresenta proteção, serviços interativos, orçamento, marcas, galeria, perguntas frequentes e localização. A distribuidora reúne benefícios, marcas, linhas, produtos e atendimento. Sobre, contato, catálogo e checkout seguem a mesma identidade. As duas landings possuem entradas animadas, revelações na rolagem, parallax discreto e interações nos cartões e botões, com respeito a movimento reduzido. Não há contadores ou numeração decorativa. A Origin possui filtro próprio e atendimento para consulta; seus produtos e fichas técnicas ainda precisam ser cadastrados. Os SVGs Retém e RE em `public/images` são reconstruções vetoriais baseadas nas referências do briefing; substitua pelos arquivos oficiais quando disponíveis.
 
 O catálogo, as categorias e as configurações ficam em [`src/data/store.ts`](src/data/store.ts). O carrinho permanece no navegador com Zustand/localStorage. Ao finalizar, o site prepara uma mensagem com produtos, variantes, atributos, SKU, quantidades, valores e dados informados pelo cliente, e abre a conversa no número configurado. O cliente confirma o envio no WhatsApp.
+
+Os serviços da estética e as perguntas frequentes ficam em [`src/data/services.ts`](src/data/services.ts). A home apresenta PPF, películas automotivas e arquitetônicas, coat cerâmica Gyeon, polimento, cristalização e recuperação de faróis. Cada serviço abre o contato com o assunto preenchido. Os dados de atendimento usam o material fornecido: Instagram `@retem.es`, Rodovia do Sol, 1528, Praia de Itaparica, Vila Velha, ES. O CEP `29102-020` segue a informação mais recente do perfil enviada no briefing.
 
 ## Publicar na Vercel
 
@@ -32,7 +34,7 @@ npm start
 
 Edite os objetos `settings`, `categories` e `products` em [`src/data/store.ts`](src/data/store.ts), faça commit e publique novamente. O site não possui painel administrativo.
 
-- O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `558186020710`.
+- O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `5527992315115`.
 - Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.
 - Cada variante tem identificador, SKU, atributos e disponibilidade. Preserve os identificadores ao editar produtos existentes para manter os carrinhos dos visitantes.
 - Use imagens locais em `public/images` com caminhos como `/images/lines/ppf-application.webp`.
@@ -62,7 +64,7 @@ O workflow [Validate](.github/workflows/ci.yml) executa essas verificações no 
 
 ## Interface e arquivos
 
-O hero usa a imagem ilustrativa de um carro vermelho em perfil sobre fundo preto com luz vermelha difusa, sem grade nem rótulos decorativos, preservando a tipografia animada. As seções seguintes compartilham um único Mesh drift em WebGL por página, com fallback em CSS. A abertura usa o componente de partículas enviado pelo usuário, adaptado em `src/components/ui/vapour-text-effect.tsx`, com limite de partículas e cleanup. Os títulos usam Manrope; os textos e controles usam Inter, ambas locais. As animações respeitam movimento reduzido e param quando a seção ou a aba deixa de estar visível. O seletor de serviços e linhas reaproveita fotografias, informações à esquerda e imagem à direita, com recortes e contornos próprios. A faixa vermelha mantém o texto em movimento. A identidade base está em `src/styles/retem.css`; a direção das referências está em `src/styles/art-direction.css`. Os prompts das imagens estão em [`docs/retem-art-direction.md`](docs/retem-art-direction.md).
+Os estilos atuais ficam em `src/styles/studio-design.css` e `src/styles/distributor-design.css`. Os títulos usam Barlow Condensed e os textos e controles usam Barlow, fontes locais com licenças em `public/fonts/barlow*`. O hook `src/hooks/use-landing-motion.ts` usa GSAP e ScrollTrigger nas duas landings, com cleanup ao navegar, suporte a conteúdo carregado durante a navegação e cancelamento quando o visitante prefere movimento reduzido. `src/styles/landing-motion.css` reúne interações de cartões, fotos, botões e seletores. O conteúdo é renderizado no servidor e permanece legível sem JavaScript. Não há WebGL nem tela de abertura bloqueando as páginas. `src/components/studio-services.tsx` abre o contato com o serviço preenchido. As fotografias vieram de Unsplash e Pexels; autores e páginas originais estão em [`public/images/CREDITS.md`](public/images/CREDITS.md). São imagens ilustrativas de contexto, com acesso ao perfil oficial para trabalhos reais. Os estilos anteriores permanecem como base para os componentes do catálogo.
 
 ```text
 src/app           páginas, metadata e rotas Next.js

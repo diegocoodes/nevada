@@ -1,0 +1,126 @@
+/* Motion is progressive: the HTML remains readable without JavaScript. */
+@keyframes retem-media-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes retem-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .campaign-button,
+  .storefront .header-appointment {
+    transition:
+      background 0.22s,
+      border-color 0.22s,
+      translate 0.22s,
+      box-shadow 0.22s;
+  }
+  .campaign-button:hover,
+  .storefront .header-appointment:hover {
+    translate: 0 -2px;
+    box-shadow: 0 8px 26px #fbba1318;
+  }
+  .campaign-button > svg,
+  .atelier-link > svg,
+  .studio-text-link > svg {
+    transition: transform 0.25s;
+  }
+  .campaign-button:hover > svg,
+  .atelier-link:hover > svg,
+  .studio-text-link:hover > svg {
+    transform: translate(3px, -3px);
+  }
+  .atelier-process-grid > article,
+  .storefront .distributor-brand-card,
+  .storefront .product-card,
+  .storefront .purchase-card {
+    transition:
+      translate 0.3s,
+      border-color 0.3s,
+      box-shadow 0.3s;
+  }
+  .atelier-process-grid > article:hover,
+  .storefront .distributor-brand-card:hover,
+  .storefront .product-card:hover,
+  .storefront .purchase-card:hover {
+    translate: 0 -5px;
+    border-color: #9e7f2e;
+    box-shadow: 0 18px 36px #0003;
+  }
+  .atelier-service-option button {
+    transition:
+      color 0.2s,
+      background 0.2s;
+  }
+  .atelier-service-option button > svg {
+    transition: transform 0.3s;
+  }
+  .atelier-service-image img {
+    animation: retem-media-enter 0.55s ease-out;
+  }
+  .atelier-gallery-grid figure > div {
+    overflow: hidden;
+  }
+  .atelier-gallery-grid img,
+  .campaign-story-photo img,
+  .dl-benefit-art img {
+    transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1);
+  }
+  .atelier-gallery-grid figure:hover img,
+  .campaign-story-photo:hover img,
+  .dl-benefit-art:hover img {
+    transform: scale(1.035);
+  }
+  .studio-questions details[open] > p,
+  .dl-faq details[open] > p {
+    animation: retem-detail-enter 0.3s ease-out;
+  }
+  .studio-questions summary > svg {
+    transition: transform 0.25s;
+  }
+  .campaign-ribbon > span {
+    transition: transform 0.25s;
+  }
+  .campaign-ribbon:hover > span {
+    transform: translateY(3px);
+  }
+  .campaign-offer-card {
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
+  }
+  .campaign-offer-card:focus-within {
+    border-color: #fbba13;
+    box-shadow: 0 18px 60px #fbba130a;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .campaign-button,
+  .storefront .header-appointment,
+  .atelier-process-grid > article,
+  .storefront .distributor-brand-card,
+  .storefront .product-card,
+  .storefront .purchase-card {
+    transition: none;
+    translate: none;
+  }
+  .atelier-service-image img,
+  .lines-preview-image img,
+  .studio-questions details[open] > p,
+  .dl-faq details[open] > p {
+    animation: none;
+  }
+}

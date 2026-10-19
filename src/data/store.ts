@@ -3,16 +3,18 @@ import type { Category, Product, Settings } from "@/types/store";
 export const settings: Settings = {
   name: "Retém Estética Premium",
   logo: "/images/retem-logo.svg",
-  whatsapp: "558186020710",
-  email: "",
-  instagram: "",
-  address: "",
-  hours: "",
-  heroTitle: "Seu carro. Sua essência. Nosso cuidado.",
-  heroDescription: "",
+  whatsapp: "5527992315115",
+  email: "contato@retem.com.br",
+  instagram: "https://www.instagram.com/retem.es/",
+  address:
+    "Rodovia do Sol, 1528 · Praia de Itaparica, Vila Velha · ES · CEP 29102-020",
+  hours: "Seg–Sex: 8h às 18h · Sáb: 8h às 13h",
+  heroTitle: "Proteção para seu carro, casa e empresa.",
+  heroDescription:
+    "Películas solares, PPF e estética premium em Vila Velha, Espírito Santo.",
   heroImage: "/images/hero-car-cutout.png",
   aboutText:
-    "A Retém Estética Premium cuida de cada detalhe do seu carro, com foco em PPF e películas automotivas. Da proteção da pintura ao cuidado com os vidros, ajudamos você a escolher a solução para sua rotina. Na Retém Loja Distribuidora, você também encontra Nevada Films e Origin Películas para o seu próximo projeto.",
+    "A RETÉM reúne películas solares, PPF e estética premium em Praia de Itaparica, Vila Velha. Cuidamos do seu veículo com proteção de pintura, coat cerâmica, vitrificação, cristalização e polimento técnico. Também desenvolvemos projetos de películas para residências e empresas, buscando conforto térmico, privacidade e proteção dos ambientes. Trabalhamos com Origin Películas e Gyeon. Nossa equipe ajuda a escolher os materiais e os cuidados de acordo com cada projeto. Na Retém Loja Distribuidora, você também encontra Nevada Films e Origin Películas para a sua aplicação.",
   postalCodeRequired: false,
   demoMode: true,
 };

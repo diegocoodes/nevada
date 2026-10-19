@@ -46,7 +46,7 @@ export function Brand({
         className="brand-logo"
         src={
           distributor
-            ? "/images/retem-re.svg"
+            ? "/images/retem-re-light.svg"
             : dark
               ? "/images/retem-logo-dark.svg"
               : logo || "/images/retem-logo.svg"
@@ -91,7 +91,7 @@ export function Header({ logo, name }: { logo: string; name: string }) {
       <div className={`announcement ${home ? "announcement-home" : ""}`}>
         {distributor
           ? "RETÉM LOJA DISTRIBUIDORA · NEVADA FILMS E ORIGIN PELÍCULAS"
-          : "RETÉM · PPF, PELÍCULAS E CUIDADO AUTOMOTIVO"}{" "}
+          : "RETÉM · PELÍCULAS, PPF E COAT CERÂMICA · VILA VELHA / ES"}{" "}
         <Link href={distributor ? "/" : "/distribuidora"}>
           {distributor ? "Conheça a estética" : "Conheça a distribuidora"}{" "}
           <ArrowUpRight size={12} />

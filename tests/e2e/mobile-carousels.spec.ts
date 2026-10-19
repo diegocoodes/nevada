@@ -38,7 +38,7 @@ test("produtos e passos rolam horizontalmente no mobile sem overflow da página"
   }
 });
 
-test("desktop mantém as grades e os números dos passos alternam entre topo e base", async ({
+test("desktop mantém as grades e as etapas sem numeração decorativa", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -65,5 +65,6 @@ test("desktop mantém as grades e os números dos passos alternam entre topo e b
       return number.top < title.top;
     }),
   );
-  expect(positions).toEqual([true, false, true]);
+  expect(positions).toEqual([true, true, true]);
+  await expect(page.locator(".step-number")).toHaveCount(0);
 });

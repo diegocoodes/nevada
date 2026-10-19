@@ -8,13 +8,13 @@ import {
   SlidersHorizontal,
   ShoppingBag,
   MessageCircle,
+  ChevronDown,
 } from "lucide-react";
 import { getSettings, getCategories, getProducts } from "@/lib/store-data";
 import { contactUrl } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
 import { CategoryExplorer } from "@/components/category-explorer";
 import { ProductCard } from "@/components/product-card";
-import { Atmosphere } from "@/components/atmosphere";
 
 export const metadata: Metadata = {
   title: "Loja Distribuidora | Nevada Films e Origin Películas",
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 
 const steps = [
   {
-    number: "01",
     icon: SlidersHorizontal,
     title: "Encontre sua linha.",
     description:
@@ -34,7 +33,6 @@ const steps = [
     href: "/produtos",
   },
   {
-    number: "02",
     icon: ShoppingBag,
     title: "Monte sua seleção.",
     description:
@@ -43,7 +41,6 @@ const steps = [
     href: "/checkout",
   },
   {
-    number: "03",
     icon: MessageCircle,
     title: "Converse com a Retém.",
     description:
@@ -95,43 +92,51 @@ export default async function Distributor() {
   ]);
   return (
     <div className="distributor-landing">
-      <section className="dl-hero" aria-labelledby="distributor-hero-title">
-        <div className="dl-hero-visual">
+      <section
+        className="campaign-hero distributor-campaign-hero"
+        aria-labelledby="distributor-hero-title"
+      >
+        <div className="campaign-hero-visual">
           <Image
-            src="/images/retem-films-studio.webp"
-            alt="Composição ilustrativa de rolos de película transparente e película escura com iluminação vermelha"
+            className="hero-photo"
+            src="/images/retem-ppf-real.webp"
+            alt="Aplicação profissional de película de proteção sobre um esportivo"
             fill
             preload
-            sizes="(max-width: 800px) 100vw, 1100px"
+            sizes="(max-width: 760px) 100vw, 75vw"
           />
-          <div className="dl-hero-visual-shade" />
-          <span className="dl-visual-note" aria-hidden="true">
-            MATERIAL PARA IR ALÉM.
-          </span>
         </div>
-        <Reveal className="container dl-hero-copy">
-          <p className="eyebrow">
-            <span className="dl-status-dot" /> RETÉM LOJA DISTRIBUIDORA
-          </p>
-          <h1 id="distributor-hero-title">
-            Seu próximo projeto.
-            <br />
-            <span>A escolha certa começa aqui.</span>
-          </h1>
-          <p>
-            Nevada Films e Origin Películas. Da primeira camada ao último
-            detalhe, encontre os produtos para o seu próximo acabamento.
-          </p>
-          <Link href="/produtos" className="button button-primary">
-            Explorar os produtos <ArrowUpRight size={20} />
-          </Link>
-          <a className="dl-discover" href="#distributor-benefits">
-            Conheça a distribuidora <ArrowDown size={15} />
-          </a>
-        </Reveal>
+        <div className="container campaign-hero-inner">
+          <div className="campaign-hero-copy">
+            <p className="campaign-kicker">RETÉM LOJA DISTRIBUIDORA</p>
+            <h1 id="distributor-hero-title">
+              Seu melhor acabamento.
+              <br />
+              <span>Começa na escolha.</span>
+            </h1>
+            <p>
+              Nevada Films e Origin Películas. Da primeira camada ao último
+              detalhe, encontre os produtos para o seu próximo acabamento.
+            </p>
+            <Link href="/produtos" className="campaign-button">
+              Explorar os produtos <ArrowUpRight size={20} />
+            </Link>
+            <a className="campaign-hero-explore" href="#distributor-benefits">
+              Conheça a distribuidora <ArrowDown size={15} />
+            </a>
+            <span className="campaign-hero-location">
+              NEVADA FILMS · ORIGIN PELÍCULAS
+            </span>
+          </div>
+        </div>
       </section>
-
-      <Atmosphere>
+      <a href="#linhas" className="campaign-ribbon">
+        Material para o seu próximo grande projeto.
+        <span>
+          <ChevronDown size={18} aria-hidden="true" />
+        </span>
+      </a>
+      <div className="distributor-campaign-body">
         <section
           id="distributor-benefits"
           className="section dl-benefits"
@@ -140,8 +145,8 @@ export default async function Distributor() {
           <div className="container dl-benefit-grid">
             <Reveal className="dl-benefit-art" direction="left">
               <Image
-                src="/images/nevada-application.png"
-                alt="Imagem ilustrativa de uma película transparente sendo aplicada à pintura"
+                src="/images/retem-workshop-real.webp"
+                alt="Aplicação de película de proteção na pintura de um carro em oficina"
                 fill
                 sizes="(max-width: 800px) 100vw, 520px"
               />
@@ -203,7 +208,7 @@ export default async function Distributor() {
             <h2 id="purchase-title">
               Seu próximo pedido.
               <br />
-              <span>Em três passos.</span>
+              <span>Sem complicar.</span>
             </h2>
             <p>Você escolhe online. A Retém continua a conversa.</p>
           </Reveal>
@@ -217,32 +222,26 @@ export default async function Distributor() {
             aria-label="Passos para fazer seu pedido"
             tabIndex={0}
           >
-            {steps.map(
-              ({ number, icon: Icon, title, description, action, href }) => (
-                <article className="purchase-card" key={number}>
-                  <div className="purchase-number">
-                    <span className="step-number">
-                      <span className="step-label">PASSO</span>
-                      {number}
-                    </span>
-                    <Icon size={26} />
-                  </div>
-                  <div className="purchase-service">
-                    <h3>{title}</h3>
-                  </div>
-                  <p className="purchase-description">{description}</p>
-                  <Link
-                    className="purchase-card-link"
-                    href={
-                      href === "whatsapp" ? contactUrl(settings.whatsapp) : href
-                    }
-                  >
-                    <span>{action}</span>
-                    <ArrowUpRight size={17} />
-                  </Link>
-                </article>
-              ),
-            )}
+            {steps.map(({ icon: Icon, title, description, action, href }) => (
+              <article className="purchase-card" key={title}>
+                <div className="purchase-number">
+                  <Icon size={26} />
+                </div>
+                <div className="purchase-service">
+                  <h3>{title}</h3>
+                </div>
+                <p className="purchase-description">{description}</p>
+                <Link
+                  className="purchase-card-link"
+                  href={
+                    href === "whatsapp" ? contactUrl(settings.whatsapp) : href
+                  }
+                >
+                  <span>{action}</span>
+                  <ArrowUpRight size={17} />
+                </Link>
+              </article>
+            ))}
           </Reveal>
           <div className="dl-section-action">
             <Link href="/produtos" className="button button-primary">
@@ -277,7 +276,7 @@ export default async function Distributor() {
                 href="/produtos?marca=nevada"
                 className="distributor-brand-card"
               >
-                <span className="eyebrow">01 / EXPLORE O CATÁLOGO</span>
+                <span className="eyebrow">EXPLORE O CATÁLOGO</span>
                 <Image
                   src="/images/nevada-logo-2026.png"
                   alt="Nevada Films"
@@ -308,7 +307,7 @@ export default async function Distributor() {
                 href="/produtos?marca=origin"
                 className="distributor-brand-card origin-brand-card"
               >
-                <span className="eyebrow">02 / CONVERSE COM A RETÉM</span>
+                <span className="eyebrow">CONVERSE COM A RETÉM</span>
                 <span className="origin-wordmark">
                   ORIGIN<span>PELÍCULAS</span>
                 </span>
@@ -437,7 +436,7 @@ export default async function Distributor() {
           <div className="container">
             <div className="dl-final-brand">
               <Image
-                src="/images/retem-re.svg"
+                src="/images/retem-re-light.svg"
                 alt="RE — Retém Loja Distribuidora"
                 width={820}
                 height={360}
@@ -462,7 +461,7 @@ export default async function Distributor() {
             </Link>
           </div>
         </section>
-      </Atmosphere>
+      </div>
     </div>
   );
 }

@@ -28,6 +28,8 @@ export function Footer({
           <Link href="/distribuidora">Retém Loja Distribuidora</Link>
           <Link href="/produtos">Todos os produtos</Link>
           <Link href="/sobre">Sobre nós</Link>
+          <Link href="/#galeria">Trabalhos no Instagram</Link>
+          <Link href="/#faq">Perguntas frequentes</Link>
           <Link href="/contato">Contato</Link>
           <Link href="/privacidade">Privacidade</Link>
         </div>
@@ -44,7 +46,7 @@ export function Footer({
         <div>
           <h3>Vamos conversar</h3>
           <a href={contactUrl(s.whatsapp)}>
-            Atendimento comercial <ArrowUpRight size={14} />
+            WhatsApp · (27) 99231-5115 <ArrowUpRight size={14} />
           </a>
           {s.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
           {s.instagram && (

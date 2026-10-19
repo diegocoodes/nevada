@@ -15,6 +15,22 @@ As imagens atuais da lista de linhas estão em `public/images/lines/`. Foram enc
 
 As fotografias de oficinas, testes e produtos de terceiros são referências visuais da aplicação. Não documentam instalações realizadas pela Nevada, nem apresentam embalagens Nevada Layer. Os originais foram apenas reduzidos e convertidos para WebP; o enquadramento é aplicado com CSS, preservando a fotografia de origem.
 
+## Landing RETÉM — fotografias reais
+
+Fotografias de contexto selecionadas por pesquisa na web, a partir do pedido de referências do Google. Arquivos baixados das fontes originais e convertidos para WebP. Não são registros de atendimentos da RETÉM.
+
+| Arquivo | Autor e fonte original |
+| --- | --- |
+| `retem-hero-real.webp` | [Joey Banks — detalhe de esportivo vermelho / Unsplash](https://unsplash.com/photos/red-porsche-car-zUX6103ig7w) |
+| `retem-porsche-black.webp` | [Josh Berquist — Porsche preto / Unsplash](https://unsplash.com/photos/black-porsche-911-on-road-during-daytime-pjxe3p4u5aI) |
+| `retem-ppf-real.webp` | [WAVYVISUALS — aplicação de película / Pexels](https://www.pexels.com/photo/men-holding-foil-over-car-20051465/) |
+| `retem-workshop-real.webp` | [Bulat843 — aplicação de película em oficina / Pexels](https://www.pexels.com/photo/car-detailing-process-in-workshop-setting-31154218/) |
+| `retem-architecture-real.webp` | [Fer Troulik — interior com divisórias de vidro / Unsplash](https://unsplash.com/photos/modern-office-interior-with-glass-walls-and-reflections-lIipHR8mi3o) |
+
+Licenças das fontes: [Unsplash](https://unsplash.com/license) e [Pexels](https://www.pexels.com/license/). A landing principal usa as fotografias desta tabela. A distribuidora usa `retem-ppf-real.webp` no hero e `retem-workshop-real.webp` na apresentação, além dos arquivos de linhas e produtos documentados nesta página. Os assets gerados de versões anteriores permanecem documentados abaixo.
+
+`retem-re-light.svg` é a variante do símbolo RE para fundos escuros: a geometria, o vermelho e o amarelo de `retem-re.svg` foram preservados; as partes escuras passaram para branco.
+
 ## Hero Retém em perfil
 
 `retem-hero-profile.webp`: composição ilustrativa de um esportivo vermelho em perfil, criada com a ferramenta integrada imagegen e fundo transparente. Não representa um atendimento real. O prompt está em [`docs/retem-profile-hero.md`](../../docs/retem-profile-hero.md). A tipografia e a textura do fundo são construídas no site.

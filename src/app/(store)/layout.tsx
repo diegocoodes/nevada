@@ -2,7 +2,6 @@ import { getSettings, getCategories } from "@/lib/store-data";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CartDrawer } from "@/components/cart-drawer";
-import { SiteIntro } from "@/components/site-intro";
 import { BrandShell } from "@/components/brand-shell";
 import { PageAtmosphere } from "@/components/page-atmosphere";
 export async function generateMetadata() {
@@ -20,7 +19,6 @@ export default async function StoreLayout({
   ]);
   return (
     <BrandShell>
-      <SiteIntro logo={settings.logo} />
       <a href="#main" className="skip-link">
         Pular para o conteúdo
       </a>

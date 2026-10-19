@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { getSettings } from "@/lib/store-data";
 import { ContactForm } from "@/components/contact-form";
 import { contactUrl } from "@/lib/utils";
+import { services } from "@/data/services";
 export const metadata: Metadata = {
   title: "Contato",
   alternates: { canonical: "/contato" },
@@ -13,7 +14,7 @@ export default async function Contact({
   searchParams: Promise<{ servico?: string }>;
 }) {
   const [s, params] = await Promise.all([getSettings(), searchParams]);
-  const service = ["PPF", "Películas solares"].includes(params.servico ?? "")
+  const service = services.some((item) => item.name === params.servico)
     ? params.servico
     : undefined;
   return (
@@ -36,7 +37,7 @@ export default async function Contact({
                 whatsapp={s.whatsapp}
                 initialProject={
                   service
-                    ? `Gostaria de saber mais sobre ${service} para o meu carro.`
+                    ? `Gostaria de um orçamento para ${service}.`
                     : ""
                 }
               />
@@ -64,6 +65,19 @@ export default async function Contact({
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           )}
+        </div>
+        <div className="studio-location-actions">
+          <a className="studio-text-link" href="tel:+5527992315115">
+            Ligar: (27) 99231-5115 <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a
+            className="studio-text-link"
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("RETÉM Rodovia do Sol 1528 Praia de Itaparica Vila Velha ES")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Como chegar <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
         </div>
         {(s.email || s.hours || s.address || s.instagram) && (
           <div className="contact-details">

@@ -27,7 +27,7 @@ test("WhatsApp usa o número exato, todas as seleções e caracteres especiais",
   const result = prepare([line(gloss, 2), line(satin, 1)]);
   const url = new URL(result.whatsappUrl);
   assert.equal(url.origin, "https://wa.me");
-  assert.equal(url.pathname, "/558186020710");
+  assert.equal(url.pathname, "/5527992315115");
   assert.equal(url.searchParams.get("text"), result.message);
   assert.ok(result.message.includes(gloss.name));
   assert.ok(result.message.includes(satin.name));

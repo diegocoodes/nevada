@@ -41,7 +41,7 @@ export function Reveal({
     return () => mm.revert();
   }, [stagger, direction]);
   return (
-    <div ref={root} className={className} {...props}>
+    <div ref={root} className={className} data-reveal="" {...props}>
       {children}
     </div>
   );

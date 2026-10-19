@@ -16,7 +16,7 @@ O projeto funciona sem banco de dados. Produtos, categorias, imagens e configura
 4. Clique em **Deploy**. Não é necessário configurar banco, migrations ou segredos.
 5. Confira `/`, `/produtos`, uma página de produto, `/contato` e `/checkout`.
 
-O WhatsApp já está configurado em `src/data/store.ts` como `558186020710`, correspondente a **+55 81 8602-0710**. Finalizar o pedido abre uma mensagem preenchida com a seleção; o visitante confirma o envio na conversa.
+O WhatsApp já está configurado em `src/data/store.ts` como `5527992315115`, correspondente a **+55 27 99231-5115**. Finalizar o pedido abre uma mensagem preenchida com a seleção; o visitante confirma o envio na conversa.
 
 ## Domínio próprio
 
