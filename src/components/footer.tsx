@@ -24,12 +24,12 @@ export function Footer({
         </div>
         <div>
           <h3>Explore</h3>
-          <Link href="/#servicos">Nossos serviços</Link>
+          <Link href="/retem#servicos">Nossos serviços</Link>
           <Link href="/distribuidora">Retém Loja Distribuidora</Link>
           <Link href="/produtos">Todos os produtos</Link>
           <Link href="/sobre">Sobre nós</Link>
-          <Link href="/#galeria">Trabalhos no Instagram</Link>
-          <Link href="/#faq">Perguntas frequentes</Link>
+          <Link href="/retem#galeria">Trabalhos no Instagram</Link>
+          <Link href="/retem#faq">Perguntas frequentes</Link>
           <Link href="/contato">Contato</Link>
           <Link href="/privacidade">Privacidade</Link>
         </div>

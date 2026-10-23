@@ -82,7 +82,7 @@ test("catálogo filtra categoria, pesquisa e preço", async ({ page }) => {
 
 test("mobile sem overflow, menu e drawer com teclado", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/retem");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,

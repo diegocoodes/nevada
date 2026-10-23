@@ -1,4 +1,5 @@
 import type { Category, Product, Settings } from "@/types/store";
+import { getOriginProducts } from "@/data/origin";
 
 export const settings: Settings = {
   name: "Retém Estética Premium",
@@ -77,6 +78,7 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
+  ...getOriginProducts(categories),
   {
     id: "cmv1n3xd8000u48tbikwtmk9d",
     slug: "nevada-layer-seal",

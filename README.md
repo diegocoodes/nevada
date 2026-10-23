@@ -2,7 +2,9 @@
 
 Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 27 99231-5115**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
 
-As páginas `/` e `/distribuidora` usam a composição da referência de campanha, adaptada ao preto, vermelho e amarelo da RETÉM. Os heroes combinam fotografias reais com títulos em Barlow Condensed. A home apresenta proteção, serviços interativos, orçamento, marcas, galeria, perguntas frequentes e localização. A distribuidora reúne benefícios, marcas, linhas, produtos e atendimento. Sobre, contato, catálogo e checkout seguem a mesma identidade. As duas landings possuem entradas animadas, revelações na rolagem, parallax discreto e interações nos cartões e botões, com respeito a movimento reduzido. Não há contadores ou numeração decorativa. A Origin possui filtro próprio e atendimento para consulta; seus produtos e fichas técnicas ainda precisam ser cadastrados. Os SVGs Retém e RE em `public/images` são reconstruções vetoriais baseadas nas referências do briefing; substitua pelos arquivos oficiais quando disponíveis.
+A página `/` apresenta duas opções: **Entrar no site Retém**, que abre `/retem`, e **Entrar na Retém Loja**, que abre `/distribuidora`. A estética mantém o fundo escuro; a loja, o catálogo e o checkout usam fundo branco, com detalhes vermelhos e amarelos. Os links internos da estética levam diretamente a `/retem` e às suas seções.
+
+Os heroes combinam fotografias de contexto com títulos em Barlow Condensed. A estética apresenta proteção, serviços interativos, orçamento, marcas, galeria, perguntas frequentes e localização. A distribuidora reúne benefícios, marcas, linhas, produtos e atendimento, incluindo uma apresentação das seis linhas Origin: Origin, Black, Carbon, Maxx Protection, GTS e Reflect. As duas landings possuem entradas animadas, revelações na rolagem, parallax discreto e interações nos cartões e botões, com respeito a movimento reduzido. Os SVGs Retém e RE em `public/images` são reconstruções vetoriais baseadas nas referências do briefing; substitua pelos arquivos oficiais quando disponíveis.
 
 O catálogo, as categorias e as configurações ficam em [`src/data/store.ts`](src/data/store.ts). O carrinho permanece no navegador com Zustand/localStorage. Ao finalizar, o site prepara uma mensagem com produtos, variantes, atributos, SKU, quantidades, valores e dados informados pelo cliente, e abre a conversa no número configurado. O cliente confirma o envio no WhatsApp.
 
@@ -33,6 +35,8 @@ npm start
 ## Atualizar o catálogo
 
 Edite os objetos `settings`, `categories` e `products` em [`src/data/store.ts`](src/data/store.ts), faça commit e publique novamente. O site não possui painel administrativo.
+
+As linhas Origin ficam em [`src/data/origin.ts`](src/data/origin.ts), compartilhadas entre a apresentação da loja e o catálogo. As tonalidades geram variantes com valores sob consulta e quantidade a confirmar no atendimento. Os dados técnicos e as imagens seguem a [referência da Origin Films](https://originfilms.com.br/nossas-peliculas/); os créditos estão em `public/images/CREDITS.md`.
 
 - O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `5527992315115`.
 - Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.

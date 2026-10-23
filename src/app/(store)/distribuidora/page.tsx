@@ -17,6 +17,7 @@ import { contactUrl } from "@/lib/utils";
 import { Reveal } from "@/components/reveal";
 import { CategoryExplorer } from "@/components/category-explorer";
 import { ProductCard } from "@/components/product-card";
+import { OriginLines } from "@/components/origin-lines";
 
 export const metadata: Metadata = {
   title: "Loja Distribuidora | Nevada Films e Origin Películas",
@@ -317,33 +318,35 @@ export default async function Distributor() {
                 href="/produtos?marca=origin"
                 className="distributor-brand-card origin-brand-card"
               >
-                <span className="eyebrow">CONVERSE COM A RETÉM</span>
+                <span className="eyebrow">CONHEÇA AS SEIS LINHAS</span>
                 <span className="origin-wordmark">
                   ORIGIN<span>PELÍCULAS</span>
                 </span>
                 <p>
-                  Uma nova possibilidade para o seu próximo projeto com
-                  películas.
+                  Nanocerâmica, carbono e proteção para encontrar o conforto do
+                  seu próximo projeto.
                 </p>
                 <ul>
                   <li>
-                    <Check size={15} /> Consulte as linhas
+                    <Check size={15} /> Origin, Black e Carbon
                   </li>
                   <li>
-                    <Check size={15} /> Encontre as medidas para sua aplicação
+                    <Check size={15} /> Maxx Protection, GTS e Reflect
                   </li>
                   <li>
                     <Check size={15} /> Confira a disponibilidade
                   </li>
                 </ul>
                 <span className="distributor-brand-description">
-                  Consultar Origin Películas
+                  Conhecer Origin Películas
                   <ArrowUpRight size={24} />
                 </span>
               </Link>
             </div>
           </div>
         </section>
+
+        <OriginLines whatsapp={settings.whatsapp} />
 
         <section
           id="linhas"
@@ -452,7 +455,7 @@ export default async function Distributor() {
           <div className="container">
             <div className="dl-final-brand">
               <Image
-                src="/images/retem-re-light.svg"
+                src="/images/retem-re.svg"
                 alt="RE — Retém Loja Distribuidora"
                 width={820}
                 height={360}
@@ -473,7 +476,7 @@ export default async function Distributor() {
             >
               Falar com a distribuidora <ArrowUpRight size={20} />
             </a>
-            <Link href="/" className="distributor-back">
+            <Link href="/retem" className="distributor-back">
               Quer cuidar do seu carro? Conheça a estética{" "}
               <ArrowUpRight size={16} />
             </Link>

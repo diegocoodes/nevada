@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test("apresentação mostra o processo e direciona para as marcas oficiais", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/retem");
   await expect(page.locator(".atelier-process-grid article")).toHaveCount(3);
   await expect(
     page.locator(".studio-brands").getByRole("link", { name: /ORIGIN/ }),

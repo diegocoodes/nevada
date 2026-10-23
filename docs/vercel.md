@@ -14,7 +14,7 @@ O projeto funciona sem banco de dados. Produtos, categorias, imagens e configura
 | Output Directory | Padrão do Next.js, sem override |
 
 4. Clique em **Deploy**. Não é necessário configurar banco, migrations ou segredos.
-5. Confira `/`, `/produtos`, uma página de produto, `/contato` e `/checkout`.
+5. Confira a escolha em `/`, a estética em `/retem`, a loja em `/distribuidora`, `/produtos?marca=origin`, uma página de produto, `/contato` e `/checkout`.
 
 O WhatsApp já está configurado em `src/data/store.ts` como `5527992315115`, correspondente a **+55 27 99231-5115**. Finalizar o pedido abre uma mensagem preenchida com a seleção; o visitante confirma o envio na conversa.
 
@@ -26,7 +26,7 @@ Mantenha habilitada a opção **Automatically expose System Environment Variable
 
 ## Atualizar produtos e configurações
 
-Edite `src/data/store.ts`, faça commit e envie para `main`. A integração GitHub–Vercel publica a atualização. Imagens novas devem ser adicionadas em `public/images` e referenciadas pelo caminho público. O catálogo já inclui as seis categorias e os sete produtos da versão local; não é necessário importar dados.
+Edite `src/data/store.ts` e as linhas Origin em `src/data/origin.ts`, faça commit e envie para `main`. A integração GitHub–Vercel publica a atualização. Imagens novas devem ser adicionadas em `public/images` e referenciadas pelo caminho público. O catálogo inclui as seis categorias, os produtos Nevada da versão local e as seis linhas Origin; não é necessário importar dados.
 
 ## Referências
 

@@ -6,7 +6,7 @@ test.use({ reducedMotion: "reduce" });
 test("serviços, dúvidas e localização usam os dados da RETÉM", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/retem");
   const services = page.locator("#servicos");
   await services
     .getByRole("button", {
@@ -30,7 +30,7 @@ test("serviços, dúvidas e localização usam os dados da RETÉM", async ({
     "Gostaria de um orçamento para Películas residenciais e comerciais.",
   );
 
-  await page.goto("/#faq");
+  await page.goto("/retem#faq");
   await page
     .getByText("Vocês aplicam películas em casas e empresas?", { exact: true })
     .click();
@@ -60,7 +60,7 @@ test("serviços, dúvidas e localização usam os dados da RETÉM", async ({
 test("estética e distribuidora trocam marca e tema durante a navegação", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/retem");
   await expect(page).toHaveTitle(/Retém Estética Premium/);
   await expect(page.locator(".storefront")).toHaveAttribute(
     "data-brand",
@@ -96,7 +96,7 @@ test("estética e distribuidora trocam marca e tema durante a navegação", asyn
   );
   await expect(page.locator("header .brand-logo")).toHaveAttribute(
     "src",
-    "/images/retem-re-light.svg",
+    "/images/retem-re.svg",
   );
   await expect(
     page.getByRole("button", { name: /Abrir carrinho/ }),
@@ -120,6 +120,7 @@ test("Origin abre consulta e os filtros de marca se atualizam na mesma rota", as
   await expect(
     page.getByRole("heading", { name: "Conheça a linha Origin Películas." }),
   ).toBeVisible();
+  await expect(page.locator(".catalog-grid .product-card")).toHaveCount(6);
   const contact = page.getByRole("link", {
     name: "Consultar Origin Películas",
     exact: true,

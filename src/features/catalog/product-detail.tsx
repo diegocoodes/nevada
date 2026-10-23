@@ -136,7 +136,9 @@ export function ProductDetail({
           </>
         )}
         <Button asChild variant="outline">
-          <a href={contactUrl(whatsapp)}>
+          <a
+            href={`${contactUrl(whatsapp)}?text=${encodeURIComponent(`Olá, Retém Loja! Gostaria de consultar ${p.name}${variant ? `, ${variant.name}` : ""}.`)}`}
+          >
             Falar com especialista <ArrowUpRight size={18} />
           </a>
         </Button>

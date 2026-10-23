@@ -6,7 +6,7 @@ test("home e produto acessíveis, imagens carregadas e layouts responsivos", asy
   await page.emulateMedia({ reducedMotion: "reduce" });
   for (const width of [1440, 768, 390]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("/");
+    await page.goto("/retem");
     await page
       .locator(".hero-photo")
       .evaluate((image: HTMLImageElement) => image.decode());

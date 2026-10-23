@@ -4,7 +4,7 @@ test("entrada da marca termina e não se repete na navegação interna", async (
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await page.goto("/retem", { waitUntil: "domcontentloaded" });
   const intro = page.locator(".site-entrance");
   await expect(intro).toBeVisible();
   await expect(intro).toHaveCount(0);
@@ -23,7 +23,7 @@ test("entrada da marca termina e não se repete na navegação interna", async (
 test("entrada respeita movimento reduzido no celular", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/retem");
   await expect(page.locator(".site-entrance")).toBeHidden();
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   expect(
@@ -41,7 +41,7 @@ test("entrada libera a tela mesmo com JavaScript desativado", async ({
     reducedMotion: "no-preference",
   });
   const page = await context.newPage();
-  await page.goto("/");
+  await page.goto("/retem");
   await expect(page.locator(".site-entrance")).toBeHidden({ timeout: 6000 });
   await expect(
     page

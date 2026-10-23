@@ -13,7 +13,7 @@ test("seção de contato da home prepara a conversa com nome e e-mail", async ({
       body: "<h1>Conversa preparada</h1>",
     });
   });
-  await page.goto("/");
+  await page.goto("/retem");
   const contact = page.getByRole("region", {
     name: "Entre em contato",
     exact: true,

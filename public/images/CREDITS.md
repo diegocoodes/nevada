@@ -69,4 +69,13 @@ Imagens de linhas e produtos obtidas do site de referência da fabricante:
 Arquivos PPF: `/wp-content/uploads/2026/10/nevada-ppf-{gloss,black,satin,ultra}-card.webp`.
 Arquivos Layer: `/wp-content/uploads/2026/06/Layer-Gel-2-730x912.png`, `Layer-Solution-3-730x912.png`, `Layer-Prepare-5-730x912.png`, `Layer-Seal-4-730x912.png`, `Layer-Todos-1-730x912.jpg`.
 
+Origin Películas: dados e fotografias de apresentação das seis linhas obtidos em https://originfilms.com.br/nossas-peliculas/ em 23/10/2026, conforme a referência solicitada. As fotos foram redimensionadas e convertidas para WebP em `public/images/origin/`. Não são fotos de aplicações realizadas pela Retém. Os índices solares são os máximos apresentados para cada linha; confirme a ficha de cada tonalidade e as condições de garantia com o fabricante.
+
+- `origin.webp`: `/wp-content/uploads/2022/11/yellow-sport-car-with-black-autotuning-road_Easy-Resize.com_.jpg`
+- `origin-black.webp`: `/wp-content/uploads/2022/11/chrome-black-sport-car-parking-with-front-lights-scaled.jpg`
+- `origin-carbon.webp`: `/wp-content/uploads/2022/11/silver-metallic-color-sport-sedan-road_Easy-Resize.com_.jpg`
+- `origin-maxx-protection.webp`: `/wp-content/uploads/2022/11/red-mini-coupe-parked-port-front-view-ship-seaside_Easy-Resize.com_.jpg`
+- `origin-gts.webp`: `/wp-content/uploads/2022/11/car-with-sport-modern-design-parked-road_Easy-Resize.com_.jpg`
+- `origin-reflect.webp`: `/wp-content/uploads/2022/09/Origin-Films-BG-3.jpg`
+
 As fotografias de contexto não representam especificações de produto. A presença de imagens públicas não transfere direitos de marca ou de uso comercial. Antes da publicação comercial, use imagens autorizadas pela distribuidora e revise os termos e créditos aplicáveis. As referências textuais não constituem alegação de revenda autorizada.

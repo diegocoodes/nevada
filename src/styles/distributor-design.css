@@ -1,21 +1,21 @@
-/* The distributor and checkout share the RETÉM campaign identity. */
+/* Retém Loja uses a white canvas with red and yellow brand accents. */
 .storefront[data-brand="distributor"],
 .storefront[data-brand="distributor"] .distributor-landing {
-  --background: #090909;
-  --foreground: #f7f5ef;
-  --surface: #1a1a1a;
-  --muted: #b8b5ad;
-  --accent: #fbba13;
-  --blue: #fbba13;
-  --border: #3e3931;
-  background: #090909;
-  color: #f7f5ef;
-  color-scheme: dark;
+  --background: #ffffff;
+  --foreground: #242121;
+  --surface: #faf9f7;
+  --muted: #625b53;
+  --accent: #b51d24;
+  --blue: #b51d24;
+  --border: #ded9d1;
+  background: #ffffff;
+  color: #242121;
+  color-scheme: light;
   font-family: "Retem Barlow", sans-serif;
   font-size: 16px;
 }
 body:has(.storefront[data-brand="distributor"]) {
-  background: #090909;
+  background: #ffffff;
 }
 .storefront[data-brand="distributor"] .container {
   width: min(1060px, calc(100% - 96px));
@@ -33,9 +33,9 @@ body:has(.storefront[data-brand="distributor"]) {
   display: none;
 }
 .storefront[data-brand="distributor"] .header:not(.header-home) {
-  background: #090909f5;
-  color: #f7f5ef;
-  border-bottom: 1px solid #ffffff0c;
+  background: #fffffff5;
+  color: #242121;
+  border-bottom: 1px solid #24212114;
 }
 .storefront[data-brand="distributor"] .header-inner {
   min-height: 84px;
@@ -44,7 +44,7 @@ body:has(.storefront[data-brand="distributor"]) {
 .storefront[data-brand="distributor"] .header .brand-distributor {
   padding: 0;
   background: none;
-  color: #f7f5ef;
+  color: #242121;
   gap: 12px;
 }
 .storefront[data-brand="distributor"] .header .brand-distributor .brand-logo {
@@ -59,14 +59,14 @@ body:has(.storefront[data-brand="distributor"]) {
   font-family: "Retem Barlow", sans-serif;
   font-size: 13px;
   gap: 25px;
-  color: #d6d2ca;
+  color: #48413a;
 }
 .storefront[data-brand="distributor"] .desktop-nav .nav-distributor {
   border: 0;
   padding-inline: 0;
 }
 .storefront[data-brand="distributor"] .desktop-nav a[aria-current="page"] {
-  color: #fbba13;
+  color: #b51d24;
   text-decoration: none;
 }
 .storefront[data-brand="distributor"] .header .cart-count {
@@ -78,12 +78,12 @@ body:has(.storefront[data-brand="distributor"]) {
   font-size: 13px;
 }
 .storefront[data-brand="distributor"] .icon-button {
-  color: #f7f5ef;
+  color: #242121;
 }
 .storefront[data-brand="distributor"] .distributor-landing .eyebrow,
 .storefront[data-brand="distributor"] .eyebrow,
 .storefront[data-brand="distributor"] .campaign-kicker {
-  color: #fbba13;
+  color: #b51d24;
   font-family: "Retem Barlow", sans-serif;
   font-size: 11px;
   font-weight: 500;
@@ -98,7 +98,7 @@ body:has(.storefront[data-brand="distributor"]) {
   margin-bottom: 26px;
 }
 .storefront[data-brand="distributor"] .campaign-hero h1 > span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .distributor-campaign-hero .campaign-hero-visual {
   inset-inline-start: 34%;
@@ -108,15 +108,15 @@ body:has(.storefront[data-brand="distributor"]) {
 }
 .distributor-campaign-hero .campaign-hero-visual::after {
   background:
-    linear-gradient(90deg, #090909 0%, #09090999 18%, transparent 58%),
-    linear-gradient(0deg, #090909 0%, #09090922 35%, #09090933 74%, #090909aa);
+    linear-gradient(90deg, #ffffff 0%, #ffffff99 18%, transparent 58%),
+    linear-gradient(0deg, #ffffff 0%, #ffffff22 35%, #ffffff33 74%, #ffffffaa);
 }
 .distributor-campaign-body {
   overflow: clip;
   background:
     radial-gradient(ellipse 50% 18% at 105% 27%, #78131520, transparent 75%),
     radial-gradient(ellipse 40% 15% at -5% 55%, #8c30101a, transparent 75%),
-    #090909;
+    #ffffff;
 }
 .storefront[data-brand="distributor"] .section {
   padding-block: 78px;
@@ -139,7 +139,7 @@ body:has(.storefront[data-brand="distributor"]) {
   span,
 .storefront[data-brand="distributor"] .section-heading h2 span,
 .storefront[data-brand="distributor"] .dl-benefit-copy h2 span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"]
   .distributor-landing
@@ -147,13 +147,13 @@ body:has(.storefront[data-brand="distributor"]) {
   .section-heading
   h2
   span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"]
   .distributor-landing
   .section-intro
   > p:last-child {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 15px;
   max-width: 55ch;
   margin-inline: auto;
@@ -169,7 +169,7 @@ body:has(.storefront[data-brand="distributor"]) {
 .storefront[data-brand="distributor"] .distributor-landing .button-primary,
 .store-dialog .button-primary {
   background: #fbba13;
-  border-color: #fbba13;
+  border-color: #b51d24;
   color: #161310;
   box-shadow: none;
   min-height: 48px;
@@ -186,23 +186,26 @@ body:has(.storefront[data-brand="distributor"]) {
 }
 .storefront[data-brand="distributor"] .button-outline,
 .storefront[data-brand="distributor"] .button-ghost {
-  color: #f7f5ef;
-  border-color: #6b6254;
+  color: #242121;
+  border-color: #c9c3bb;
 }
 .storefront[data-brand="distributor"] .dl-benefit-grid {
   gap: 65px;
   max-width: 960px;
 }
+.storefront[data-brand="distributor"] .dl-benefits {
+  background: #fff;
+}
 .storefront[data-brand="distributor"] .dl-benefit-art {
   border-radius: 3px;
-  background: #171717;
+  background: #f7f6f3;
   aspect-ratio: 1;
 }
 .storefront[data-brand="distributor"] .dl-benefit-art img {
   object-position: center;
 }
 .storefront[data-brand="distributor"] .dl-photo-tag {
-  color: #f7f5ef;
+  color: #242121;
   font-family: "Retem Barlow", sans-serif;
 }
 .storefront[data-brand="distributor"] .dl-benefit-copy h2 {
@@ -211,18 +214,19 @@ body:has(.storefront[data-brand="distributor"]) {
 }
 .storefront[data-brand="distributor"] .dl-benefit-copy h3 {
   font-size: 24px;
-  color: #f7f5ef;
+  color: #242121;
 }
 .storefront[data-brand="distributor"] .dl-benefit-copy li {
-  border-color: #3e3931;
+  background: #fff;
+  border-color: #ded9d1;
 }
 .storefront[data-brand="distributor"] .dl-benefit-copy li p {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 14px;
   line-height: 1.65;
 }
 .storefront[data-brand="distributor"] .dl-check {
-  color: #fbba13;
+  color: #b51d24;
   background: #fbba1314;
 }
 .storefront[data-brand="distributor"] .dl-material-strip {
@@ -256,11 +260,11 @@ body:has(.storefront[data-brand="distributor"]) {
 .storefront[data-brand="distributor"]
   .distributor-landing
   .purchase-card:nth-child(3) {
-  background: #1b1b1b;
-  border: 1px solid #3e3931;
-  border-top: 2px solid #65502a;
+  background: #ffffff;
+  border: 1px solid #ded9d1;
+  border-top: 2px solid #e0c98b;
   border-radius: 3px;
-  color: #f7f5ef;
+  color: #242121;
   min-height: 320px;
 }
 .storefront[data-brand="distributor"] .distributor-landing .purchase-number,
@@ -271,7 +275,7 @@ body:has(.storefront[data-brand="distributor"]) {
   order: 0;
   padding: 27px 24px 5px;
   background: transparent;
-  color: #fbba13;
+  color: #b51d24;
   justify-content: center;
 }
 .storefront[data-brand="distributor"] .purchase-service {
@@ -286,13 +290,13 @@ body:has(.storefront[data-brand="distributor"]) {
   .purchase-description {
   font-size: 14px;
   line-height: 1.6;
-  color: #c0bcb3;
+  color: #625b53;
   padding: 0 24px 24px;
 }
 .storefront[data-brand="distributor"] .purchase-card-link {
-  color: #fbba13;
-  border-color: #3e3931;
-  background: #151515;
+  color: #b51d24;
+  border-color: #ded9d1;
+  background: #f6f5f2;
   font-size: 13px;
   padding: 17px 24px;
 }
@@ -301,37 +305,37 @@ body:has(.storefront[data-brand="distributor"]) {
   background: #fbba13;
 }
 .storefront[data-brand="distributor"] .dl-brands-section {
-  background: #11111188;
-  border-block: 1px solid #ffffff0b;
+  background: #faf9f7;
+  border-block: 1px solid #24212114;
 }
 .storefront[data-brand="distributor"] .distributor-landing .distributor-brands {
   max-width: 850px;
   gap: 22px;
 }
 .storefront[data-brand="distributor"] .distributor-brand-card {
-  background: #1b1b1b;
-  border-color: #65502a;
+  background: #ffffff;
+  border-color: #e0c98b;
   padding: 32px;
   gap: 23px;
   min-height: 400px;
   border-radius: 3px;
 }
 .storefront[data-brand="distributor"] .distributor-brand-card .eyebrow {
-  color: #fbba13;
+  color: #b51d24;
   font-size: 10px;
 }
 .storefront[data-brand="distributor"] .distributor-brand-card:hover {
-  border-color: #fbba13;
-  color: #f7f5ef;
+  border-color: #b51d24;
+  color: #242121;
 }
 .storefront[data-brand="distributor"] .distributor-brand-card > p,
 .storefront[data-brand="distributor"] .distributor-brand-card ul li {
-  color: #c0bcb3;
+  color: #625b53;
   font-size: 14px;
   line-height: 1.5;
 }
 .storefront[data-brand="distributor"] .distributor-brand-card ul svg {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .distributor-brand-description {
   color: #161310;
@@ -342,7 +346,7 @@ body:has(.storefront[data-brand="distributor"]) {
   color: #161310;
 }
 .storefront[data-brand="distributor"] .origin-wordmark {
-  color: #f7f5ef;
+  color: #242121;
   font-family: "Retem Display", sans-serif;
   font-size: 54px;
   font-weight: 600;
@@ -361,10 +365,10 @@ body:has(.storefront[data-brand="distributor"]) {
   font-family: "Retem Display", sans-serif;
   font-size: 28px;
   font-weight: 600;
-  color: #c7c1b6;
+  color: #625b53;
 }
 .storefront[data-brand="distributor"] .lines-option {
-  border-color: #45413a;
+  border-color: #ded9d1;
 }
 .storefront[data-brand="distributor"]
   .lines-option[data-selected="true"]
@@ -372,7 +376,7 @@ body:has(.storefront[data-brand="distributor"]) {
 .storefront[data-brand="distributor"] .lines-option-button:hover,
 .storefront[data-brand="distributor"] .lines-option-caption,
 .storefront[data-brand="distributor"] .lines-option-link {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"]
   .lines-option[data-selected="true"]
@@ -381,7 +385,7 @@ body:has(.storefront[data-brand="distributor"]) {
   color: #161310;
 }
 .storefront[data-brand="distributor"] .lines-option-description {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 14px;
 }
 .storefront[data-brand="distributor"] .lines-option-caption {
@@ -395,7 +399,7 @@ body:has(.storefront[data-brand="distributor"]) {
   display: none;
 }
 .storefront[data-brand="distributor"] .lines-preview-image {
-  background: #1b1b1b;
+  background: #ffffff;
   clip-path: none !important;
   border-radius: 3px;
 }
@@ -403,19 +407,19 @@ body:has(.storefront[data-brand="distributor"]) {
   display: none;
 }
 .storefront[data-brand="distributor"] .featured-section {
-  --accent: #fbba13;
-  --muted: #b8b5ad;
-  background: #11111188;
-  color: #f7f5ef;
-  border-block: 1px solid #ffffff0b;
+  --accent: #b51d24;
+  --muted: #625b53;
+  background: #faf9f7;
+  color: #242121;
+  border-block: 1px solid #24212114;
 }
 .storefront[data-brand="distributor"] .featured-section .product-card,
 .storefront[data-brand="distributor"] .product-card {
-  --accent: #fbba13;
-  --muted: #b8b5ad;
-  background: #1b1b1b;
-  color: #f7f5ef;
-  border-color: #3e3931;
+  --accent: #b51d24;
+  --muted: #625b53;
+  background: #ffffff;
+  color: #242121;
+  border-color: #ded9d1;
   border-radius: 3px;
 }
 .storefront[data-brand="distributor"] .featured-section .product-card::before {
@@ -427,8 +431,9 @@ body:has(.storefront[data-brand="distributor"]) {
   font-size: 26px;
   line-height: 1.12;
 }
-.storefront[data-brand="distributor"] .product-info > .small {
-  color: #b8b5ad;
+.storefront[data-brand="distributor"] .product-info > .small,
+.storefront[data-brand="distributor"] .featured-section .product-info > .small {
+  color: #625b53;
 }
 .storefront[data-brand="distributor"] .product-price strong {
   font-family: "Retem Display", sans-serif;
@@ -436,21 +441,21 @@ body:has(.storefront[data-brand="distributor"]) {
 }
 .storefront[data-brand="distributor"] .product-badge {
   background: #161310ed;
-  color: #f7f5ef;
+  color: #242121;
   border-color: #655a46;
 }
 .storefront[data-brand="distributor"] .product-image-arrow {
   background: #161310ed;
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .add-button {
-  color: #fbba13;
-  background: #302317;
+  color: #b51d24;
+  background: #fff4ce;
 }
 .storefront[data-brand="distributor"] .featured-section .add-button {
-  color: #fbba13;
-  background: #151515;
-  border-color: #3e3931;
+  color: #b51d24;
+  background: #f6f5f2;
+  border-color: #ded9d1;
   font-family: "Retem Barlow", sans-serif;
   font-size: 13px;
 }
@@ -460,15 +465,15 @@ body:has(.storefront[data-brand="distributor"]) {
   background: #fbba13;
 }
 .storefront[data-brand="distributor"] .mobile-carousel-hint {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 13px;
 }
 .storefront[data-brand="distributor"] .featured-section .product-grid,
 .storefront[data-brand="distributor"] .purchase-grid {
-  scrollbar-color: #fbba13 #24211b;
+  scrollbar-color: #b51d24 #24211b;
 }
 .storefront[data-brand="distributor"] .dl-faq {
-  background: #151515;
+  background: #f6f5f2;
 }
 .storefront[data-brand="distributor"] .dl-faq-grid {
   max-width: 950px;
@@ -479,41 +484,41 @@ body:has(.storefront[data-brand="distributor"]) {
   line-height: 1.05;
 }
 .storefront[data-brand="distributor"] .dl-faq h2 span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .dl-faq-grid > div > p:not(.eyebrow),
 .storefront[data-brand="distributor"] .dl-faq details p {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 14px;
 }
 .storefront[data-brand="distributor"] .dl-faq-list,
 .storefront[data-brand="distributor"] .dl-faq details {
-  border-color: #575146;
+  border-color: #c9c3bb;
 }
 .storefront[data-brand="distributor"] .dl-faq summary {
   font-size: 15px;
   cursor: pointer;
 }
 .storefront[data-brand="distributor"] .dl-faq summary > span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .dl-final {
   padding-block: 80px;
   background:
     radial-gradient(ellipse at center bottom, #6d111522, transparent 65%),
-    #090909;
+    #ffffff;
 }
 .storefront[data-brand="distributor"] .dl-final > .container {
   max-width: 740px;
 }
 .storefront[data-brand="distributor"] .dl-final-brand {
   background: transparent;
-  color: #f7f5ef;
+  color: #242121;
   padding: 0;
   margin-bottom: 30px;
 }
 .storefront[data-brand="distributor"] .dl-final-brand > span {
-  color: #f7f5ef;
+  color: #242121;
   font-family: "Retem Barlow", sans-serif;
 }
 .storefront[data-brand="distributor"] .dl-final h2 {
@@ -521,20 +526,20 @@ body:has(.storefront[data-brand="distributor"]) {
   line-height: 1.04;
 }
 .storefront[data-brand="distributor"] .dl-final h2 span {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .distributor-back {
-  color: #b8b5ad;
+  color: #625b53;
   font-size: 13px;
 }
 .storefront[data-brand="distributor"] .link-arrow {
-  color: #fbba13;
+  color: #b51d24;
   font-family: "Retem Barlow", sans-serif;
   font-size: 14px;
 }
 .storefront[data-brand="distributor"] .footer {
-  background: #090909;
-  color: #f7f5ef;
+  background: #ffffff;
+  color: #242121;
   padding-top: 55px;
   border: 0;
 }
@@ -545,63 +550,63 @@ body:has(.storefront[data-brand="distributor"]) {
 .storefront[data-brand="distributor"] .footer .brand-distributor {
   background: none;
   padding: 0;
-  color: #f7f5ef;
+  color: #242121;
 }
 .storefront[data-brand="distributor"] .footer h3 {
   font-family: "Retem Display", sans-serif;
   font-size: 23px;
-  color: #f7f5ef;
+  color: #242121;
 }
 .storefront[data-brand="distributor"] .footer p,
 .storefront[data-brand="distributor"] .footer a:not(.brand) {
-  color: #b8b5ad;
+  color: #625b53;
   font-family: "Retem Barlow", sans-serif;
   font-size: 13px;
 }
 .storefront[data-brand="distributor"] .footer .muted {
-  color: #b8b5ad;
+  color: #625b53;
 }
 .storefront[data-brand="distributor"] .footer a:hover {
-  color: #fbba13;
+  color: #b51d24;
 }
 .storefront[data-brand="distributor"] .footer-bottom {
-  color: #b8b5ad;
-  border-top: 1px solid #3e3931;
+  color: #625b53;
+  border-top: 1px solid #ded9d1;
   font-size: 11px;
 }
 .storefront[data-brand="distributor"] :is(input, select, textarea) {
   font-family: "Retem Barlow", sans-serif;
-  background: #101010;
-  color: #f7f5ef;
-  border-color: #756d61;
+  background: #ffffff;
+  color: #242121;
+  border-color: #aaa197;
 }
 .storefront[data-brand="distributor"] input::placeholder,
 .storefront[data-brand="distributor"] textarea::placeholder {
-  color: #b8b5ad;
+  color: #625b53;
 }
 .storefront[data-brand="distributor"]
   :is(.filters, .panel, .technical, .variant-selector label) {
-  background: #1b1b1b;
-  border-color: #575146;
+  background: #ffffff;
+  border-color: #c9c3bb;
 }
 .storefront[data-brand="distributor"] .variant-selector label.selected {
-  background: #302317;
-  border-color: #fbba13;
+  background: #fff4ce;
+  border-color: #b51d24;
 }
 .storefront[data-brand="distributor"] .pagination button[aria-current="page"] {
   color: #161310;
   background: #fbba13;
 }
 .storefront[data-brand="distributor"] .quantity {
-  color: #f7f5ef;
-  background: #101010;
-  border-color: #756d61;
+  color: #242121;
+  background: #ffffff;
+  border-color: #aaa197;
 }
 .storefront[data-brand="distributor"] .field-error {
-  color: #ffb7bd;
+  color: #b51d24;
 }
 .storefront :focus-visible {
-  outline-color: #fbba13;
+  outline-color: #b51d24;
 }
 .store-dialog {
   --background: #171717;
@@ -615,6 +620,29 @@ body:has(.storefront[data-brand="distributor"]) {
 .store-dialog :is(h2, h3, .h3) {
   font-family: "Retem Display", sans-serif;
 }
+body:has(.storefront[data-brand="distributor"]) .store-dialog {
+  --background: #fff;
+  --foreground: #242121;
+  --surface: #faf9f7;
+  --muted: #625b53;
+  --accent: #b51d24;
+  --blue: #b51d24;
+  --border: #ded9d1;
+  color: #242121;
+  background: #fff;
+  border-color: #ded9d1;
+  color-scheme: light;
+}
+body:has(.storefront[data-brand="distributor"]) .cart-header,
+body:has(.storefront[data-brand="distributor"]) .cart-summary {
+  background: #faf9f7;
+}
+body:has(.storefront[data-brand="distributor"]) .store-dialog .dialog-close {
+  background: #fff;
+  color: #242121;
+  border-color: #ded9d1;
+}
+
 @media (max-width: 1050px) {
   .storefront[data-brand="distributor"] .container {
     width: calc(100% - 64px);
@@ -685,12 +713,12 @@ body:has(.storefront[data-brand="distributor"]) {
     background:
       linear-gradient(
         180deg,
-        #090909 0%,
-        #09090988 36%,
-        #09090922 60%,
-        #090909 100%
+        #ffffff 0%,
+        #ffffff88 36%,
+        #ffffff22 60%,
+        #ffffff 100%
       ),
-      linear-gradient(90deg, #09090999, transparent 70%);
+      linear-gradient(90deg, #ffffff99, transparent 70%);
   }
   .storefront[data-brand="distributor"] .distributor-brand-card {
     min-height: 0;

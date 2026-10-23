@@ -18,7 +18,7 @@ import { BrandStorySection } from "@/components/brand-story-section";
 import { StudioDetails } from "@/components/studio-details";
 import { StudioServices } from "@/components/studio-services";
 
-export const metadata = { alternates: { canonical: "/" } };
+export const metadata = { alternates: { canonical: "/retem" } };
 
 export default async function Home() {
   const settings = await getSettings();

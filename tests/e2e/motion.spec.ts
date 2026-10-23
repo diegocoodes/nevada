@@ -6,9 +6,9 @@ test("as duas landings revelam conteúdo ao rolar e desativam o movimento sob de
   page,
 }) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/");
+  await page.goto("/retem");
   for (const [route, selector] of [
-    ["/", ".campaign-offer-card"],
+    ["/retem", ".campaign-offer-card"],
     ["/distribuidora", ".origin-brand-card"],
   ]) {
     if (route === "/distribuidora") {
@@ -54,7 +54,7 @@ test("as duas landings revelam conteúdo ao rolar e desativam o movimento sob de
 test("hero apresenta os dois caminhos e a navegação leva aos serviços", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/retem");
   const hero = page.getByRole("region", { name: /Seu carro merece/i });
   await expect(
     hero.getByRole("link", { name: "Solicitar orçamento", exact: true }),
@@ -70,7 +70,7 @@ test("movimento reduzido mantém a apresentação e o seletor acessíveis no cel
 }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 320, height: 844 });
-  await page.goto("/");
+  await page.goto("/retem");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   const service = page
     .locator("#servicos")

@@ -30,7 +30,7 @@ export function useLandingMotion(
 ) {
   useEffect(() => {
     const element = root.current?.closest<HTMLDivElement>(".storefront");
-    if (!element || !["/", "/distribuidora"].includes(pathname)) return;
+    if (!element || !["/retem", "/distribuidora"].includes(pathname)) return;
 
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();

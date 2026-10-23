@@ -15,8 +15,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { isDistributorPath } from "@/lib/brand";
 const links = [
-  { href: "/", label: "Início" },
-  { href: "/#servicos", label: "Serviços" },
+  { href: "/retem", label: "Início" },
+  { href: "/retem#servicos", label: "Serviços" },
   { href: "/sobre", label: "Sobre nós" },
   { href: "/contato", label: "Contato" },
   { href: "/distribuidora", label: "Loja Distribuidora" },
@@ -36,7 +36,7 @@ export function Brand({
   const distributor = adaptive && isDistributorPath(pathname);
   return (
     <Link
-      href={distributor ? "/distribuidora" : "/"}
+      href={distributor ? "/distribuidora" : "/retem"}
       className={`brand ${distributor ? "brand-distributor" : ""}`}
       aria-label={
         distributor ? "Retém Loja Distribuidora, início" : `${name}, início`
@@ -46,7 +46,7 @@ export function Brand({
         className="brand-logo"
         src={
           distributor
-            ? "/images/retem-re-light.svg"
+            ? "/images/retem-re.svg"
             : dark
               ? "/images/retem-logo-dark.svg"
               : logo || "/images/retem-logo.svg"
@@ -64,11 +64,11 @@ export function Brand({
 }
 export function Header({ logo, name }: { logo: string; name: string }) {
   const pathname = usePathname();
-  const home = pathname === "/";
+  const home = pathname === "/retem";
   const distributor = isDistributorPath(pathname);
   const navigation = distributor
     ? [
-        { href: "/", label: "Estética Premium" },
+        { href: "/retem", label: "Estética Premium" },
         { href: "/distribuidora", label: "Distribuidora" },
         { href: "/produtos", label: "Produtos" },
         { href: "/contato", label: "Contato" },
@@ -92,7 +92,7 @@ export function Header({ logo, name }: { logo: string; name: string }) {
         {distributor
           ? "RETÉM LOJA DISTRIBUIDORA · NEVADA FILMS E ORIGIN PELÍCULAS"
           : "RETÉM · PELÍCULAS, PPF E COAT CERÂMICA · VILA VELHA / ES"}{" "}
-        <Link href={distributor ? "/" : "/distribuidora"}>
+        <Link href={distributor ? "/retem" : "/distribuidora"}>
           {distributor ? "Conheça a estética" : "Conheça a distribuidora"}{" "}
           <ArrowUpRight size={12} />
         </Link>

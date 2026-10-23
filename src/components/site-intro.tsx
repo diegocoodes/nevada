@@ -33,7 +33,7 @@ export function SiteIntro({ logo }: { logo: string }) {
       <span className="site-entrance-light" />
       <div className="site-entrance-brand">
         <Image
-          src={distributor ? "/images/retem-re-light.svg" : logo}
+          src={distributor ? "/images/retem-re.svg" : logo}
           alt=""
           width={distributor ? 820 : 1000}
           height={distributor ? 360 : 260}

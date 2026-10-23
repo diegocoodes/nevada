@@ -185,6 +185,19 @@ export function Catalog({
         </button>
       </aside>
       <div>
+        {brand === "origin" && (
+          <div className="origin-catalog-intro">
+            <p className="eyebrow">TECNOLOGIA PARA OS SEUS VIDROS</p>
+            <h2>Conheça a linha Origin Películas.</h2>
+            <p className="muted">
+              Compare as seis linhas e selecione a tonalidade. Valores e medidas
+              sob consulta.
+            </p>
+            <Link className="link-arrow" href={contactHref}>
+              Consultar Origin Películas
+            </Link>
+          </div>
+        )}
         <div className="catalog-toolbar">
           <span className="muted" aria-live="polite">
             {filtered.length} produtos encontrados
@@ -222,21 +235,8 @@ export function Catalog({
         {!filtered.length && (
           <div className="empty">
             <Search size={36} />
-            <h2>
-              {brand === "origin"
-                ? "Conheça a linha Origin Películas."
-                : "Nenhum produto encontrado."}
-            </h2>
-            <p className="muted">
-              {brand === "origin"
-                ? "Fale com a Retém para conhecer as opções, medidas e disponibilidade da Origin Películas."
-                : "Tente outro nome ou ajuste os filtros."}
-            </p>
-            {brand === "origin" && (
-              <Button asChild>
-                <Link href={contactHref}>Consultar Origin Películas</Link>
-              </Button>
-            )}
+            <h2>Nenhum produto encontrado.</h2>
+            <p className="muted">Tente outro nome ou ajuste os filtros.</p>
             <Button variant="outline" onClick={reset}>
               Limpar filtros
             </Button>
