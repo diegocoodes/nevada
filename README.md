@@ -10,6 +10,22 @@ O catálogo, as categorias e as configurações ficam em [`src/data/store.ts`](s
 
 Os serviços da estética e as perguntas frequentes ficam em [`src/data/services.ts`](src/data/services.ts). A home apresenta PPF, películas automotivas e arquitetônicas, coat cerâmica Gyeon, polimento, cristalização e recuperação de faróis. Cada serviço abre o contato com o assunto preenchido. Os dados de atendimento usam o material fornecido: Instagram `@retem.es`, Rodovia do Sol, 1528, Praia de Itaparica, Vila Velha, ES. O CEP `29102-020` segue a informação mais recente do perfil enviada no briefing.
 
+## Publicar na Hostinger
+
+No hPanel, crie uma aplicação Node.js conectada a [diegocoodes/nevada](https://github.com/diegocoodes/nevada), branch `main`, com a raiz do repositório e estas configurações:
+
+- Framework: **Next.js**.
+- Node.js: **24.x**.
+- Instalação: `npm ci` (incluindo as dependências de desenvolvimento para o build).
+- Build: `npm run build`.
+- Diretório de saída: `.next`.
+- Inicialização: `npm start` (usa a variável `PORT` fornecida pela hospedagem).
+- Variável de ambiente: `SITE_URL=https://seu-dominio.com.br`, para metadata e sitemap.
+
+A configuração usa `next.config.mjs`, carregado diretamente pelo Node.js. O build usa Webpack para permitir o fallback SWC em WebAssembly quando o binário nativo exige uma versão de glibc indisponível no servidor. Nesse caso, o Next.js baixa automaticamente o SWC WebAssembly correspondente à sua versão; mantenha o acesso ao registro npm disponível durante o build.
+
+Após selecionar o commit atualizado, execute um novo deploy. Não envie `node_modules` ou `.next` gerados no Windows; as dependências e o build devem ser produzidos na hospedagem. Referências: [aplicações Node.js na Hostinger](https://www.hostinger.com/support/how-to-deploy-a-nodejs-website-in-hostinger/) e [suporte de plataformas e Webpack no Next.js](https://nextjs.org/docs/app/api-reference/turbopack#supported-platforms).
+
 ## Publicar na Vercel
 
 Importe [diegocoodes/nevada](https://github.com/diegocoodes/nevada), selecione **Next.js** e mantenha a raiz do repositório. O `vercel.json` configura `npm ci` e `npm run build`; o projeto utiliza Node.js 24.x. Nenhuma variável de banco ou segredo é necessária.
@@ -42,7 +58,7 @@ As linhas Origin ficam em [`src/data/origin.ts`](src/data/origin.ts), compartilh
 - Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.
 - Cada variante tem identificador, SKU, atributos e disponibilidade. Preserve os identificadores ao editar produtos existentes para manter os carrinhos dos visitantes.
 - Use imagens locais em `public/images` com caminhos como `/images/lines/ppf-application.webp`.
-- Novos domínios de imagens externas precisam ser permitidos em `next.config.ts`.
+- Novos domínios de imagens externas precisam ser permitidos em `next.config.mjs`.
 
 Os valores e dados de catálogo preservados do desenvolvimento são ilustrativos. Atualize-os com suas condições comerciais antes de divulgar ofertas. `demoMode` mantém o catálogo de demonstração fora dos mecanismos de busca; desative em `settings` quando os dados estiverem prontos.
 
