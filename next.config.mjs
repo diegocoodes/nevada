@@ -4,6 +4,9 @@
 const nextConfig = {
   poweredByHeader: false,
   turbopack: { root: process.cwd() },
+  async redirects() {
+    return [{ source: "/retem", destination: "/", permanent: true }];
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },

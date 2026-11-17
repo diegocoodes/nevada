@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-for (const route of ["/retem", "/distribuidora"]) {
+for (const route of ["/", "/distribuidora"]) {
   test(`WhatsApp permanece no canto ao rolar e funciona pelo teclado em ${route}`, async ({
     page,
   }) => {
@@ -75,7 +75,7 @@ for (const route of ["/retem", "/distribuidora"]) {
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.goto(route);
     const title = page.locator(
-      route === "/retem" ? "#home-contact-title" : "#brands-title",
+      route === "/" ? "#home-contact-title" : "#brands-title",
     );
     const words = title.locator(".motion-word");
     await expect

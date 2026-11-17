@@ -22,7 +22,7 @@ export default async function About() {
           </h1>
           <p className="muted pre-line">{s.aboutText}</p>
           <Button asChild>
-            <Link href="/retem#servicos">
+            <Link href="/#servicos">
               Conhecer os serviços <ArrowUpRight size={18} />
             </Link>
           </Button>

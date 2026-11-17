@@ -3,21 +3,29 @@ import AxeBuilder from "@axe-core/playwright";
 
 test.use({ reducedMotion: "reduce" });
 
-test("entrada oferece as duas experiências e mantém cada navegação em sua área", async ({
+test("início abre a estética diretamente e mantém o acesso à distribuidora", async ({
   page,
 }) => {
   await page.goto("/");
-  await expect(page.locator("header.header")).toHaveCount(0);
-  await page.getByRole("link", { name: /Entrar no site Retém/ }).click();
-  await expect(page).toHaveURL(/\/retem$/);
+  await expect(page.locator("header.header")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(
+    "Seu carro merece",
+  );
+  await expect(page.locator(".experience-entry")).toHaveCount(0);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    /^http:\/\/localhost:3100\/?$/,
+  );
   await expect(page.locator(".storefront")).toHaveAttribute(
     "data-brand",
     "studio",
   );
   await page.locator("header .brand").click();
-  await expect(page).toHaveURL(/\/retem$/);
-  await page.goto("/");
-  await page.getByRole("link", { name: /Entrar na Retém Loja/ }).click();
+  await expect(page).toHaveURL("/");
+  await page
+    .locator(".desktop-nav")
+    .getByRole("link", { name: "Loja Distribuidora", exact: true })
+    .click();
   await expect(page).toHaveURL(/\/distribuidora$/);
   await expect(page.locator(".storefront")).toHaveCSS(
     "background-color",
@@ -46,22 +54,42 @@ test("entrada oferece as duas experiências e mantém cada navegação em sua á
   await expect(page.getByRole("dialog")).toContainText("Tonalidade 35%");
 });
 
-test("as duas escolhas funcionam sem JavaScript", async ({ browser }) => {
+test("site principal e distribuidora funcionam sem JavaScript", async ({
+  browser,
+}) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   for (const [name, destination] of [
-    [/Entrar no site Retém/, "/retem"],
-    [/Entrar na Retém Loja/, "/distribuidora"],
-  ] as const) {
-    await page.goto("/");
-    await page.getByRole("link", { name }).click();
-    expect(new URL(page.url()).pathname).toBe(destination);
+    ["Loja Distribuidora", "/distribuidora"],
+    ["Estética Premium", "/"],
+  ]) {
+    await page
+      .locator(".desktop-nav")
+      .getByRole("link", { name, exact: true })
+      .click();
+    await expect(page).toHaveURL(destination);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   }
   await context.close();
 });
 
-test("entrada é acessível e cabe em celular, tablet e desktop", async ({
+test("endereço antigo redireciona para o site principal e preserva parâmetros", async ({
+  page,
+  request,
+}) => {
+  const response = await request.get("/retem?origem=link-antigo", {
+    maxRedirects: 0,
+  });
+  expect(response.status()).toBe(308);
+  expect(response.headers().location).toBe("/?origem=link-antigo");
+  await page.goto("/retem#servicos");
+  await expect(page).toHaveURL("/#servicos");
+  await expect(page.locator("#servicos")).toBeInViewport();
+});
+
+test("site principal é acessível e cabe em celular, tablet e desktop", async ({
   page,
 }) => {
   for (const width of [320, 768, 1440]) {

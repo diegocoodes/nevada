@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if ((await getSettings()).demoMode) return [];
   const url = getSiteUrl();
   return [
-    ...["", "/retem", "/distribuidora", "/produtos", "/sobre", "/contato"].map(
+    ...["", "/distribuidora", "/produtos", "/sobre", "/contato"].map(
       (path) => ({
         url: `${url}${path}`,
       }),

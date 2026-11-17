@@ -476,7 +476,7 @@ export default async function Distributor() {
             >
               Falar com a distribuidora <ArrowUpRight size={20} />
             </a>
-            <Link href="/retem" className="distributor-back">
+            <Link href="/" className="distributor-back">
               Quer cuidar do seu carro? Conheça a estética{" "}
               <ArrowUpRight size={16} />
             </Link>
