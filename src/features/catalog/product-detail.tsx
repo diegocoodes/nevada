@@ -6,6 +6,8 @@ import type { Product } from "@/types/store";
 import { money, contactUrl } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { QuantitySelector } from "@/components/quantity-selector";
+import { FilmPerformance } from "@/components/film-performance";
+import { FilmArtwork } from "@/components/film-artwork";
 import {
   Dialog,
   DialogContent,
@@ -29,23 +31,36 @@ export function ProductDetail({
   const available =
     !!variant?.inventory?.available && variant.inventory.quantity !== 0;
   const main = p.images[image] || { url: "/images/hero.jpg", alt: p.name };
+  const showArtwork = !!p.artwork && image === 0;
   return (
     <div className="product-detail">
-      <div>
+      <div className="product-gallery">
         <button
-          className="gallery-main"
+          className={`gallery-main${p.performance ? " gallery-with-performance" : ""}${showArtwork ? " film-artwork-main" : ""}`}
+          data-artwork-brand={showArtwork ? p.brand : undefined}
           onClick={() => setZoom(true)}
           aria-label="Ampliar imagem do produto"
         >
-          <Image
-            src={main.url}
-            alt={main.alt}
-            fill
-            priority
-            sizes="(max-width: 800px) 100vw, 50vw"
-          />
+          {showArtwork ? (
+            <FilmArtwork
+              product={p}
+              sizes="(max-width: 800px) 100vw, 50vw"
+              preload
+            />
+          ) : (
+            <Image
+              src={main.url}
+              alt={main.alt}
+              fill
+              preload
+              sizes="(max-width: 800px) 100vw, 50vw"
+            />
+          )}
           <ZoomIn size={24} />
         </button>
+        {p.performance && (
+          <FilmPerformance performance={p.performance} brand={p.brand} />
+        )}
         <div className="gallery-thumbs">
           {p.images.map((i, n) => (
             <button
@@ -155,12 +170,24 @@ export function ProductDetail({
         </p>
       </div>
       <Dialog open={zoom} onOpenChange={setZoom}>
-        <DialogContent className="store-dialog image-zoom">
+        <DialogContent
+          className={`store-dialog image-zoom${showArtwork ? " film-image-zoom" : ""}`}
+          data-artwork-brand={showArtwork ? p.brand : undefined}
+        >
           <DialogTitle className="sr-only">{p.name}</DialogTitle>
           <DialogDescription className="sr-only">
             Imagem ampliada do produto
           </DialogDescription>
-          <Image src={main.url} alt={main.alt} fill sizes="90vw" />
+          {showArtwork ? (
+            <div className="film-poster-zoom">
+              <FilmArtwork product={p} sizes="(max-width: 800px) 94vw, 760px" />
+              {p.performance && (
+                <FilmPerformance performance={p.performance} brand={p.brand} />
+              )}
+            </div>
+          ) : (
+            <Image src={main.url} alt={main.alt} fill sizes="90vw" />
+          )}
         </DialogContent>
       </Dialog>
     </div>

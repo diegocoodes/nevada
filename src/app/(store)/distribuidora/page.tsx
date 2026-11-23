@@ -318,10 +318,14 @@ export default async function Distributor() {
                 href="/produtos?marca=origin"
                 className="distributor-brand-card origin-brand-card"
               >
-                <span className="eyebrow">CONHEÇA AS SEIS LINHAS</span>
-                <span className="origin-wordmark">
-                  ORIGIN<span>PELÍCULAS</span>
-                </span>
+                <span className="eyebrow">CONHEÇA AS LINHAS ORIGIN</span>
+                <Image
+                  src="/images/origin-logo-official.png"
+                  width={1177}
+                  height={303}
+                  sizes="250px"
+                  alt="Origin Window Films USA"
+                />
                 <p>
                   Nanocerâmica, carbono e proteção para encontrar o conforto do
                   seu próximo projeto.

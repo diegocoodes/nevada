@@ -1,0 +1,52 @@
+.storefront[data-brand="distributor"] .product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-image {
+  flex-shrink: 0;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-info > .eyebrow {
+  display: none;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-info h3 {
+  min-height: 2.3em;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-price {
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid #ded9d1;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-price strong {
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.storefront[data-brand="distributor"] .product-card .product-price .small {
+  display: block;
+  margin: 0 0 2px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.storefront[data-brand="distributor"] .product-card .add-button {
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+}

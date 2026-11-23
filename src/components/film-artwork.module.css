@@ -1,0 +1,98 @@
+.artwork {
+  --art-accent: #20edf0;
+  --art-glow: #20edf02b;
+  --art-badge-start: #b9f8f2;
+  --art-badge-end: #06a3ab;
+  --art-surface: #020b0e;
+  container-type: inline-size;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  color: #fff;
+  background: var(--art-surface);
+}
+
+.origin {
+  --art-accent: #ff926e;
+  --art-glow: #ef79542b;
+  --art-badge-start: #ffdabf;
+  --art-badge-end: #c04f2c;
+  --art-surface: #130b08;
+}
+
+.artwork .background {
+  z-index: -2;
+  padding: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, #020b0e80, transparent 58%);
+  pointer-events: none;
+}
+
+.copy {
+  position: absolute;
+  inset: 6% 6% auto;
+  text-align: left;
+}
+
+.artwork .logo {
+  display: block;
+  width: 44%;
+  height: auto;
+  margin-bottom: 6%;
+  padding: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px var(--art-glow));
+}
+
+.copy .title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08em;
+  margin: 0;
+  color: #fff;
+  font-family: "Retem Barlow", sans-serif;
+  font-size: clamp(1.25rem, 7.7cqi, 3.4rem);
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 16px #0009;
+}
+
+.title > span {
+  max-width: 90%;
+}
+
+.title strong {
+  max-width: 95%;
+  color: var(--art-accent);
+  font-weight: 800;
+}
+
+.title .edition {
+  display: inline-block;
+  margin-top: 0.12em;
+  padding: 0.05em 0.55em 0.12em 0.25em;
+  color: var(--art-surface);
+  background: linear-gradient(
+    120deg,
+    var(--art-badge-start),
+    var(--art-accent) 65%,
+    var(--art-badge-end)
+  );
+  clip-path: polygon(5% 0, 100% 0, 94% 100%, 0 100%);
+  font-size: 1.1em;
+  text-shadow: none;
+}

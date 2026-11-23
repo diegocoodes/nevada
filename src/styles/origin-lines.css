@@ -60,6 +60,14 @@
 .storefront[data-brand="distributor"] .gallery-main {
   background: #f7f6f3;
 }
+.product-gallery {
+  min-width: 0;
+  align-self: start;
+}
+.storefront .gallery-main.gallery-with-performance {
+  display: block;
+  border-radius: 4px 4px 0 0;
+}
 .origin-line-list {
   display: grid;
   gap: 54px;
@@ -76,6 +84,10 @@
   min-height: 370px;
   background: #191818;
 }
+.origin-line-visual {
+  min-width: 0;
+  background: #101113;
+}
 .origin-line-photo img {
   object-fit: cover;
 }
@@ -90,11 +102,12 @@
   font-size: 10px;
   letter-spacing: 0.1em;
 }
-.origin-line:nth-child(even) .origin-line-photo {
+.origin-line:nth-child(even) .origin-line-visual {
   order: 1;
 }
 .origin-line-copy {
   min-width: 0;
+  align-self: center;
   padding: 34px;
 }
 .storefront[data-brand="distributor"] .origin-line-copy h3 {
@@ -105,30 +118,6 @@
 .origin-line-copy > p {
   color: #625b53;
   font-size: 15px;
-}
-.origin-line-metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 24px 0;
-  padding-block: 20px;
-  border-block: 1px solid #ded9d1;
-}
-.origin-line-metrics dt {
-  color: #625b53;
-  font-size: 12px;
-}
-.origin-line-metrics dd {
-  margin: 0;
-  font:
-    600 40px / 1.1 "Retem Display",
-    sans-serif;
-  color: #242121;
-}
-.origin-line-metrics small {
-  font:
-    400 13px "Retem Barlow",
-    sans-serif;
 }
 .origin-line-copy .origin-tones {
   margin-bottom: 10px;
@@ -197,7 +186,7 @@
     min-height: 0;
     aspect-ratio: 4 / 3;
   }
-  .origin-line:nth-child(even) .origin-line-photo {
+  .origin-line:nth-child(even) .origin-line-visual {
     order: 0;
   }
   .origin-line-copy {

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState, useMemo } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import type { Product, Category } from "@/types/store";
@@ -187,6 +188,14 @@ export function Catalog({
       <div>
         {brand === "origin" && (
           <div className="origin-catalog-intro">
+            <Image
+              className="origin-catalog-logo"
+              src="/images/origin-logo-official.png"
+              width={1177}
+              height={303}
+              sizes="196px"
+              alt="Origin Window Films USA"
+            />
             <p className="eyebrow">TECNOLOGIA PARA OS SEUS VIDROS</p>
             <h2>Conheça a linha Origin Películas.</h2>
             <p className="muted">

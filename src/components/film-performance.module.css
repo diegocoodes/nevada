@@ -1,0 +1,187 @@
+.panel {
+  --film-accent: #ff926e;
+  --film-divider: #ef795461;
+  --film-copy: #e0d8d4;
+  --film-note: #c4b8b2;
+  container-type: inline-size;
+  padding: 24px 18px 16px;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at top left, #49271e 0, transparent 65%), #101113;
+  border-top: 2px solid #ef7954;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 0;
+  margin: 0;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding-inline: 12px;
+  text-align: center;
+}
+
+.metric:nth-child(even) {
+  border-left: 1px solid var(--film-divider);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+  color: var(--film-accent);
+}
+
+.metric dt {
+  order: 2;
+  max-width: 18ch;
+  margin-top: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.metric dd {
+  display: contents;
+  margin: 0;
+}
+
+.value {
+  order: 1;
+  font-family: "Retem Display", sans-serif;
+  font-size: clamp(2rem, 8cqi, 3rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.value small {
+  font-family: "Retem Barlow", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.warranty {
+  font-size: clamp(1.5rem, 6cqi, 2rem);
+  overflow-wrap: anywhere;
+}
+
+.pending {
+  font-size: 1.25rem;
+}
+
+.description {
+  order: 3;
+  display: block;
+  max-width: 24ch;
+  margin-top: 10px;
+  color: var(--film-copy);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.panel .note {
+  margin: 18px 0 0;
+  color: var(--film-note);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.compact {
+  padding: 12px 8px 8px;
+}
+
+.compact .metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 0;
+}
+
+.compact .metric {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 3px 7px;
+  align-items: center;
+  justify-items: start;
+  min-height: 48px;
+  padding-inline: 8px;
+  text-align: left;
+}
+
+.compact .metric dt {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  color: var(--film-copy);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.compact .icon {
+  grid-column: 1;
+  grid-row: 1;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.compact .value {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.compact .value small {
+  font-size: 0.8125rem;
+}
+
+.compact .pending,
+.compact .warranty {
+  font-size: 1rem;
+  overflow-wrap: normal;
+}
+
+.compact .note {
+  margin-top: 8px;
+}
+
+.nevada {
+  --film-accent: #20edf0;
+  --film-divider: #20edf066;
+  --film-copy: #d3e9e8;
+  --film-note: #adcac9;
+  background:
+    radial-gradient(ellipse at top, #07373a 0, transparent 70%), #020b0e;
+  border-block: 2px solid var(--film-accent);
+  box-shadow:
+    inset 0 1px 14px #20edf025,
+    0 2px 12px #20edf022;
+}
+
+.nevada .icon {
+  filter: drop-shadow(0 0 5px #20edf044);
+}
+
+.nevada .value {
+  text-shadow: 0 0 18px #20edf025;
+}
+
+@container (min-width: 440px) {
+  .metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .panel:not(.compact) .metric + .metric {
+    border-left: 1px solid var(--film-divider);
+  }
+}

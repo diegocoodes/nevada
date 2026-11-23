@@ -5,6 +5,8 @@ import { ArrowUpRight, Plus } from "lucide-react";
 import type { Product } from "@/types/store";
 import { money } from "@/lib/utils";
 import { useCart } from "@/stores/cart";
+import { FilmPerformance } from "@/components/film-performance";
+import { FilmArtwork } from "@/components/film-artwork";
 export function ProductCard({
   product: p,
   imageSizes = "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 25vw",
@@ -23,31 +25,38 @@ export function ProductCard({
   const quickAdd = available.length === 1 ? available[0] : null;
   return (
     <article className="product-card">
-      <Link href={`/produtos/${p.slug}`} className="product-image">
-        <Image
-          src={image}
-          alt={p.images[0]?.alt || p.name}
-          fill
-          sizes={imageSizes}
-        />
-        <span className="product-badge">
-          {available.length ? p.category.name : "Indisponível"}
-        </span>
+      <Link
+        href={`/produtos/${p.slug}`}
+        className={`product-image${p.artwork ? " film-product-image" : ""}`}
+        data-artwork-brand={p.artwork ? p.brand : undefined}
+      >
+        {p.artwork ? (
+          <FilmArtwork product={p} sizes={imageSizes} />
+        ) : (
+          <Image
+            src={image}
+            alt={p.images[0]?.alt || p.name}
+            fill
+            sizes={imageSizes}
+          />
+        )}
+        {!p.artwork && (
+          <span className="product-badge">
+            {available.length ? p.category.name : "Indisponível"}
+          </span>
+        )}
         <span className="product-image-arrow">
           <ArrowUpRight size={22} />
         </span>
       </Link>
+      {p.performance && (
+        <FilmPerformance performance={p.performance} brand={p.brand} compact />
+      )}
       <div className="product-info">
         <p className="eyebrow">{p.category.name}</p>
         <Link href={`/produtos/${p.slug}`}>
           <h3>{p.name}</h3>
         </Link>
-        <p className="muted small">
-          {p.variants.length}{" "}
-          {p.variants.length === 1
-            ? "variação disponível"
-            : "variações disponíveis"}
-        </p>
         <div className="between product-price">
           <div>
             {prices.length > 0 ? (

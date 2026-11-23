@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { originLines, originSource } from "@/data/origin";
+import { getOriginPerformance, originLines, originSource } from "@/data/origin";
 import { contactUrl } from "@/lib/utils";
+import { FilmPerformance } from "@/components/film-performance";
+import { FilmArtwork } from "@/components/film-artwork";
 
 export function OriginLines({ whatsapp }: { whatsapp: string }) {
   return (
@@ -25,35 +26,32 @@ export function OriginLines({ whatsapp }: { whatsapp: string }) {
           </p>
         </div>
         <div className="origin-line-list">
-          {originLines.map((line, index) => (
+          {originLines.map((line) => (
             <article className="origin-line" key={line.slug}>
-              <div className="origin-line-photo">
-                <Image
-                  src={line.image ?? `/images/origin/${line.slug}.webp`}
-                  alt={`Imagem ilustrativa da linha ${line.name}`}
-                  fill
-                  sizes="(max-width: 760px) 100vw, 500px"
-                />
-                <span aria-hidden="true">0{index + 1} / ORIGIN FILMS</span>
+              <div className="origin-line-visual">
+                <div className="origin-line-photo origin-line-artwork">
+                  <FilmArtwork
+                    product={{
+                      name: line.name,
+                      brand: "origin",
+                      artwork: line.artwork,
+                      images: [
+                        {
+                          url: `/images/origin/campaigns/${line.slug}.webp`,
+                          alt: `${line.name} — composição ilustrativa com carro e iluminação cobre`,
+                          position: 0,
+                        },
+                      ],
+                    }}
+                    sizes="(max-width: 760px) 100vw, 500px"
+                  />
+                </div>
+                <FilmPerformance performance={getOriginPerformance(line)} />
               </div>
               <div className="origin-line-copy">
                 <p className="eyebrow">{line.technology}</p>
                 <h3>{line.name}</h3>
                 <p>{line.description}</p>
-                {line.solar !== null && line.infrared !== null && (
-                  <dl className="origin-line-metrics">
-                    <div>
-                      <dt>Rejeição solar</dt>
-                      <dd>
-                        <small>até</small> {line.solar}%
-                      </dd>
-                    </div>
-                    <div>
-                      <dt>Infravermelho</dt>
-                      <dd>{line.infrared}%</dd>
-                    </div>
-                  </dl>
-                )}
                 {line.tones.length > 0 && (
                   <p className="origin-tones">
                     Tonalidades:{" "}

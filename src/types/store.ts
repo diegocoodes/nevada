@@ -16,6 +16,16 @@ export type Variant = {
   active: boolean;
   inventory: { available: boolean; quantity: number | null } | null;
 };
+export type FilmPerformance = {
+  solar: number | null;
+  infrared: number | null;
+  ultraviolet: number | null;
+  solarUpTo?: boolean;
+  infraredUpTo?: boolean;
+  warranty: string | null;
+  warrantyDetails?: string;
+};
+
 export type Product = {
   brand?: "nevada" | "origin";
   id: string;
@@ -23,6 +33,12 @@ export type Product = {
   name: string;
   description: string;
   technical: string;
+  performance?: FilmPerformance;
+  artwork?: {
+    headline: string;
+    technology: string;
+    edition?: string;
+  };
   categoryId: string;
   category: Category;
   active: boolean;

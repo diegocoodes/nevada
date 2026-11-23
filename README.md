@@ -56,6 +56,27 @@ Os cinco modelos Nevada com preços aprovados ficam em [`src/data/nevada.ts`](sr
 
 As linhas Origin ficam em [`src/data/origin.ts`](src/data/origin.ts), compartilhadas entre a apresentação da loja e o catálogo. As tonalidades e os comprimentos de 1, 7,5, 15 e 30 metros geram variantes com os preços e as garantias da tabela comercial fornecida pela loja. Os preços por comprimento são independentes: Black de 7,5 m custa R$ 562,25; Profissional de 7,5 e 15 m custa R$ 165 e R$ 330. Reflect permanece sob consulta. Os identificadores das tonalidades existentes foram preservados na opção de 1 metro; carrinhos com preços anteriores precisam ser revisados no checkout. A disponibilidade é confirmada no atendimento. Os dados técnicos e as imagens existentes seguem a [referência da Origin Films](https://originfilms.com.br/nossas-peliculas/); os créditos estão em `public/images/CREDITS.md`.
 
+As fotos das películas no catálogo, no detalhe do produto e na apresentação Origin incluem uma faixa com rejeição de energia solar (TSER), retenção de infravermelho (IR), proteção ultravioleta (UV / UVR, UVA e UVB) e garantia. O componente compartilhado é `src/components/film-performance.tsx`; os valores ficam no campo `performance` do produto. UVR identifica a radiação ultravioleta, não um índice adicional. Os máximos da linha levam “até” e podem corresponder a tonalidades diferentes.
+
+Cada uma das cinco linhas Nevada e das sete linhas Origin possui uma imagem própria, com carros e ângulos diferentes. Nevada usa preto e ciano; Origin, preto e cobre. O componente `src/components/film-artwork.tsx` combina as imagens com o logo de cada marca, o título e a edição definidos no campo `artwork` de `src/data/nevada.ts` e `src/data/origin.ts`. As imagens Nevada ficam em `public/images/nevada/<slug>.webp`; as Origin, em `public/images/origin/campaigns/<slug>.webp`. A ampliação mostra a composição com seus indicadores, e a segunda imagem da galeria preserva a foto anterior de apresentação ou aplicação. O logo Origin usado nos cards, na seção da marca e no catálogo foi obtido no [site oficial](https://originfilms.com.br/), sem redesenho, e está em `public/images/origin-logo-official.png`. Os prompts integrais e os caminhos das 12 imagens geradas com `imagegen` estão em `public/images/campaigns/PROMPTS.json`.
+
+Nos cards, `compact` apresenta os quatro indicadores em uma grade curta de duas colunas, com rótulos resumidos e sem descrições extensas. Os detalhes e a ampliação mantêm as informações completas. `src/styles/product-cards.css` reduz os espaços do rodapé e alinha os preços. O rodapé apresenta nome, preço e ação de compra; categorias e opções de variação continuam disponíveis no catálogo e na página do produto.
+
+Dados conferidos em 23/11/2026 nas páginas oficiais de [Origin](https://originfilms.com.br/nossas-peliculas/) e [Nevada](https://bynevada.com/pelicula-solar/):
+
+| Linha | Rejeição solar | Retenção IR | Proteção UV | Garantia |
+| --- | --- | --- | --- | --- |
+| Origin 7090 | Até 47% | 94% | 99% | Vitalícia automotiva; 10 anos arquitetônica |
+| Origin Black | Até 63% | 94% | 99% | Vitalícia automotiva; 10 anos arquitetônica |
+| Origin Carbono | Até 46% | 55% | 99% | 10 anos |
+| Origin Max Protection | Até 63% | 92% | 99% | Vitalícia automotiva; 10 anos arquitetônica |
+| Origin GTS | Até 78% | 95% | 100% | Vitalícia automotiva; 10 anos arquitetônica |
+| Origin Reflect | Até 91% | 99% | 100% | Vitalícia automotiva; 10 anos arquitetônica |
+| Nevada Graphite / Ceramic Plus | Até 86% | Até 97% | 99% | 10 anos |
+| Nevada Ceramic Standard | Até 65% | Até 72% | 99% | 8 anos |
+
+A Origin anuncia bloqueio acima de 99% nas quatro primeiras linhas; a faixa apresenta 99%, como a referência do cliente. A página GTS contém a expressão inconsistente “acima de 100%”; o valor mostrado é 100%, conforme o percentual anunciado, sem reproduzir essa expressão. As condições comerciais de garantia enviadas pelo cliente foram preservadas. A garantia vitalícia da Nevada Cerâmica 70% e os 5 anos da Origin Profissional vêm da tabela comercial. A proteção UV de 99% da Nevada Cerâmica 70% segue a declaração geral do fabricante para as películas cerâmicas; ela não foi equiparada à Graphite 70, cuja garantia é diferente. As pesquisas não localizaram fichas públicas que confirmem IR/TSER dessa Cerâmica 70% ou índices das linhas Profissional; esses campos ficam “Sob consulta”. O PPF de pintura e os produtos de aplicação não recebem índices de películas para vidro.
+
 - O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `5527988014117`.
 - Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.
 - Cada variante tem identificador, SKU, atributos e disponibilidade. Preserve os identificadores ao editar produtos existentes para manter os carrinhos dos visitantes.

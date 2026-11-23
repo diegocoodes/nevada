@@ -1,0 +1,61 @@
+[data-artwork-brand="nevada"] {
+  --artwork-accent: #20edf0;
+  --artwork-surface: #020b0e;
+  --artwork-border: #20edf05c;
+}
+
+[data-artwork-brand="origin"] {
+  --artwork-accent: #ff926e;
+  --artwork-surface: #130b08;
+  --artwork-border: #ef79545c;
+}
+
+.storefront .product-image.film-product-image,
+.storefront .gallery-main.film-artwork-main {
+  aspect-ratio: 5 / 4;
+  background: var(--artwork-surface);
+}
+
+.storefront .film-product-image .product-image-arrow {
+  z-index: 1;
+  color: var(--artwork-accent);
+  background: var(--artwork-surface);
+  border: 1px solid var(--artwork-border);
+}
+
+.storefront .gallery-main.film-artwork-main > svg {
+  color: var(--artwork-accent);
+}
+
+.store-dialog.image-zoom.film-image-zoom {
+  width: min(760px, 94vw);
+  height: auto;
+  max-height: 90dvh;
+  overflow-y: auto;
+  padding: 0;
+  background: var(--artwork-surface);
+}
+
+.film-poster-zoom {
+  min-width: 0;
+}
+
+.store-dialog.image-zoom.film-image-zoom .dialog-close {
+  color: var(--artwork-accent);
+  background: var(--artwork-surface);
+  border-radius: 50%;
+}
+
+.storefront .origin-line-photo.origin-line-artwork {
+  min-height: 0;
+  aspect-ratio: 5 / 4;
+}
+
+.storefront .origin-catalog-logo {
+  width: 196px;
+  height: auto;
+  margin-bottom: 18px;
+  padding: 12px;
+  background: #191818;
+  border-radius: 3px;
+}

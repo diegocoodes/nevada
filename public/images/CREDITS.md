@@ -78,4 +78,10 @@ Origin Películas: dados e fotografias de apresentação das seis linhas obtidos
 - `origin-gts.webp`: `/wp-content/uploads/2022/11/car-with-sport-modern-design-parked-road_Easy-Resize.com_.jpg`
 - `origin-reflect.webp`: `/wp-content/uploads/2022/09/Origin-Films-BG-3.jpg`
 
+Nevada, composição inicial de apresentação (23/11/2026): `nevada/film-campaign.webp`, imagem ilustrativa criada com a ferramenta integrada `imagegen`, com carro preto, iluminação ciano e uma película translúcida ao fundo. O arquivo inicial foi preservado; o catálogo utiliza agora as variações por linha descritas abaixo. O prompt inicial está em `nevada/PROMPT.txt`.
+
+As 12 composições atuais de Nevada e Origin foram criadas em 23/11/2026 com a ferramenta integrada `imagegen` e convertidas para WebP. Cada linha tem um carro e/ou ângulo próprio. Os cinco arquivos Nevada ficam em `nevada/<slug>.webp`; os sete arquivos Origin, em `origin/campaigns/<slug>.webp`. Os prompts completos, os nomes das linhas e todos os caminhos estão em `campaigns/PROMPTS.json`. São imagens ilustrativas e não representam atendimentos reais nem certificam desempenho técnico. As fotos anteriores continuam como segunda imagem da galeria de cada produto.
+
+O logo oficial Origin foi baixado de https://originfilms.com.br/wp-content/uploads/2022/09/logo-origin.png, usado no cabeçalho de https://originfilms.com.br/, em 23/11/2026. O original transparente de 1177 × 303 px está preservado em `origin-logo-official.png`, sem redesenho. Esse logo e o arquivo existente `nevada-logo-2026.png` são sobrepostos às composições junto aos textos e índices técnicos em HTML/CSS.
+
 As fotografias de contexto não representam especificações de produto. A presença de imagens públicas não transfere direitos de marca ou de uso comercial. Antes da publicação comercial, use imagens autorizadas pela distribuidora e revise os termos e créditos aplicáveis. As referências textuais não constituem alegação de revenda autorizada.
