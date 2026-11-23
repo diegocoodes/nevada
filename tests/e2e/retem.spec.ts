@@ -120,7 +120,7 @@ test("Origin abre consulta e os filtros de marca se atualizam na mesma rota", as
   await expect(
     page.getByRole("heading", { name: "Conheça a linha Origin Películas." }),
   ).toBeVisible();
-  await expect(page.locator(".catalog-grid .product-card")).toHaveCount(6);
+  await expect(page.locator(".catalog-grid .product-card")).toHaveCount(7);
   const contact = page.getByRole("link", {
     name: "Consultar Origin Películas",
     exact: true,

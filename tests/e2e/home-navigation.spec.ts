@@ -31,27 +31,39 @@ test("início abre a estética diretamente e mantém o acesso à distribuidora",
     "background-color",
     "rgb(255, 255, 255)",
   );
-  await expect(page.locator(".origin-line")).toHaveCount(6);
+  await expect(page.locator(".origin-line")).toHaveCount(7);
   await page
     .locator(".origin-line")
     .filter({
-      has: page.getByRole("heading", { name: "Origin Black", exact: true }),
+      has: page.getByRole("heading", {
+        name: "Origin Black — Nano Cerâmica",
+        exact: true,
+      }),
     })
-    .getByRole("link", { name: "Escolher tonalidade" })
+    .getByRole("link", { name: "Escolher variação" })
     .click();
   await expect(page).toHaveURL(/\/produtos\/origin-black$/);
-  await page.getByRole("radio", { name: /Tonalidade 35%/ }).check();
+  await page
+    .getByRole("radio", { name: /Tonalidade 35% · 7,5 metros/ })
+    .check();
+  await expect(page.locator(".detail-price strong")).toHaveText(/562,25/);
+  await expect(page.locator(".technical")).toContainText("Garantia: Vitalícia");
   const consultation = new URL(
     (await page
       .getByRole("link", { name: "Falar com especialista" })
       .getAttribute("href"))!,
   );
   expect(consultation.searchParams.get("text")).toContain("Tonalidade 35%");
+  expect(consultation.searchParams.get("text")).toContain("7,5 metros");
   await page
     .getByRole("button", { name: "Adicionar ao carrinho", exact: true })
     .click();
   await expect(page.getByRole("dialog")).toContainText("Origin Black");
   await expect(page.getByRole("dialog")).toContainText("Tonalidade 35%");
+  await expect(page.getByRole("dialog")).toContainText("7,5 metros");
+  await expect(
+    page.getByRole("dialog").locator(".cart-line-total"),
+  ).toContainText("562,25");
 });
 
 test("site principal e distribuidora funcionam sem JavaScript", async ({

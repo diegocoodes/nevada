@@ -190,8 +190,8 @@ export function Catalog({
             <p className="eyebrow">TECNOLOGIA PARA OS SEUS VIDROS</p>
             <h2>Conheça a linha Origin Películas.</h2>
             <p className="muted">
-              Compare as seis linhas e selecione a tonalidade. Valores e medidas
-              sob consulta.
+              Compare as linhas e selecione a tonalidade e o comprimento para
+              conferir o valor. Disponibilidade a confirmar no atendimento.
             </p>
             <Link className="link-arrow" href={contactHref}>
               Consultar Origin Películas

@@ -29,8 +29,8 @@ export function OriginLines({ whatsapp }: { whatsapp: string }) {
             <article className="origin-line" key={line.slug}>
               <div className="origin-line-photo">
                 <Image
-                  src={`/images/origin/${line.slug}.webp`}
-                  alt={`Veículo na apresentação da linha ${line.name}`}
+                  src={line.image ?? `/images/origin/${line.slug}.webp`}
+                  alt={`Imagem ilustrativa da linha ${line.name}`}
                   fill
                   sizes="(max-width: 760px) 100vw, 500px"
                 />
@@ -40,33 +40,35 @@ export function OriginLines({ whatsapp }: { whatsapp: string }) {
                 <p className="eyebrow">{line.technology}</p>
                 <h3>{line.name}</h3>
                 <p>{line.description}</p>
-                <dl className="origin-line-metrics">
-                  <div>
-                    <dt>Rejeição solar</dt>
-                    <dd>
-                      <small>até</small> {line.solar}%
-                    </dd>
-                  </div>
-                  <div>
-                    <dt>Infravermelho</dt>
-                    <dd>{line.infrared}%</dd>
-                  </div>
-                </dl>
-                <p className="origin-tones">
-                  Tonalidades:{" "}
-                  <strong>
-                    {line.tones.map((tone) => `${tone}%`).join(" · ")}
-                  </strong>
-                </p>
-                <p className="origin-warranty">
-                  Garantia do fabricante: {line.warranty}
-                </p>
+                {line.solar !== null && line.infrared !== null && (
+                  <dl className="origin-line-metrics">
+                    <div>
+                      <dt>Rejeição solar</dt>
+                      <dd>
+                        <small>até</small> {line.solar}%
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Infravermelho</dt>
+                      <dd>{line.infrared}%</dd>
+                    </div>
+                  </dl>
+                )}
+                {line.tones.length > 0 && (
+                  <p className="origin-tones">
+                    Tonalidades:{" "}
+                    <strong>
+                      {line.tones.map((tone) => `${tone}%`).join(" · ")}
+                    </strong>
+                  </p>
+                )}
+                <p className="origin-warranty">Garantia: {line.warranty}</p>
                 <div className="origin-line-actions">
                   <Link
                     className="button button-primary"
                     href={`/produtos/${line.slug}`}
                   >
-                    Escolher tonalidade{" "}
+                    Escolher variação{" "}
                     <ArrowUpRight size={18} aria-hidden="true" />
                   </Link>
                   <a

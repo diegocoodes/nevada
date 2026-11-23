@@ -90,6 +90,61 @@ test("pedido Nevada preserva o preço de 7,5 m e soma comprimentos diferentes", 
   assert.equal(new URL(result.whatsappUrl).pathname, "/5527988014117");
 });
 
+test("pedido Origin inclui tonalidade, comprimento, garantia e valores comerciais", () => {
+  const black = products.find((product) => product.slug === "origin-black")!;
+  const professional = products.find(
+    (product) => product.slug === "origin-profissional",
+  )!;
+  const blackVariant = black.variants.find(
+    (variant) =>
+      variant.attributes.Tonalidade === "35%" &&
+      variant.attributes.Comprimento === "7,5 metros",
+  )!;
+  const result = prepare([
+    {
+      productId: black.id,
+      variantId: blackVariant.id,
+      quantity: 2,
+      priceCents: 56225,
+    },
+    {
+      productId: professional.id,
+      variantId: professional.variants[1].id,
+      quantity: 1,
+      priceCents: 16500,
+    },
+    {
+      productId: professional.id,
+      variantId: professional.variants[2].id,
+      quantity: 1,
+      priceCents: 33000,
+    },
+  ]);
+
+  assert.equal(result.items[0].subtotalCents, 112450);
+  assert.match(result.message, /Tonalidade: 35%/);
+  assert.match(result.message, /Comprimento: 7,5 metros/);
+  assert.match(result.message, /Garantia: Vitalícia/);
+  assert.match(result.message, /Garantia: 5 anos/);
+  assert.match(result.message.replace(/\u00a0/g, " "), /R\$ 1\.619,50/);
+  assert.throws(
+    () =>
+      prepare([
+        {
+          productId: black.id,
+          variantId: "origin-black-35",
+          quantity: 1,
+          priceCents: null,
+        },
+      ]),
+    /preço de um item mudou/,
+  );
+  const reflect = products.find(
+    (product) => product.slug === "origin-reflect",
+  )!;
+  assert.match(prepare([line(reflect)]).message, /Sob consulta/);
+});
+
 test("rejeita carrinho vazio, itens inexistentes e quantidades inválidas", () => {
   assert.throws(() => prepare([]), /Revise/);
   assert.throws(
