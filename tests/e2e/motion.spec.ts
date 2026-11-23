@@ -58,7 +58,7 @@ test("hero apresenta os dois caminhos e a navegação leva aos serviços", async
   const hero = page.getByRole("region", { name: /Seu carro merece/i });
   await expect(
     hero.getByRole("link", { name: "Solicitar orçamento", exact: true }),
-  ).toHaveAttribute("href", "https://wa.me/5527992315115");
+  ).toHaveAttribute("href", "https://wa.me/5527988014117");
   await expect(hero.locator(".hero-photo")).toBeVisible();
   await hero.getByRole("link", { name: "Explore os serviços" }).click();
   await expect(page.locator("#servicos")).toBeInViewport();

@@ -1,5 +1,41 @@
 import { test, expect } from "@playwright/test";
 
+test("Nevada mantém o comprimento e o preço da tabela no pedido", async ({
+  page,
+}) => {
+  await page.goto("/produtos?marca=nevada");
+  await page.getByPlaceholder("Nome do produto").fill("Graphite");
+  await page
+    .getByRole("heading", { name: "Nevada Graphite — Nano Cerâmica Plus" })
+    .click();
+  await expect(page.getByRole("radio")).toHaveCount(4);
+  await page.getByRole("radio", { name: /7,5 metros/ }).check();
+  await expect(page.locator(".detail-price strong")).toHaveText(/562,25/);
+  await page.getByRole("button", { name: "Aumentar quantidade" }).click();
+  await page.getByRole("button", { name: "Adicionar ao carrinho" }).click();
+  const drawer = page.getByRole("dialog");
+  await expect(drawer).toContainText("7,5 metros");
+  await expect(drawer.locator(".cart-line-total")).toContainText("1.124,50");
+  await drawer.getByRole("link", { name: "Continuar para o pedido" }).click();
+  await page.getByLabel("Nome *", { exact: true }).fill("Cliente Nevada");
+  await page.getByLabel("Telefone *", { exact: true }).fill("27999999999");
+  await page.getByLabel("Cidade *", { exact: true }).fill("Vila Velha");
+  await page.getByLabel("Estado *", { exact: true }).selectOption("ES");
+  let message = "";
+  await page.route("https://wa.me/**", async (route) => {
+    const url = new URL(route.request().url());
+    expect(url.pathname).toBe("/5527988014117");
+    message = url.searchParams.get("text") || "";
+    await route.fulfill({ contentType: "text/html", body: "Pedido preparado" });
+  });
+  await page.getByRole("button", { name: "Finalizar pelo WhatsApp" }).click();
+  await expect(page).toHaveURL(/wa\.me\/5527988014117/);
+  expect(message).toContain("Nevada Graphite — Nano Cerâmica Plus");
+  expect(message).toContain("Comprimento: 7,5 metros");
+  expect(message).toContain("562,25");
+  expect(message).toContain("1.124,50");
+});
+
 test("seleção persiste e finaliza sem API no WhatsApp correto com todos os itens", async ({
   page,
 }) => {
@@ -35,7 +71,7 @@ test("seleção persiste e finaliza sem API no WhatsApp correto com todos os ite
   });
   await page.route("https://wa.me/**", async (route) => {
     const url = new URL(route.request().url());
-    expect(url.pathname).toBe("/5527992315115");
+    expect(url.pathname).toBe("/5527988014117");
     message = url.searchParams.get("text") || "";
     await route.fulfill({
       contentType: "text/html",
@@ -43,7 +79,7 @@ test("seleção persiste e finaliza sem API no WhatsApp correto com todos os ite
     });
   });
   await page.getByRole("button", { name: "Finalizar pelo WhatsApp" }).click();
-  await expect(page).toHaveURL(/wa\.me\/5527992315115/);
+  await expect(page).toHaveURL(/wa\.me\/5527988014117/);
   expect(message).toContain("PPF Nevada Gloss");
   expect(message).toContain("PPF Nevada Satin");
   expect(message).toContain("Acabamento: Brilhante");
@@ -93,10 +129,12 @@ test("mobile sem overflow, menu e drawer com teclado", async ({ page }) => {
     .getByRole("dialog")
     .getByRole("link", { name: "Loja Distribuidora", exact: true })
     .click();
-  await page.getByRole("link", { name: "Explorar os produtos", exact: true }).click();
+  await page
+    .getByRole("link", { name: "Explorar os produtos", exact: true })
+    .click();
   await page.getByRole("button", { name: "Filtros", exact: true }).click();
   await page.getByLabel("PPF", { exact: true }).check();
-  await expect(page.getByText("3 produtos encontrados")).toBeVisible();
+  await expect(page.getByText("4 produtos encontrados")).toBeVisible();
   await page.getByRole("button", { name: "Abrir carrinho, 0 itens" }).click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");

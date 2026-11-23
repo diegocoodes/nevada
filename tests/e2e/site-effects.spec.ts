@@ -13,7 +13,7 @@ for (const route of ["/", "/distribuidora"]) {
     });
     await expect(whatsapp).toHaveAttribute(
       "href",
-      "https://wa.me/5527992315115",
+      "https://wa.me/5527988014117",
     );
     await expect(whatsapp).toHaveAttribute("target", "_blank");
     const before = await whatsapp.boundingBox();

@@ -46,7 +46,7 @@ export function Footer({
         <div>
           <h3>Vamos conversar</h3>
           <a href={contactUrl(s.whatsapp)}>
-            WhatsApp · (27) 99231-5115 <ArrowUpRight size={14} />
+            WhatsApp · (27) 98801-4117 <ArrowUpRight size={14} />
           </a>
           {s.email && <a href={`mailto:${s.email}`}>{s.email}</a>}
           {s.instagram && (

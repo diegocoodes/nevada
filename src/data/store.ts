@@ -1,10 +1,11 @@
 import type { Category, Product, Settings } from "@/types/store";
 import { getOriginProducts } from "@/data/origin";
+import { getNevadaProducts } from "@/data/nevada";
 
 export const settings: Settings = {
   name: "Retém Estética Premium",
   logo: "/images/retem-logo.svg",
-  whatsapp: "5527992315115",
+  whatsapp: "5527988014117",
   email: "contato@retem.com.br",
   instagram: "https://www.instagram.com/retem.es/",
   address:
@@ -78,6 +79,7 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
+  ...getNevadaProducts(categories),
   ...getOriginProducts(categories),
   {
     id: "cmv1n3xd8000u48tbikwtmk9d",

@@ -163,8 +163,8 @@ export function StudioDetails({ settings }: { settings: Settings }) {
               >
                 <MapPin size={18} aria-hidden="true" /> Como chegar
               </a>
-              <a className="studio-text-link" href="tel:+5527992315115">
-                <Phone size={17} aria-hidden="true" /> (27) 99231-5115
+              <a className="studio-text-link" href="tel:+5527988014117">
+                <Phone size={17} aria-hidden="true" /> (27) 98801-4117
               </a>
             </div>
             <a

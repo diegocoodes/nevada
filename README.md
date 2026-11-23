@@ -1,6 +1,6 @@
 # Retém Estética Premium & Loja Distribuidora
 
-Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 27 99231-5115**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
+Site da Retém Estética Premium, com foco em PPF e películas, e uma área própria da Retém Loja Distribuidora para Nevada Films e Origin Películas. Atendimento pelo WhatsApp **+55 27 98801-4117**. Construído com Next.js 16, React 19 e TypeScript. Funciona sem banco de dados, migrations ou credenciais de servidor.
 
 A página `/` apresenta duas opções: **Entrar no site Retém**, que abre `/retem`, e **Entrar na Retém Loja**, que abre `/distribuidora`. A estética mantém o fundo escuro; a loja, o catálogo e o checkout usam fundo branco, com detalhes vermelhos e amarelos. Os links internos da estética levam diretamente a `/retem` e às suas seções.
 
@@ -52,9 +52,11 @@ npm start
 
 Edite os objetos `settings`, `categories` e `products` em [`src/data/store.ts`](src/data/store.ts), faça commit e publique novamente. O site não possui painel administrativo.
 
+Os cinco modelos Nevada com preços aprovados ficam em [`src/data/nevada.ts`](src/data/nevada.ts), com variantes de 1, 7,5, 15 e 30 metros. Os preços são independentes por comprimento: o Graphite de 7,5 m custa R$ 562,25, conforme a tabela fornecida. A disponibilidade é confirmada no atendimento. Os demais cadastros de demonstração continuam identificados como ilustrativos.
+
 As linhas Origin ficam em [`src/data/origin.ts`](src/data/origin.ts), compartilhadas entre a apresentação da loja e o catálogo. As tonalidades geram variantes com valores sob consulta e quantidade a confirmar no atendimento. Os dados técnicos e as imagens seguem a [referência da Origin Films](https://originfilms.com.br/nossas-peliculas/); os créditos estão em `public/images/CREDITS.md`.
 
-- O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `5527992315115`.
+- O WhatsApp em `settings.whatsapp` contém país, DDD e número, somente dígitos: `5527988014117`.
 - Os preços estão em centavos; `priceCents: null` apresenta **Sob consulta**.
 - Cada variante tem identificador, SKU, atributos e disponibilidade. Preserve os identificadores ao editar produtos existentes para manter os carrinhos dos visitantes.
 - Use imagens locais em `public/images` com caminhos como `/images/lines/ppf-application.webp`.

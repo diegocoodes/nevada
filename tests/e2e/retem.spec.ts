@@ -47,7 +47,7 @@ test("serviços, dúvidas e localização usam os dados da RETÉM", async ({
     page
       .locator("#localizacao")
       .getByRole("link", { name: "Solicitar orçamento pelo WhatsApp" }),
-  ).toHaveAttribute("href", "https://wa.me/5527992315115");
+  ).toHaveAttribute("href", "https://wa.me/5527988014117");
   const directions = new URL(
     (await page
       .locator("#localizacao")

@@ -91,6 +91,6 @@ export const serviceQuestions = [
   {
     question: "Como solicitar um orçamento?",
     answer:
-      "Use o formulário ou fale diretamente pelo WhatsApp (27) 99231-5115. Conte qual serviço procura e envie fotos do veículo ou do ambiente. Estamos na Rodovia do Sol, 1528, em Praia de Itaparica, Vila Velha.",
+      "Use o formulário ou fale diretamente pelo WhatsApp (27) 98801-4117. Conte qual serviço procura e envie fotos do veículo ou do ambiente. Estamos na Rodovia do Sol, 1528, em Praia de Itaparica, Vila Velha.",
   },
 ];

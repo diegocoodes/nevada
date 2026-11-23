@@ -67,8 +67,8 @@ export default async function Contact({
           )}
         </div>
         <div className="studio-location-actions">
-          <a className="studio-text-link" href="tel:+5527992315115">
-            Ligar: (27) 99231-5115 <ArrowUpRight size={16} aria-hidden="true" />
+          <a className="studio-text-link" href="tel:+5527988014117">
+            Ligar: (27) 98801-4117 <ArrowUpRight size={16} aria-hidden="true" />
           </a>
           <a
             className="studio-text-link"

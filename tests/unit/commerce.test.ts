@@ -27,7 +27,7 @@ test("WhatsApp usa o número exato, todas as seleções e caracteres especiais",
   const result = prepare([line(gloss, 2), line(satin, 1)]);
   const url = new URL(result.whatsappUrl);
   assert.equal(url.origin, "https://wa.me");
-  assert.equal(url.pathname, "/5527992315115");
+  assert.equal(url.pathname, "/5527988014117");
   assert.equal(url.searchParams.get("text"), result.message);
   assert.ok(result.message.includes(gloss.name));
   assert.ok(result.message.includes(satin.name));
@@ -58,6 +58,36 @@ test("pedido usa nomes e preços do catálogo, não texto adulterado no carrinho
     () => prepare([{ ...line(), priceCents: 1 }]),
     /preço de um item mudou/,
   );
+});
+
+test("pedido Nevada preserva o preço de 7,5 m e soma comprimentos diferentes", () => {
+  const graphite = products.find(
+    (product) => product.slug === "nevada-graphite-nano-ceramica-plus",
+  )!;
+  const clear = products.find(
+    (product) => product.slug === "nevada-clear-ppf",
+  )!;
+  const result = prepare([
+    {
+      productId: graphite.id,
+      variantId: graphite.variants[1].id,
+      quantity: 2,
+      priceCents: 56225,
+    },
+    {
+      productId: clear.id,
+      variantId: clear.variants[3].id,
+      quantity: 1,
+      priceCents: 1140000,
+    },
+  ]);
+
+  assert.equal(result.items[0].variantName, "7,5 metros");
+  assert.equal(result.items[0].subtotalCents, 112450);
+  assert.equal(result.items[1].variantName, "30 metros");
+  assert.equal(result.items[1].subtotalCents, 1140000);
+  assert.match(result.message.replace(/\u00a0/g, " "), /R\$ 12\.524,50/);
+  assert.equal(new URL(result.whatsappUrl).pathname, "/5527988014117");
 });
 
 test("rejeita carrinho vazio, itens inexistentes e quantidades inválidas", () => {
